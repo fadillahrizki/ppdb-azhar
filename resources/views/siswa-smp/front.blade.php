@@ -1,0 +1,201 @@
+@extends('adminlte::page')
+
+@section('title')
+Register Siswa SMP
+@endsection
+
+
+@section('content_header')
+<h2>Register Siswa SMP</h2>
+
+@if(session('success'))
+<div class="alert alert-success">{{session('success')}}</div>
+@endif
+
+@endsection
+
+@section('content')
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+
+            @includeif('partials.errors')
+
+            <form method="POST" role="form" enctype="multipart/form-data">
+                @csrf
+
+                <div id="form">
+                    @include('siswa-smp.form2')
+                </div>
+
+                <div id="review" class="d-none">
+                    @include('siswa-smp.review')
+                </div>
+
+            </form>
+        </div>
+    </div>
+</section>
+@endsection
+
+@section('js')
+
+<script>
+    $("#btn-submit").click(function() {
+
+        $("#form").addClass("d-none")
+        $("#review").removeClass("d-none")
+
+        var siswa = `
+
+        <div class="form-group">
+            <strong>Nama Lengkap:</strong>
+            ${$("[name=siswa_nama_lengkap]").val() ? $("[name=siswa_nama_lengkap]").val() : '-'}
+        </div>
+        <div class="form-group">
+            <strong>Nama Panggilan:</strong>
+            ${$("[name=siswa_nama_panggilan]").val() ? $("[name=siswa_nama_panggilan]").val() : '-'}
+        </div>
+        <div class="form-group">
+            <strong>NIK:</strong>
+            ${$("[name=siswa_NIK]").val() ? $("[name=siswa_NIK]").val() : '-'}
+        </div>
+        <div class="form-group">
+            <strong>NISN:</strong>
+            ${$("[name=siswa_NISN]").val() ? $("[name=siswa_NISN]").val() : '-'}
+        </div>
+        <div class="form-group">
+            <strong>Jenis Kelamin:</strong>
+            ${$("[name=siswa_jenis_kelamin]").val() ? $("[name=siswa_jenis_kelamin]").val() : '-'}
+        </div>
+        <div class="form-group">
+            <strong>Tempat Lahir:</strong>
+            ${$("[name=siswa_tempat]").val() ? $("[name=siswa_tempat]").val() : '-'}
+        </div>
+        <div class="form-group">
+            <strong>Tanggal Lahir:</strong>
+            ${$("[name=siswa_tanggal_lahir]").val() ? $("[name=siswa_tanggal_lahir]").val() : '-'}
+        </div>
+        <div class="form-group">
+            <strong>Alamat Tempat Tinggal:</strong>
+            ${$("[name=siswa_alamat_tempat_tinggal]").val() ? $("[name=siswa_alamat_tempat_tinggal]").val() : '-'}
+        </div>
+        <div class="form-group">
+            <strong>Email:</strong>
+            ${$("[name=siswa_email]").val() ? $("[name=siswa_email]").val() : '-'}
+        </div>
+        <div class="form-group">
+            <strong>No HP:</strong>
+            ${$("[name=siswa_no_hp]").val() ? $("[name=siswa_no_hp]").val() : '-'}
+        </div>
+`
+        $("#info-siswa").html(siswa)
+
+        var ayah = `
+        <div class="form-group">
+            <strong>Nama Lengkap:</strong>
+            ${$("[name=ayah_nama_lengkap]").val() ? $("[name=ayah_nama_lengkap]").val() : '-'}
+        </div>
+        <div class="form-group">
+            <strong>Agama:</strong>
+            ${$("[name=ayah_agama]").val() ? $("[name=ayah_agama]").val() : '-'}
+        </div>
+        <div class="form-group">
+            <strong>Pendidikan Terakhir:</strong>
+            ${$("[name=ayah_pendidikan_terakhir]").val() ? $("[name=ayah_pendidikan_terakhir]").val() : '-'}
+        </div>
+        <div class="form-group">
+            <strong>Pekerjaan:</strong>
+            ${$("[name=ayah_pekerjaan]").val() ? $("[name=ayah_pekerjaan]").val() : '-'}
+        </div>
+        <div class="form-group">
+            <strong>Penghasilan:</strong>
+            ${$("[name=ayah_penghasilan]").val() ? $("[name=ayah_penghasilan]").val() : '-'}
+        </div>
+        <div class="form-group">
+            <strong>No Hp:</strong>
+            ${$("[name=ayah_no_hp]").val() ? $("[name=ayah_no_hp]").val() : '-'}
+        </div>
+        `
+
+        $("#info-ayah").html(ayah)
+
+        var ibu = `
+        <div class="form-group">
+            <strong>Nama Lengkap:</strong>
+            ${$("[name=ibu_nama_lengkap]").val() ? $("[name=ibu_nama_lengkap]").val() : '-'}
+        </div>
+        <div class="form-group">
+            <strong>Agama:</strong>
+            ${$("[name=ibu_agama]").val() ? $("[name=ibu_agama]").val() : '-'}
+        </div>
+        <div class="form-group">
+            <strong>Pendidikan Terakhir:</strong>
+            ${$("[name=ibu_pendidikan_terakhir]").val() ? $("[name=ibu_pendidikan_terakhir]").val() : '-'}
+        </div>
+        <div class="form-group">
+            <strong>Pekerjaan:</strong>
+            ${$("[name=ibu_pekerjaan]").val() ? $("[name=ibu_pekerjaan]").val() : '-'}
+        </div>
+        <div class="form-group">
+            <strong>Penghasilan:</strong>
+            ${$("[name=ibu_penghasilan]").val() ? $("[name=ibu_penghasilan]").val() : '-'}
+        </div>
+        <div class="form-group">
+            <strong>No Hp:</strong>
+            ${$("[name=ibu_no_hp]").val() ? $("[name=ibu_no_hp]").val() : '-'}
+        </div>
+        `
+
+        $("#info-ibu").html(ibu)
+
+        var asal = `
+        <div class="form-group">
+            <strong>Nama Sekolah:</strong>
+            ${$("[name=asal_nama_sekolah]").val() ? $("[name=asal_nama_sekolah]").val() : '-'}
+        </div>
+        <div class="form-group">
+            <strong>Alamat sekolah:</strong>
+            ${$("[name=asal_alamat_sekolah]").val() ? $("[name=asal_alamat_sekolah]").val() : '-'}
+        </div>
+        <div class="form-group">
+            <strong>No Telepon Sekolah:</strong>
+            ${$("[name=asal_no_telepon_sekolah]").val() ? $("[name=asal_no_telepon_sekolah]").val() : '-'}
+        </div>
+        `
+
+        $("#info-asal").html(asal)
+
+        var kelas = `
+        <div class="form-group">
+            <strong>Kelas Pilihan Pertama:</strong>
+            ${$("[name=kelas_pilihan_pertama]").val() ? $("[name=kelas_pilihan_pertama]").val() : '-'}
+        </div>
+        <div class="form-group">
+            <strong>Kelas Pilihan Kedua:</strong>
+            ${$("[name=kelas_pilihan_kedua]").val() ? $("[name=kelas_pilihan_kedua]").val() : '-'}
+        </div>
+        `
+
+        $("#info-kelas").html(kelas)
+
+    })
+
+    $("#btn-edit").click(function() {
+        $("#form").removeClass("d-none")
+        $("#review").addClass("d-none")
+    })
+</script>
+
+@endsection
+
+
+@section('js')
+
+<script>
+    $(".custom-file-input").change(function(e) {
+        $(".custom-file-label").html($(this)[0].files[0].name)
+    })
+</script>
+
+@endsection
