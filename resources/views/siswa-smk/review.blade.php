@@ -4,7 +4,7 @@
 
             <div class="card-body">
 
-                <h3>Informasi Siswa</h3>
+                <h5>Informasi Siswa</h5>
 
                 <hr>
 
@@ -19,7 +19,7 @@
 
         <div class="card card-body">
 
-            <h3>Asal Sekolah</h3>
+            <h5>Asal Sekolah</h5>
 
             <hr>
 
@@ -31,7 +31,7 @@
 
         <div class="card card-body">
 
-            <h3>Jurusan</h3>
+            <h5>Jurusan</h5>
 
             <hr>
 
@@ -43,7 +43,7 @@
 
         <div class="card card-body">
 
-            <h3>Pondok</h3>
+            <h5>Pondok</h5>
 
             <hr>
 

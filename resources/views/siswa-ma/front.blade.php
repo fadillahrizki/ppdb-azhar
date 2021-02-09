@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('layouts.app')
 
 @section('title')
 Register Siswa MA
@@ -6,36 +6,47 @@ Register Siswa MA
 
 
 @section('content_header')
-<h2>Register Siswa MA</h2>
-
-@if(session('success'))
-<div class="alert alert-success">{{session('success')}}</div>
-@endif
-
+<!-- Breadcrumb-->
+<div class="row pt-2 pb-2">
+    <div class="col-sm-9">
+        <h4 class="page-title">@yield('title')</h4>
+    </div>
+</div>
+<!-- End Breadcrumb-->
 @endsection
 
 @section('content')
-<section class="content container-fluid">
-    <div class="row">
-        <div class="col-md-12">
 
-            @includeif('partials.errors')
-
-            <form method="POST" role="form" enctype="multipart/form-data">
-                @csrf
-
-                <div id="form">
-                    @include('siswa-ma.form2')
-                </div>
-
-                <div id="review" class="d-none">
-                    @include('siswa-ma.review')
-                </div>
-
-            </form>
+@if ($message = Session::get('success'))
+<div class="row">
+    <div class="col">
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
         </div>
     </div>
-</section>
+</div>
+@endif
+
+
+<div class="row">
+    <div class="col-md-12">
+
+        @includeif('partials.errors')
+
+        <form method="POST" role="form" enctype="multipart/form-data">
+            @csrf
+
+            <div id="form">
+                @include('siswa-ma.form2')
+            </div>
+
+            <div id="review" class="d-none">
+                @include('siswa-ma.review')
+            </div>
+
+        </form>
+    </div>
+</div>
 @endsection
 
 @section('js')

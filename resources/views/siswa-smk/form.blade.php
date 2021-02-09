@@ -1,6 +1,6 @@
 <div class="card card-body">
 
-    <h3>Informasi Siswa</h3>
+    <h5>Informasi Siswa</h5>
 
     <hr>
 
@@ -76,7 +76,7 @@
 </div>
 
 <div class="card card-body">
-    <h3>Asal Sekolah</h3>
+    <h5>Asal Sekolah</h5>
 
     <hr>
 
@@ -98,7 +98,7 @@
 </div>
 
 <div class="card card-body">
-    <h3>Pilihan Jurusan</h3>
+    <h5>Pilihan Jurusan</h5>
 
     <hr>
 
@@ -125,7 +125,7 @@
 </div>
 
 <div class="card card-body">
-    <h3>Pilihan Pondok</h3>
+    <h5>Pilihan Pondok</h5>
 
     <hr>
 

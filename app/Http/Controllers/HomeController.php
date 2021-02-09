@@ -29,7 +29,13 @@ class HomeController extends Controller
     public function index()
     {
         $this->middleware('auth');
-        return view('home');
+        $siswaRa = SiswaRa::get()->count();
+        $siswaMa = SiswaMa::get()->count();
+        $siswaSmp = SiswaSmp::get()->count();
+        $siswaMts = SiswaMts::get()->count();
+        $siswaSma = SiswaSma::get()->count();
+        $siswaSmk = SiswaSmk::get()->count();
+        return view('home', compact('siswaRa', 'siswaMa', 'siswaMts', 'siswaSmp', 'siswaSma', 'siswaSmk'));
     }
 
     public function siswa_ra(Request $request)

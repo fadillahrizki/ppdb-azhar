@@ -1,4 +1,4 @@
-@extends('adminlte::page')
+@extends('layouts.app')
 
 @section('title')
 Update Siswa SMA
@@ -6,27 +6,40 @@ Update Siswa SMA
 
 
 @section('content_header')
-<h2>Update Siswa SMA</h2>
+<!-- Breadcrumb-->
+<div class="row pt-2 pb-2">
+    <div class="col-sm-9">
+        <h4 class="page-title">@yield('title')</h4>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@yield('title')</li>
+        </ol>
+    </div>
+    <div class="col-sm-3">
+        <div class="btn-group float-sm-right">
+            <a href="{{ route('siswa-sma.index') }}" class="btn btn-outline-primary waves-effect waves-light"><i class="fa fa-arrow-left mr-1"></i> Kembali</a>
+        </div>
+    </div>
+</div>
+<!-- End Breadcrumb-->
 @endsection
 
 
 @section('content')
-<section class="content container-fluid">
-    <div class="">
-        <div class="col-md-12">
+<div class="row">
+    <div class="col-md-12">
 
-            @includeif('partials.errors')
+        @includeif('partials.errors')
 
-            <form method="POST" action="{{ route('siswa-sma.update', $siswaSma->id) }}" role="form" enctype="multipart/form-data">
-                {{ method_field('PATCH') }}
-                @csrf
+        <form method="POST" action="{{ route('siswa-sma.update', $siswaSma->id) }}" role="form" enctype="multipart/form-data">
+            {{ method_field('PATCH') }}
+            @csrf
 
-                @include('siswa-sma.form')
+            @include('siswa-sma.form')
 
-            </form>
-        </div>
+        </form>
     </div>
-</section>
+</div>
 @endsection
 
 

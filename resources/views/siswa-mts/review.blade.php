@@ -5,7 +5,7 @@
 
             <div class="card-body">
 
-                <h3>Informasi Siswa</h3>
+                <h5>Informasi Siswa</h5>
 
                 <hr>
 
@@ -17,7 +17,7 @@
 
             <div class="card card-body">
 
-                <h3>Asal Sekolah</h3>
+                <h5>Asal Sekolah</h5>
 
                 <hr>
 
@@ -31,7 +31,7 @@
     <div class="col-6">
 
         <div class="card card-body">
-            <h3>Informasi Ayah Kandung</h3>
+            <h5>Informasi Ayah Kandung</h5>
 
             <hr>
 
@@ -42,7 +42,7 @@
         </div>
 
         <div class="card card-body">
-            <h3>Informasi Ibu Kandung</h3>
+            <h5>Informasi Ibu Kandung</h5>
 
             <hr>
 
