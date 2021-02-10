@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/alazhar/ppdb.alazhargresik.id/file
+    - /bin/cp -r * $DEPLOYPATH
