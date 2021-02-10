@@ -33,39 +33,18 @@
 <body>
 
     <!-- Start wrapper-->
-    <div id="wrapper">
-
-        <!--Start sidebar-wrapper-->
-        <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
-            <div class="brand-logo">
-                <a href="/">
-                    <img src="{{asset('assets/images/logo-icon.png')}}" class="logo-icon" alt="logo icon">
-                    <h5 class="logo-text">PPDB Azhar</h5>
-                </a>
-            </div>
-            <ul class="sidebar-menu do-nicescrol">
-                <li class="sidebar-header">MAIN NAVIGATION</li>
-                <li class="{{Request::is('home') ? 'active' : ''}}">
-                    <a href="{{route('home')}}" class="waves-effect">
-                        <i class="icon-home"></i> <span>Dashboard</span>
-                    </a>
-                </li>
-                <li class="{{Request::is('siswa-ra') ? 'active' : ''}}"><a href="{{route('siswa-ra.index')}}"><i class="fa fa-circle-o"></i> Siswa RA</a></li>
-                <li class="{{Request::is('siswa-mts') ? 'active' : ''}}"><a href="{{route('siswa-mts.index')}}"><i class="fa fa-circle-o"></i> Siswa MTS</a></li>
-                <li class="{{Request::is('siswa-smp') ? 'active' : ''}}"><a href="{{route('siswa-smp.index')}}"><i class="fa fa-circle-o"></i> Siswa SMP</a></li>
-                <li class="{{Request::is('siswa-sma') ? 'active' : ''}}"><a href="{{route('siswa-sma.index')}}"><i class="fa fa-circle-o"></i> Siswa SMA</a></li>
-                <li class="{{Request::is('siswa-ma') ? 'active' : ''}}"><a href="{{route('siswa-ma.index')}}"><i class="fa fa-circle-o"></i> Siswa MA</a></li>
-                <li class="{{Request::is('siswa-smk') ? 'active' : ''}}"><a href="{{route('siswa-smk.index')}}"><i class="fa fa-circle-o"></i> Siswa SMK</a></li>
-
-            </ul>
-
-        </div>
-        <!--End sidebar-wrapper-->
+    <div id="wrapper" class="toggled">
 
         <!--Start topbar header-->
         <header class="topbar-nav">
             <nav class="navbar navbar-expand fixed-top bg-white">
-                <ul class="navbar-nav mr-auto align-items-center">
+                <div class="navbar-nav mr-auto align-items-center">
+                    <a href="/">
+                        <img src="{{asset('assets/images/logo-icon.png')}}" class="logo-icon" alt="logo icon">
+                        <h5 class="logo-text">PPDB Azhar</h5>
+                    </a>
+                </div>
+                {{-- <ul class="navbar-nav mr-auto align-items-center">
                     <li class="nav-item">
                         <a class="nav-link toggle-menu" href="javascript:void();">
                             <i class="icon-menu menu-icon"></i>
@@ -77,38 +56,7 @@
                             <a href="javascript:void();"><i class="icon-magnifier"></i></a>
                         </form>
                     </li>
-                </ul>
-
-                <ul class="navbar-nav align-items-center right-nav-link">
-                    <li class="nav-item">
-                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown" href="#">
-                            <span class="user-profile"><img src="https://via.placeholder.com/110x110" class="img-circle" alt="user avatar"></span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-right">
-                            <li class="dropdown-item user-details">
-                                <a href="javaScript:void();">
-                                    <div class="media">
-                                        <div class="avatar"><img class="align-self-start mr-3" src="https://via.placeholder.com/110x110" alt="user avatar"></div>
-                                        <div class="media-body">
-                                            <h6 class="mt-2 user-title">{{Auth::user()->name ?? 'Admin'}}</h6>
-                                            <p class="user-subtitle">{{Auth::user()->email ?? 'Admin'}}</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="dropdown-divider"></li>
-                            <li class="dropdown-item">
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @if(config('adminlte.logout_method'))
-                                    {{ method_field(config('adminlte.logout_method')) }}
-                                    @endif
-                                    {{ csrf_field() }}
-                                </form>
-                                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="text-dark"><i class="icon-power mr-2"></i> Logout</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+                </ul> --}}
             </nav>
         </header>
         <!--End topbar header-->
@@ -116,13 +64,21 @@
         <div class="clearfix"></div>
 
         <div class="content-wrapper">
-            <div class="container-fluid">
+            <div class="container-fluid" style="background-image: url({{asset('assets/images/boy-01.svg')}});background-position: top right;background-repeat: no-repeat;background-attachment: fixed;">
 
                 <!--Start Content-->
 
                 @yield('content_header')
 
-                @yield('content')
+                <div class="row">
+                    <div class="col-12 col-sm-7">
+                        @yield('content')
+                    </div>
+                    <div class="col-12 col-sm-5">
+                        <h4 style="position: fixed">Isi formulir untuk melakukan pendaftaran peserta didik baru</h4>
+                    </div>
+                </div>
+
 
                 <!--End Content-->
 

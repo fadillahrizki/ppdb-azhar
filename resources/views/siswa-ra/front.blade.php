@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app-front')
 
 @section('title')
 Register Siswa RA
