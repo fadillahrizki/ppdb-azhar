@@ -8,189 +8,326 @@
 
 @section('content')
 <div class="row mt-3">
-    <div class="col-12 col-lg-4 col-xl-2">
-        <div class="card border-info border-left-sm">
-            <div class="card-body">
-                <div class="media">
-                    <div class="media-body text-left">
-                        <h4 class="text-info">{{$siswaRa}}</h4>
-                        <span>Total Siswa RA</span>
+    <div class="col-md-2">
+        <div class="row">
+            <div class="col-md-12 col-sm-6">
+                <div class="card border-info border-left-sm">
+                    <div class="card-body">
+                        <div class="media">
+                            <div class="media-body text-left">
+                                <h4 class="text-info">{{$countSiswaRa}}</h4>
+                                <span>Total Siswa RA</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card border-danger border-left-sm">
+                    <div class="card-body">
+                        <div class="media">
+                            <div class="media-body text-left">
+                                <h4 class="text-danger">{{$countSiswaMts}}</h4>
+                                <span>Total Siswa MTS</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-6">
+                <div class="card border-success border-left-sm">
+                    <div class="card-body">
+                        <div class="media">
+                            <div class="media-body text-left">
+                                <h4 class="text-success">{{$countSiswaSmp}}</h4>
+                                <span>Total Siswa SMP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-6">
+                <div class="card border-warning border-left-sm">
+                    <div class="card-body">
+                        <div class="media">
+                            <div class="media-body text-left">
+                                <h4 class="text-warning">{{$countSiswaSma}}</h4>
+                                <span>Total Siswa SMA</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-6">
+                <div class="card border-dark border-left-sm">
+                    <div class="card-body">
+                        <div class="media">
+                            <div class="media-body text-left">
+                                <h4 class="text-dark">{{$countSiswaMa}}</h4>
+                                <span>Total Siswa MA</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-6">
+                <div class="card border-primary border-left-sm">
+                    <div class="card-body">
+                        <div class="media">
+                            <div class="media-body text-left">
+                                <h4 class="text-primary">{{$countSiswaSmk}}</h4>
+                                <span>Total Siswa SMK</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-12 col-lg-4 col-xl-2">
-        <div class="card border-danger border-left-sm">
-            <div class="card-body">
-                <div class="media">
-                    <div class="media-body text-left">
-                        <h4 class="text-danger">{{$siswaMts}}</h4>
-                        <span>Total Siswa MTS</span>
+    <div class="col-md-10">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <ul class="nav nav-tabs nav-tabs-primary">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#tab-ra"><i class="icon-people"></i> <span>Siswa RA</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tab-mts"><i class="icon-people"></i> <span>Siswa MTS</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tab-smp"><i class="icon-people"></i> <span>Siswa SMP</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tab-sma"><i class="icon-people"></i> <span>Siswa SMA</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tab-ma"><i class="icon-people"></i> <span>Siswa MA</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tab-smk"><i class="icon-people"></i> <span>Siswa SMK</span></a>
+                            </li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div id="tab-ra" class="tab-pane active">
+                                <div class="table-responsive">
+                                    <table class="table align-items-center table-flush table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Nama Lengkap</th>
+                                                <th>NIK</th>
+                                                <th>EMAIL</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if(!count($siswaRa))
+
+                                            <tr>
+                                                <td colspan="3" class="text-center">Tidak ada data!</td>
+                                            </tr>
+
+                                            @else
+
+                                            @foreach($siswaRa as $siswa)
+                                            <tr>
+                                                <td>{{$siswa->siswa_nama_lengkap}}</td>
+                                                <td>{{$siswa->siswa_NIK}}</td>
+                                                <td>{{$siswa->siswa_email}}</td>
+                                            </tr>
+                                            @endforeach
+
+                                            @endif
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div id="tab-mts" class="tab-pane fade">
+                                <div class="table-responsive">
+                                    <table class="table align-items-center table-flush table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Nama Lengkap</th>
+                                                <th>NIK</th>
+                                                <th>NISN</th>
+                                                <th>EMAIL</th>
+                                                <th>No Hp</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if(!count($siswaMts))
+
+                                            <tr>
+                                                <td colspan="5" class="text-center">Tidak ada data!</td>
+                                            </tr>
+
+                                            @else
+
+                                            @foreach($siswaMts as $siswa)
+                                            <tr>
+                                                <td>{{$siswa->siswa_nama_lengkap}}</td>
+                                                <td>{{$siswa->siswa_NIK}}</td>
+                                                <td>{{$siswa->siswa_NISN}}</td>
+                                                <td>{{$siswa->siswa_email}}</td>
+                                                <td>{{$siswa->siswa_no_hp}}</td>
+                                            </tr>
+                                            @endforeach
+
+                                            @endif
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div id="tab-smp" class="tab-pane fade">
+                                <div class="table-responsive">
+                                    <table class="table align-items-center table-flush table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Nama Lengkap</th>
+                                                <th>NIK</th>
+                                                <th>NISN</th>
+                                                <th>EMAIL</th>
+                                                <th>No Hp</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if(!count($siswaSmp))
+
+                                            <tr>
+                                                <td colspan="5" class="text-center">Tidak ada data!</td>
+                                            </tr>
+
+                                            @else
+
+                                            @foreach($siswaSmp as $siswa)
+                                            <tr>
+                                                <td>{{$siswa->siswa_nama_lengkap}}</td>
+                                                <td>{{$siswa->siswa_NIK}}</td>
+                                                <td>{{$siswa->siswa_NISN}}</td>
+                                                <td>{{$siswa->siswa_email}}</td>
+                                                <td>{{$siswa->siswa_no_hp}}</td>
+                                            </tr>
+                                            @endforeach
+
+                                            @endif
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div id="tab-sma" class="tab-pane fade">
+                                <div class="table-responsive">
+                                    <table class="table align-items-center table-flush table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Nama Lengkap</th>
+                                                <th>NIK</th>
+                                                <th>EMAIL</th>
+                                                <th>No Hp</th>
+                                                <th>Jurusan</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if(!count($siswaSma))
+
+                                            <tr>
+                                                <td colspan="5" class="text-center">Tidak ada data!</td>
+                                            </tr>
+
+                                            @else
+
+                                            @foreach($siswaSma as $siswa)
+                                            <tr>
+                                                <td>{{$siswa->siswa_nama_lengkap}}</td>
+                                                <td>{{$siswa->siswa_NIK}}</td>
+                                                <td>{{$siswa->siswa_email}}</td>
+                                                <td>{{$siswa->siswa_no_hp}}</td>
+                                                <td>{{$siswa->siswa_jurusan}}</td>
+                                            </tr>
+                                            @endforeach
+
+                                            @endif
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div id="tab-ma" class="tab-pane fade">
+                                <div class="table-responsive">
+                                    <table class="table align-items-center table-flush table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Nama Lengkap</th>
+                                                <th>NIK</th>
+                                                <th>EMAIL</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if(!count($siswaMa))
+
+                                            <tr>
+                                                <td colspan="3" class="text-center">Tidak ada data!</td>
+                                            </tr>
+
+                                            @else
+
+                                            @foreach($siswaMa as $siswa)
+                                            <tr>
+                                                <td>{{$siswa->siswa_nama_lengkap}}</td>
+                                                <td>{{$siswa->siswa_NIK}}</td>
+                                                <td>{{$siswa->siswa_email}}</td>
+                                            </tr>
+                                            @endforeach
+
+                                            @endif
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div id="tab-smk" class="tab-pane fade">
+                                <div class="table-responsive">
+                                    <table class="table align-items-center table-flush table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Nama Lengkap</th>
+                                                <th>NIK</th>
+                                                <th>EMAIL</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if(!count($siswaSmk))
+
+                                            <tr>
+                                                <td colspan="3" class="text-center">Tidak ada data!</td>
+                                            </tr>
+
+                                            @else
+
+                                            @foreach($siswaSmk as $siswa)
+                                            <tr>
+                                                <td>{{$siswa->siswa_nama_lengkap}}</td>
+                                                <td>{{$siswa->siswa_NIK}}</td>
+                                                <td>{{$siswa->siswa_email}}</td>
+                                            </tr>
+                                            @endforeach
+
+                                            @endif
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
             </div>
-        </div>
-    </div>
-    <div class="col-12 col-lg-4 col-xl-2">
-        <div class="card border-success border-left-sm">
-            <div class="card-body">
-                <div class="media">
-                    <div class="media-body text-left">
-                        <h4 class="text-success">{{$siswaSmp}}</h4>
-                        <span>Total Siswa SMP</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-12 col-lg-4 col-xl-2">
-        <div class="card border-warning border-left-sm">
-            <div class="card-body">
-                <div class="media">
-                    <div class="media-body text-left">
-                        <h4 class="text-warning">{{$siswaSma}}</h4>
-                        <span>Total Siswa SMA</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-12 col-lg-4 col-xl-2">
-        <div class="card border-dark border-left-sm">
-            <div class="card-body">
-                <div class="media">
-                    <div class="media-body text-left">
-                        <h4 class="text-dark">{{$siswaMa}}</h4>
-                        <span>Total Siswa MA</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-12 col-lg-4 col-xl-2">
-        <div class="card border-primary border-left-sm">
-            <div class="card-body">
-                <div class="media">
-                    <div class="media-body text-left">
-                        <h4 class="text-primary">{{$siswaSmk}}</h4>
-                        <span>Total Siswa SMK</span>
-                    </div>
-                </div>
-            </div>
+
+
         </div>
     </div>
 </div>
 <!--End Row-->
 
 <div class="row">
-    <div class="col-lg-12">
-        <div class="card">
-            <div class="card-header border-0">
-                Recent Orders
-                <div class="card-action">
-                    <div class="dropdown">
-                        <a href="javascript:void();" class="dropdown-toggle dropdown-toggle-nocaret" data-toggle="dropdown">
-                            <i class="icon-options"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="javascript:void();">Action</a>
-                            <a class="dropdown-item" href="javascript:void();">Another action</a>
-                            <a class="dropdown-item" href="javascript:void();">Something else here</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="javascript:void();">Separated link</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="table-responsive">
-                <table class="table align-items-center table-flush">
-                    <thead>
-                        <tr>
-                            <th>Product</th>
-                            <th>Photo</th>
-                            <th>Product ID</th>
-                            <th>Status</th>
-                            <th>Amount</th>
-                            <th>Date</th>
-                            <th>Shipping</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Iphone 5</td>
-                            <td><img src="https://via.placeholder.com/1000x903" class="product-img" alt="product img"></td>
-                            <td>#9405822</td>
-                            <td><span class="badge gradient-quepal text-white shadow">Paid</span></td>
-                            <td>$ 1250.00</td>
-                            <td>03 Aug 2017</td>
-                            <td>
-                                <div class="progress shadow" style="height: 6px;">
-                                    <div class="progress-bar gradient-quepal" role="progressbar" style="width: 100%"></div>
-                                </div>
-                            </td>
-                        </tr>
 
-                        <tr>
-                            <td>Earphone GL</td>
-                            <td><img src="https://via.placeholder.com/1000x903" class="product-img" alt="product img"></td>
-                            <td>#9405820</td>
-                            <td><span class="badge gradient-blooker text-white shadow">Pending</span></td>
-                            <td>$ 1500.00</td>
-                            <td>03 Aug 2017</td>
-                            <td>
-                                <div class="progress shadow" style="height: 6px;">
-                                    <div class="progress-bar gradient-blooker" role="progressbar" style="width: 60%"></div>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>HD Hand Camera</td>
-                            <td><img src="https://via.placeholder.com/1000x903" class="product-img" alt="product img"></td>
-                            <td>#9405830</td>
-                            <td><span class="badge gradient-bloody text-white shadow">Failed</span></td>
-                            <td>$ 1400.00</td>
-                            <td>03 Aug 2017</td>
-                            <td>
-                                <div class="progress shadow" style="height: 6px;">
-                                    <div class="progress-bar gradient-bloody" role="progressbar" style="width: 70%"></div>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Clasic Shoes</td>
-                            <td><img src="https://via.placeholder.com/1000x903" class="product-img" alt="product img"></td>
-                            <td>#9405825</td>
-                            <td><span class="badge gradient-quepal text-white shadow">Paid</span></td>
-                            <td>$ 1200.00</td>
-                            <td>03 Aug 2017</td>
-                            <td>
-                                <div class="progress shadow" style="height: 6px;">
-                                    <div class="progress-bar gradient-quepal" role="progressbar" style="width: 100%"></div>
-                                </div>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Hand Watch</td>
-                            <td><img src="https://via.placeholder.com/1000x903" class="product-img" alt="product img"></td>
-                            <td>#9405840</td>
-                            <td><span class="badge gradient-bloody text-white shadow">Failed</span></td>
-                            <td>$ 1800.00</td>
-                            <td>03 Aug 2017</td>
-                            <td>
-                                <div class="progress shadow" style="height: 6px;">
-                                    <div class="progress-bar gradient-bloody" role="progressbar" style="width: 40%"></div>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
 </div>
 <!--End Row-->
-@stop
+@endsection

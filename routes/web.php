@@ -32,12 +32,12 @@ Auth::routes();
 
 Route::get('home', [HomeController::class, 'index'])->name('home');
 
-Route::resource('siswa-ra', SiswaRaController::class);
-Route::resource('siswa-smk', SiswaSmkController::class);
-Route::resource('siswa-ma', SiswaMaController::class);
-Route::resource('siswa-mts', SiswaMtsController::class);
-Route::resource('siswa-sma', SiswaSmaController::class);
-Route::resource('siswa-smp', SiswaSmpController::class);
+Route::resource('siswa-ra', SiswaRaController::class)->middleware('auth');
+Route::resource('siswa-smk', SiswaSmkController::class)->middleware('auth');
+Route::resource('siswa-ma', SiswaMaController::class)->middleware('auth');
+Route::resource('siswa-mts', SiswaMtsController::class)->middleware('auth');
+Route::resource('siswa-sma', SiswaSmaController::class)->middleware('auth');
+Route::resource('siswa-smp', SiswaSmpController::class)->middleware('auth');
 
 Route::match(['get', 'post'], 'form-ra', [HomeController::class, 'siswa_ra']);
 Route::match(['get', 'post'], 'form-mts', [HomeController::class, 'siswa_mts']);

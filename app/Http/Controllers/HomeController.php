@@ -29,13 +29,21 @@ class HomeController extends Controller
     public function index()
     {
         $this->middleware('auth');
-        $siswaRa = SiswaRa::get()->count();
-        $siswaMa = SiswaMa::get()->count();
-        $siswaSmp = SiswaSmp::get()->count();
-        $siswaMts = SiswaMts::get()->count();
-        $siswaSma = SiswaSma::get()->count();
-        $siswaSmk = SiswaSmk::get()->count();
-        return view('home', compact('siswaRa', 'siswaMa', 'siswaMts', 'siswaSmp', 'siswaSma', 'siswaSmk'));
+        $siswaRa = SiswaRa::orderBy('id', 'desc')->take(10)->get();
+        $siswaMa = SiswaMa::orderBy('id', 'desc')->take(10)->get();
+        $siswaSmp = SiswaSmp::orderBy('id', 'desc')->take(10)->get();
+        $siswaMts = SiswaMts::orderBy('id', 'desc')->take(10)->get();
+        $siswaSma = SiswaSma::orderBy('id', 'desc')->take(10)->get();
+        $siswaSmk = SiswaSmk::orderBy('id', 'desc')->take(10)->get();
+
+        $countSiswaRa = SiswaRa::get()->count();
+        $countSiswaMa = SiswaMa::get()->count();
+        $countSiswaSmp = SiswaSmp::get()->count();
+        $countSiswaMts = SiswaMts::get()->count();
+        $countSiswaSma = SiswaSma::get()->count();
+        $countSiswaSmk = SiswaSmk::get()->count();
+
+        return view('home', compact('siswaRa', 'siswaMa', 'siswaMts', 'siswaSmp', 'siswaSma', 'siswaSmk', 'countSiswaRa', 'countSiswaMa', 'countSiswaMts', 'countSiswaSmp', 'countSiswaSma', 'countSiswaSmk'));
     }
 
     public function siswa_ra(Request $request)
