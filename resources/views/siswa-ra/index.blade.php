@@ -16,6 +16,7 @@ Siswa RA
     </div>
     <div class="col-sm-3">
         <div class="btn-group float-sm-right">
+            <button class="btn btn-primary waves-effect waves-light" onclick="window.print()"><i class="fa fa-fw fa-print"></i> Print Laporan</button>
             <a href="{{ route('siswa-ra.create') }}" class="btn btn-outline-primary waves-effect waves-light"><i class="fa fa-plus mr-1"></i> Tambah Siswa</a>
         </div>
     </div>
@@ -23,24 +24,85 @@ Siswa RA
 <!-- End Breadcrumb-->
 @endsection
 
+<div id="print" class="d-none">
+    <h2 class="text-center mb-5">Laporan Seluruh Siswa RA</h2>
+
+    <table class="table table-bordered">
+        <thead class="thead">
+            <tr>
+                <th>No</th>
+
+                <th>Nama Lengkap</th>
+                <th>NIK</th>
+                <th>Email</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($siswaRas as $siswaRa)
+            <tr>
+                <td>{{ ++$i }}</td>
+
+                <td>{{ $siswaRa->siswa_nama_lengkap }}</td>
+                <td>{{ $siswaRa->siswa_NIK }}</td>
+                <td>{{ $siswaRa->siswa_email }}</td>
+                <td>
+                    @if($siswaRa->siswa_status == "lulus")
+                    <span class="badge badge-success">{{$siswaRa->siswa_status}}</span>
+                    @elseif($siswaRa->siswa_status == "tidak lulus")
+                    <span class="badge badge-danger">{{$siswaRa->siswa_status}}</span>
+                    @else
+                    <span class="badge badge-secondary">belum diketahui</span>
+                    @endif
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
 @section('content')
 
 @if ($message = Session::get('success'))
 <div class="row">
     <div class="col">
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <div class="alert-icon">
+                <i class="icon-check"></i>
+            </div>
+            <div class="alert-message">
+                <span><strong>Success!</strong> {{$message}}</span>
+            </div>
         </div>
     </div>
 </div>
 @endif
+
+@if ($message = Session::get('failed'))
+<div class="row">
+    <div class="col">
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <div class="alert-icon">
+                <i class="icon-check"></i>
+            </div>
+            <div class="alert-message">
+                <span><strong>Failed!</strong> {{$message}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
+
 
 <div class="row">
     <div class="col-sm-12">
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-striped table-hover">
+
+                    <table class="table dt table-striped table-hover">
                         <thead class="thead">
                             <tr>
                                 <th>No</th>
@@ -48,11 +110,13 @@ Siswa RA
                                 <th>Nama Lengkap</th>
                                 <th>NIK</th>
                                 <th>Email</th>
+                                <th>Status</th>
 
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
+                            <?php $i = 0 ?>
                             @foreach ($siswaRas as $siswaRa)
                             <tr>
                                 <td>{{ ++$i }}</td>
@@ -60,7 +124,15 @@ Siswa RA
                                 <td>{{ $siswaRa->siswa_nama_lengkap }}</td>
                                 <td>{{ $siswaRa->siswa_NIK }}</td>
                                 <td>{{ $siswaRa->siswa_email }}</td>
-
+                                <td>
+                                    @if($siswaRa->siswa_status == "lulus")
+                                    <span class="badge badge-success">{{$siswaRa->siswa_status}}</span>
+                                    @elseif($siswaRa->siswa_status == "tidak lulus")
+                                    <span class="badge badge-danger">{{$siswaRa->siswa_status}}</span>
+                                    @else
+                                    <span class="badge badge-secondary">belum diketahui</span>
+                                    @endif
+                                </td>
                                 <td>
                                     <form action="{{ route('siswa-ra.destroy',$siswaRa->id) }}" method="POST">
                                         <a class="btn btn-sm btn-primary " href="{{ route('siswa-ra.show',$siswaRa->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
@@ -77,7 +149,6 @@ Siswa RA
                 </div>
             </div>
         </div>
-        {!! $siswaRas->links() !!}
     </div>
 </div>
 @endsection
@@ -85,6 +156,6 @@ Siswa RA
 
 @section('js')
 <script>
-    $("table").DataTable()
+    $("table.dt").DataTable()
 </script>
 @endsection

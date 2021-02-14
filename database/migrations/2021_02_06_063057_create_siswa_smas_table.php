@@ -18,6 +18,9 @@ class CreateSiswaSmasTable extends Migration
 
             // Siswa 
 
+            $table->string('username')->nullable();
+            $table->string('password')->nullable();
+
             $table->string('siswa_nama_lengkap');
             $table->string('siswa_nama_panggilan');
             $table->string('siswa_NIK');
@@ -28,6 +31,8 @@ class CreateSiswaSmasTable extends Migration
             $table->string('siswa_email');
             $table->string('siswa_no_hp');
             $table->string('siswa_photo');
+
+            $table->string('siswa_status')->nullable();
 
             // Ayah
 

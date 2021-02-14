@@ -64,7 +64,6 @@ class SiswaMa extends Model
 		'siswa_alamat_tempat_tinggal' => 'required',
 		'siswa_hobi' => 'required',
 		'siswa_email' => 'required',
-		'siswa_photo' => 'required',
 		'asal_nama_sekolah' => 'required',
 		'asal_alamat_sekolah' => 'required',
 		'asal_no_telepon_sekolah' => 'required',
@@ -79,5 +78,5 @@ class SiswaMa extends Model
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['siswa_photo', 'siswa_nama_lengkap', 'siswa_nama_panggilan', 'siswa_NIK', 'siswa_jenis_kelamin', 'siswa_tempat', 'siswa_tanggal_lahir', 'siswa_anak_ke', 'siswa_jumlah_saudara', 'siswa_usia', 'siswa_alamat_tempat_tinggal', 'siswa_hobi', 'siswa_email', 'ayah_nama_lengkap', 'ayah_NIK', 'ayah_tempat', 'ayah_tanggal_lahir', 'ayah_agama', 'ayah_pendidikan_terakhir', 'ayah_pekerjaan', 'ayah_penghasilan', 'ayah_no_hp', 'ibu_nama_lengkap', 'ibu_NIK', 'ibu_tempat', 'ibu_tanggal_lahir', 'ibu_agama', 'ibu_pendidikan_terakhir', 'ibu_pekerjaan', 'ibu_penghasilan', 'asal_nama_sekolah', 'asal_alamat_sekolah', 'asal_no_telepon_sekolah', 'jurusan_pilihan_pertama', 'jurusan_pilihan_kedua'];
+	protected $fillable = ['siswa_photo', 'siswa_status', 'siswa_nama_lengkap', 'siswa_nama_panggilan', 'siswa_NIK', 'siswa_jenis_kelamin', 'siswa_tempat', 'siswa_tanggal_lahir', 'siswa_anak_ke', 'siswa_jumlah_saudara', 'siswa_usia', 'siswa_alamat_tempat_tinggal', 'siswa_hobi', 'siswa_email', 'ayah_nama_lengkap', 'ayah_NIK', 'ayah_tempat', 'ayah_tanggal_lahir', 'ayah_agama', 'ayah_pendidikan_terakhir', 'ayah_pekerjaan', 'ayah_penghasilan', 'ayah_no_hp', 'ibu_nama_lengkap', 'ibu_NIK', 'ibu_tempat', 'ibu_tanggal_lahir', 'ibu_agama', 'ibu_pendidikan_terakhir', 'ibu_pekerjaan', 'ibu_penghasilan', 'asal_nama_sekolah', 'asal_alamat_sekolah', 'asal_no_telepon_sekolah', 'jurusan_pilihan_pertama', 'jurusan_pilihan_kedua'];
 }

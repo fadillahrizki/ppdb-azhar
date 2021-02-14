@@ -24,10 +24,14 @@
     <link href="{{asset('assets/css/sidebar-menu.css')}}" rel="stylesheet" />
     <!-- Custom Style-->
     <link href="{{asset('assets/css/app-style.css')}}" rel="stylesheet" />
+    <link href="{{asset('css/style.css')}}" rel="stylesheet" />
 
     <!--Data Tables -->
     <link href="{{asset('assets/plugins/bootstrap-datatable/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('assets/plugins/bootstrap-datatable/css/buttons.bootstrap4.min.css')}}" rel="stylesheet" type="text/css">
+
+    @yield('css')
+
 </head>
 
 <body>
@@ -50,12 +54,60 @@
                         <i class="icon-home"></i> <span>Dashboard</span>
                     </a>
                 </li>
-                <li class="{{Request::is('siswa-ra') ? 'active' : ''}}"><a href="{{route('siswa-ra.index')}}"><i class="fa fa-circle-o"></i> Siswa RA</a></li>
-                <li class="{{Request::is('siswa-mts') ? 'active' : ''}}"><a href="{{route('siswa-mts.index')}}"><i class="fa fa-circle-o"></i> Siswa MTS</a></li>
-                <li class="{{Request::is('siswa-smp') ? 'active' : ''}}"><a href="{{route('siswa-smp.index')}}"><i class="fa fa-circle-o"></i> Siswa SMP</a></li>
-                <li class="{{Request::is('siswa-sma') ? 'active' : ''}}"><a href="{{route('siswa-sma.index')}}"><i class="fa fa-circle-o"></i> Siswa SMA</a></li>
-                <li class="{{Request::is('siswa-ma') ? 'active' : ''}}"><a href="{{route('siswa-ma.index')}}"><i class="fa fa-circle-o"></i> Siswa MA</a></li>
-                <li class="{{Request::is('siswa-smk') ? 'active' : ''}}"><a href="{{route('siswa-smk.index')}}"><i class="fa fa-circle-o"></i> Siswa SMK</a></li>
+                <li>
+                    <a href="#" class="waves-effect">
+                        <i class="icon-people"></i> <span>Siswa RA</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li><a href="{{route('siswa-ra.index')}}"><i class="fa fa-circle-o"></i> Semua Data</a></li>
+                        <li><a href="{{route('siswa-ra.kelulusan')}}"><i class="fa fa-circle-o"></i> Data Kelulusan</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="waves-effect">
+                        <i class="icon-people"></i> <span>Siswa MTS</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li><a href="{{route('siswa-mts.index')}}"><i class="fa fa-circle-o"></i> Semua Data</a></li>
+                        <li><a href="{{route('siswa-mts.kelulusan')}}"><i class="fa fa-circle-o"></i> Data Kelulusan</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="waves-effect">
+                        <i class="icon-people"></i> <span>Siswa SMP</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li><a href="{{route('siswa-smp.index')}}"><i class="fa fa-circle-o"></i> Semua Data</a></li>
+                        <li><a href="{{route('siswa-smp.kelulusan')}}"><i class="fa fa-circle-o"></i> Data Kelulusan</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="waves-effect">
+                        <i class="icon-people"></i> <span>Siswa SMA</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li><a href="{{route('siswa-sma.index')}}"><i class="fa fa-circle-o"></i> Semua Data</a></li>
+                        <li><a href="{{route('siswa-sma.kelulusan')}}"><i class="fa fa-circle-o"></i> Data Kelulusan</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="waves-effect">
+                        <i class="icon-people"></i> <span>Siswa MA</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li><a href="{{route('siswa-ma.index')}}"><i class="fa fa-circle-o"></i> Semua Data</a></li>
+                        <li><a href="{{route('siswa-ma.kelulusan')}}"><i class="fa fa-circle-o"></i> Data Kelulusan</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="waves-effect">
+                        <i class="icon-people"></i> <span>Siswa SMK</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li><a href="{{route('siswa-smk.index')}}"><i class="fa fa-circle-o"></i> Semua Data</a></li>
+                        <li><a href="{{route('siswa-smk.kelulusan')}}"><i class="fa fa-circle-o"></i> Data Kelulusan</a></li>
+                    </ul>
+                </li>
 
             </ul>
 
@@ -64,7 +116,7 @@
 
         <!--Start topbar header-->
         <header class="topbar-nav">
-            <nav class="navbar navbar-expand fixed-top bg-white">
+            <nav class="navbar navbar-expand fixed-top gradient-scooter">
                 <ul class="navbar-nav mr-auto align-items-center">
                     <li class="nav-item">
                         <a class="nav-link toggle-menu" href="javascript:void();">
@@ -139,7 +191,7 @@
         <footer class="footer">
             <div class="container">
                 <div class="text-center">
-                    Copyright © 2018 Rocker Admin
+                    Copyright © 2021 Hoster Web
                 </div>
             </div>
         </footer>

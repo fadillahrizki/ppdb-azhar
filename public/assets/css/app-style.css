@@ -244,7 +244,7 @@ hr {
 }
 
 #sidebar-wrapper {
-  background: #ffffff;
+  background: #223035;
   position: fixed;
   top: 0px;
   left: 0px;
@@ -301,7 +301,7 @@ hr {
    margin-left: 240px;
    font-size: 14px;
    font-weight: 600;
-   color: #223035;
+   color: #ffffff;
    cursor: pointer;
    -webkit-transition: all 0.3s ease;
    -moz-transition: all 0.3s ease;
@@ -313,7 +313,7 @@ hr {
     padding-right: .8rem !important;
     padding-left: .8rem !important;
     font-size: 20px;
-    color: #223035;
+    color: #ffffff;
 }
 
 /* Dropdown Menu */
@@ -415,11 +415,11 @@ hr {
 .brand-logo{
   width: 100%;
   height: 60px;
-  border-bottom: 1px solid #e9eaea;
+  border-bottom: 1px solid #33444a;
 }
 
 .logo-text{
-	color: #223035;
+	color: #ffffff;
 	font-size: 18px;
 	display: inline-block;
 	position: relative;
@@ -443,13 +443,13 @@ hr {
 }
 
 .search-bar input{
-	border: 1px solid #dadaf1;
+	border: 1px solid #ffffff;
 	font-size: 15px;
 	width: 330px;
     border-radius: 30px;
     height: 30px;
     padding: .375rem 2.0rem .375rem .75rem;
-    background: #f7f7ff;
+    background: #ffffff;
 }
 
 .search-bar a i{
@@ -1761,6 +1761,7 @@ hr {
     background-image: none;
     box-shadow: inset 0 2px 4px rgba(0, 0, 0, .15), 0 1px 2px rgba(0, 0, 0, .05);
 }
+
 
 /* User Cards */
 .user-box {
@@ -3939,7 +3940,6 @@ table.grid td {
 	background: -webkit-linear-gradient(45deg, #f54ea2, #ff7676)!important;
 	background: linear-gradient(45deg, #f54ea2, #ff7676)!important;
 }
-
 .gradient-scooter{
 	background: #17ead9;
 	background: -webkit-linear-gradient(45deg, #17ead9, #6078ea)!important;
@@ -4698,7 +4698,7 @@ table.grid td {
 
 @media only screen and (max-width: 767px) {
   #sidebar-wrapper {
-	background: #ffffff;
+	background: #223035;
     position: fixed;
 	top: 60px;
     left: -240px;
@@ -4717,7 +4717,7 @@ table.grid td {
     line-height: 60px;
     margin-left: 0px;
     font-size: 15px;
-    color: #223035;
+    color: #ffffff;
     cursor: pointer;
 }
 

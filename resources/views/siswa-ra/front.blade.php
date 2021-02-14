@@ -19,12 +19,35 @@ Register Siswa RA
 @if ($message = Session::get('success'))
 <div class="row">
     <div class="col">
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <div class="alert-icon">
+                <i class="icon-check"></i>
+            </div>
+            <div class="alert-message">
+                <span><strong>Success!</strong> {{$message}}</span>
+            </div>
         </div>
     </div>
 </div>
 @endif
+
+@if ($message = Session::get('failed'))
+<div class="row">
+    <div class="col">
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <div class="alert-icon">
+                <i class="icon-check"></i>
+            </div>
+            <div class="alert-message">
+                <span><strong>Failed!</strong> {{$message}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
+
 
 <div class="row">
     <div class="col-md-12">

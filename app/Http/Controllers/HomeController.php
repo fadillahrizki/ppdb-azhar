@@ -53,10 +53,17 @@ class HomeController extends Controller
         if ($request->isMethod("post")) {
             request()->validate(SiswaRa::$rules);
 
-            $siswaRa = SiswaRa::create($request->all());
+            if ($photo = $request->file('siswa_photo')->store('siswa-ra')) {
 
-            return redirect()->to('form-ra')
-                ->with('success', 'SiswaRa created successfully.');
+                $res = array_merge($request->all(), ['siswa_photo' => $photo]);
+
+                if (SiswaRa::create($res)) {
+                    return redirect()->to('form-ra')
+                        ->with('success', 'SiswaRa created successfully.');
+                }
+            }
+
+            return redirect()->to('form-ra')->with('failed', 'SiswaRa created failed');
         }
 
         return view('siswa-ra/front', compact('siswaRa'));
@@ -69,10 +76,21 @@ class HomeController extends Controller
         if ($request->isMethod("post")) {
             request()->validate(SiswaMa::$rules);
 
-            $SiswaMa = SiswaMa::create($request->all());
+            $photo = $request->file('siswa_photo')->store('siswa-ma');
 
-            return redirect()->to('form-ma')
-                ->with('success', 'SiswaMa created successfully.');
+            if ($photo) {
+
+                $res = array_merge($request->all(), ['siswa_photo' => $photo]);
+
+                $siswaMa = SiswaMa::create($res);
+
+                if ($siswaMa) {
+                    return redirect()->to('form-ma')
+                        ->with('success', 'SiswaMa created successfully.');
+                }
+            }
+
+            return redirect()->to('form-ma')->with('failed', 'SiswaMa created failed');
         }
 
         return view('siswa-ma/front', compact('siswaMa'));
@@ -80,18 +98,29 @@ class HomeController extends Controller
 
     public function siswa_mts(Request $request)
     {
-        $siswaMts = new SiswaMts();
+        $siswaMt = new SiswaMts();
 
         if ($request->isMethod("post")) {
             request()->validate(SiswaMts::$rules);
 
-            $SiswaMts = SiswaMts::create($request->all());
+            $photo = $request->file('siswa_photo')->store('siswa-ma');
 
-            return redirect()->to('form-mts')
-                ->with('success', 'SiswaMts created successfully.');
+            if ($photo) {
+
+                $res = array_merge($request->all(), ['siswa_photo' => $photo]);
+
+                $siswaMt = SiswaMts::create($res);
+
+                if ($siswaMt) {
+                    return redirect()->to('form-mts')
+                        ->with('success', 'SiswaMts created successfully.');
+                }
+            }
+
+            return redirect()->to('form-mts')->with('failed', 'SiswaMts created failed');
         }
 
-        return view('siswa-mts/front', compact('siswaMts'));
+        return view('siswa-mts/front', compact('siswaMt'));
     }
 
     public function siswa_smp(Request $request)
@@ -101,10 +130,21 @@ class HomeController extends Controller
         if ($request->isMethod("post")) {
             request()->validate(SiswaSmp::$rules);
 
-            $SiswaSmp = SiswaSmp::create($request->all());
+            $photo = $request->file('siswa_photo')->store('siswa-ma');
 
-            return redirect()->to('form-smp')
-                ->with('success', 'SiswaSmp created successfully.');
+            if ($photo) {
+
+                $res = array_merge($request->all(), ['siswa_photo' => $photo]);
+
+                $SiswaSmp = SiswaSmp::create($res);
+
+                if ($SiswaSmp) {
+                    return redirect()->to('form-smp')
+                        ->with('success', 'SiswaSmp created successfully.');
+                }
+            }
+
+            return redirect()->to('form-smp')->with('failed', 'SiswaSmp created failed');
         }
 
         return view('siswa-smp/front', compact('siswaSmp'));
@@ -117,10 +157,21 @@ class HomeController extends Controller
         if ($request->isMethod("post")) {
             request()->validate(SiswaSma::$rules);
 
-            $SiswaSma = SiswaSma::create($request->all());
+            $photo = $request->file('siswa_photo')->store('siswa-ma');
 
-            return redirect()->to('form-sma')
-                ->with('success', 'SiswaSma created successfully.');
+            if ($photo) {
+
+                $res = array_merge($request->all(), ['siswa_photo' => $photo]);
+
+                $SiswaSma = SiswaSma::create($res);
+
+                if ($SiswaSma) {
+                    return redirect()->to('form-sma')
+                        ->with('success', 'SiswaSma created successfully.');
+                }
+            }
+
+            return redirect()->to('form-sma')->with('failed', 'SiswaSma created failed');
         }
 
         return view('siswa-sma/front', compact('siswaSma'));
@@ -133,10 +184,21 @@ class HomeController extends Controller
         if ($request->isMethod("post")) {
             request()->validate(SiswaSmk::$rules);
 
-            $SiswaSmk = SiswaSmk::create($request->all());
+            $photo = $request->file('siswa_photo')->store('siswa-ma');
 
-            return redirect()->to('form-smk')
-                ->with('success', 'SiswaSmk created successfully.');
+            if ($photo) {
+
+                $res = array_merge($request->all(), ['siswa_photo' => $photo]);
+
+                $SiswaSmk = SiswaSmk::create($res);
+
+                if ($SiswaSmk) {
+                    return redirect()->to('form-smk')
+                        ->with('success', 'SiswaSmk created successfully.');
+                }
+            }
+
+            return redirect()->to('form-smk')->with('failed', 'SiswaSmk created failed');
         }
 
         return view('siswa-smk/front', compact('siswaSmk'));

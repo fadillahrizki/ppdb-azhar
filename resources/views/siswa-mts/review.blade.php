@@ -15,17 +15,19 @@
             </div>
 
 
-            <div class="card card-body">
 
-                <h5>Asal Sekolah</h5>
+        </div>
 
-                <hr>
+        <div class="card card-body">
 
-                <div id="info-asal">
+            <h5>Asal Sekolah</h5>
 
-                </div>
+            <hr>
+
+            <div id="info-asal">
 
             </div>
+
         </div>
     </div>
     <div class="col-6">

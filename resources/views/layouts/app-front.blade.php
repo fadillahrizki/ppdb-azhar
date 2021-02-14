@@ -95,7 +95,7 @@
         <footer class="footer">
             <div class="container">
                 <div class="text-center">
-                    Copyright © 2018 Rocker Admin
+                    Copyright © 2021 Hoster Web
                 </div>
             </div>
         </footer>

@@ -54,7 +54,6 @@ class SiswaSmp extends Model
 		'siswa_tanggal_lahir' => 'required',
 		'siswa_alamat_tempat_tinggal' => 'required',
 		'siswa_email' => 'required',
-		'siswa_photo' => 'required',
 		'siswa_no_hp' => 'required',
 		'asal_nama_sekolah' => 'required',
 		'asal_alamat_sekolah' => 'required',
@@ -70,5 +69,5 @@ class SiswaSmp extends Model
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['siswa_photo', 'siswa_nama_lengkap', 'siswa_nama_panggilan', 'siswa_NIK', 'siswa_NISN', 'siswa_jenis_kelamin', 'siswa_tempat', 'siswa_tanggal_lahir', 'siswa_alamat_tempat_tinggal', 'siswa_email', 'siswa_no_hp', 'ayah_nama_lengkap', 'ayah_agama', 'ayah_pendidikan_terakhir', 'ayah_pekerjaan', 'ayah_penghasilan', 'ayah_no_hp', 'ibu_nama_lengkap', 'ibu_agama', 'ibu_pendidikan_terakhir', 'ibu_pekerjaan', 'ibu_penghasilan', 'ibu_no_hp', 'asal_nama_sekolah', 'asal_alamat_sekolah', 'asal_no_telepon_sekolah', 'kelas_pilihan_pertama', 'kelas_pilihan_kedua'];
+	protected $fillable = ['siswa_photo', 'siswa_status', 'siswa_nama_lengkap', 'siswa_nama_panggilan', 'siswa_NIK', 'siswa_NISN', 'siswa_jenis_kelamin', 'siswa_tempat', 'siswa_tanggal_lahir', 'siswa_alamat_tempat_tinggal', 'siswa_email', 'siswa_no_hp', 'ayah_nama_lengkap', 'ayah_agama', 'ayah_pendidikan_terakhir', 'ayah_pekerjaan', 'ayah_penghasilan', 'ayah_no_hp', 'ibu_nama_lengkap', 'ibu_agama', 'ibu_pendidikan_terakhir', 'ibu_pekerjaan', 'ibu_penghasilan', 'ibu_no_hp', 'asal_nama_sekolah', 'asal_alamat_sekolah', 'asal_no_telepon_sekolah', 'kelas_pilihan_pertama', 'kelas_pilihan_kedua'];
 }

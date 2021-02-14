@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Siswa MA
+Kelulusan Siswa MA
 @endsection
 
 @section('content_header')
@@ -17,7 +17,6 @@ Siswa MA
     <div class="col-sm-3">
         <div class="btn-group float-sm-right">
             <button class="btn btn-primary waves-effect waves-light" onclick="window.print()"><i class="fa fa-fw fa-print"></i> Print Laporan</button>
-            <a href="{{ route('siswa-ma.create') }}" class="btn btn-outline-primary waves-effect waves-light"><i class="fa fa-plus mr-1"></i> Tambah Siswa</a>
         </div>
     </div>
 </div>
@@ -25,7 +24,7 @@ Siswa MA
 @endsection
 
 <div id="print" class="d-none">
-    <h2 class="text-center mb-5">Laporan Seluruh Siswa Ma</h2>
+    <h2 class="text-center mb-5">Laporan Kelulusan Siswa Ma</h2>
 
     <table class="table table-bordered">
         <thead class="thead">
@@ -36,7 +35,6 @@ Siswa MA
                 <th>NIK</th>
                 <th>Jenis Kelamin</th>
                 <th>Email</th>
-                <th>Status</th>
             </tr>
         </thead>
         <tbody>
@@ -48,21 +46,11 @@ Siswa MA
                 <td>{{ $siswaMa->siswa_NIK }}</td>
                 <td>{{ $siswaMa->siswa_jenis_kelamin }}</td>
                 <td>{{ $siswaMa->siswa_email }}</td>
-                <td>
-                    @if($siswaMa->siswa_status == "lulus")
-                    <span class="badge badge-success">{{$siswaMa->siswa_status}}</span>
-                    @elseif($siswaMa->siswa_status == "tidak lulus")
-                    <span class="badge badge-danger">{{$siswaMa->siswa_status}}</span>
-                    @else
-                    <span class="badge badge-secondary">belum diketahui</span>
-                    @endif
-                </td>
             </tr>
             @endforeach
         </tbody>
     </table>
 </div>
-
 
 @section('content')
 
@@ -98,7 +86,6 @@ Siswa MA
 </div>
 @endif
 
-
 <div class="row">
     <div class="col-sm-12">
         <div class="card">
@@ -113,13 +100,11 @@ Siswa MA
                                 <th>NIK</th>
                                 <th>Jenis Kelamin</th>
                                 <th>Email</th>
-                                <th>Status</th>
 
-                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $i = 0 ?>
+                            <?php $i = 0  ?>
                             @foreach ($siswaMas as $siswaMa)
                             <tr>
                                 <td>{{ ++$i }}</td>
@@ -128,17 +113,6 @@ Siswa MA
                                 <td>{{ $siswaMa->siswa_NIK }}</td>
                                 <td>{{ $siswaMa->siswa_jenis_kelamin }}</td>
                                 <td>{{ $siswaMa->siswa_email }}</td>
-                                <td>{{ $siswaMa->siswa_status ?? 'Belum Diketahui' }}</td>
-
-                                <td>
-                                    <form action="{{ route('siswa-ma.destroy',$siswaMa->id) }}" method="POST">
-                                        <a class="btn btn-sm btn-primary " href="{{ route('siswa-ma.show',$siswaMa->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                        <a class="btn btn-sm btn-success" href="{{ route('siswa-ma.edit',$siswaMa->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
-                                    </form>
-                                </td>
                             </tr>
                             @endforeach
                         </tbody>

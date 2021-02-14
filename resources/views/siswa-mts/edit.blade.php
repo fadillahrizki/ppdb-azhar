@@ -30,20 +30,13 @@ Update Siswa MTS
 
         @includeif('partials.errors')
 
-        <div class="card card-default">
-            <div class="card-header">
-                <span class="card-title">Update Siswa Mt</span>
-            </div>
-            <div class="card-body">
-                <form method="POST" action="{{ route('siswa-mts.update', $siswaMt->id) }}" role="form" enctype="multipart/form-data">
-                    {{ method_field('PATCH') }}
-                    @csrf
+        <form method="POST" action="{{ route('siswa-mts.update', $siswaMt->id) }}" role="form" enctype="multipart/form-data">
+            {{ method_field('PATCH') }}
+            @csrf
 
-                    @include('siswa-mts.form')
+            @include('siswa-mts.form')
 
-                </form>
-            </div>
-        </div>
+        </form>
     </div>
 </div>
 @endsection

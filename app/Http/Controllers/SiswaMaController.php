@@ -19,10 +19,32 @@ class SiswaMaController extends Controller
      */
     public function index()
     {
-        $siswaMas = SiswaMa::paginate();
+        $siswaMas = SiswaMa::get();
 
         return view('siswa-ma.index', compact('siswaMas'))
-            ->with('i', (request()->input('page', 1) - 1) * $siswaMas->perPage());
+            ->with('i', 0);
+    }
+
+    public function kelulusan()
+    {
+        $siswaMas = SiswaMa::where('siswa_status', 'lulus')->get();
+
+        return view('siswa-ma.kelulusan', compact('siswaMas'))
+            ->with('i', 0);
+    }
+
+    public function luluskan(Request $request)
+    {
+        $SiswaMa = SiswaMa::find($request->id);
+
+        $SiswaMa->siswa_status = $request->siswa_status;
+
+        if ($SiswaMa->save()) {
+            return redirect()->route('siswa-ma.kelulusan')
+                ->with('success', 'SiswaMa updated successfully');
+        }
+
+        return redirect()->route('siswa-ma.kelulusan')->with('failed', 'SiswaMa updated failed');
     }
 
     /**
@@ -54,9 +76,13 @@ class SiswaMaController extends Controller
 
             $siswaMa = SiswaMa::create($res);
 
-            return redirect()->route('siswa-ma.index')
-                ->with('success', 'SiswaMa created successfully.');
+            if ($siswaMa) {
+                return redirect()->route('siswa-ma.index')
+                    ->with('success', 'SiswaMa created successfully.');
+            }
         }
+
+        return redirect()->route('siswa-ma.index')->with('failed', 'SiswaMa created failed');
     }
 
     /**
@@ -96,25 +122,30 @@ class SiswaMaController extends Controller
     {
         request()->validate(SiswaMa::$rules);
 
-        $photo = $request->file('siswa_photo')->store('siswa-ma');
+        if ($request->file('siswa_photo')) {
+            $photo = $request->file('siswa_photo')->store('siswa-ma');
 
-        if ($photo) {
+            if ($photo) {
 
-            if (Storage::delete($siswaMa->siswa_photo)) {
+                if (Storage::delete($siswaMa->siswa_photo)) {
 
-                $res = array_merge($request->all(), ['siswa_photo' => $photo]);
+                    $res = array_merge($request->all(), ['siswa_photo' => $photo]);
 
-                $siswaMa->update($res);
-
-                return redirect()->route('siswa-ma.index')
-                    ->with('success', 'SiswaMa updated successfully.');
+                    if ($siswaMa->update($res)) {
+                        return redirect()->route('siswa-ma.index')
+                            ->with('success', 'SiswaMa updated successfully.');
+                    }
+                }
             }
         } else {
-            $siswaMa->update($request->except('siswa_photo'));
 
-            return redirect()->route('siswa-ma.index')
-                ->with('success', 'SiswaMa updated successfully');
+            if ($siswaMa->update($request->except('siswa_photo'))) {
+                return redirect()->route('siswa-ma.index')
+                    ->with('success', 'SiswaMa updated successfully');
+            }
         }
+
+        return redirect()->route('siswa-ma.index')->with('failed', 'SiswaRa updated failed');
     }
 
     /**
@@ -128,9 +159,11 @@ class SiswaMaController extends Controller
 
         Storage::delete($siswaMa->siswa_photo);
 
-        $siswaMa->delete();
+        if ($siswaMa->delete()) {
+            return redirect()->route('siswa-ma.index')
+                ->with('success', 'SiswaMa deleted successfully');
+        }
 
-        return redirect()->route('siswa-ma.index')
-            ->with('success', 'SiswaMa deleted successfully');
+        return redirect()->route('siswa-ma.index')->with('failed', 'SiswaMa deleted failed');
     }
 }

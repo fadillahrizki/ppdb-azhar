@@ -48,7 +48,6 @@ class SiswaSmk extends Model
 		'siswa_alamat_tempat_tinggal' => 'required',
 		'siswa_hobi' => 'required',
 		'siswa_email' => 'required',
-		'siswa_photo' => 'required',
 		'asal_nama_sekolah' => 'required',
 		'asal_alamat_sekolah' => 'required',
 		'asal_no_telepon_sekolah' => 'required',
@@ -64,5 +63,5 @@ class SiswaSmk extends Model
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['siswa_photo', 'siswa_nama_lengkap', 'siswa_nama_panggilan', 'siswa_NIK', 'siswa_jenis_kelamin', 'siswa_tempat', 'siswa_tanggal_lahir', 'siswa_anak_ke', 'siswa_jumlah_saudara', 'siswa_usia', 'siswa_alamat_tempat_tinggal', 'siswa_hobi', 'siswa_email', 'asal_nama_sekolah', 'asal_alamat_sekolah', 'asal_no_telepon_sekolah', 'jurusan_pilihan_pertama', 'jurusan_pilihan_kedua', 'pondok_pilihan'];
+	protected $fillable = ['siswa_photo', 'siswa_status',  'siswa_nama_lengkap', 'siswa_nama_panggilan', 'siswa_NIK', 'siswa_jenis_kelamin', 'siswa_tempat', 'siswa_tanggal_lahir', 'siswa_anak_ke', 'siswa_jumlah_saudara', 'siswa_usia', 'siswa_alamat_tempat_tinggal', 'siswa_hobi', 'siswa_email', 'asal_nama_sekolah', 'asal_alamat_sekolah', 'asal_no_telepon_sekolah', 'jurusan_pilihan_pertama', 'jurusan_pilihan_kedua', 'pondok_pilihan'];
 }

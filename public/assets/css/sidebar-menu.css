@@ -43,15 +43,15 @@
 	padding: 13px 5px 13px 15px;
 	display: block;
 	border-left: 3px solid transparent;
-	color: #223035;
+	color: #95a7b5;
 	font-size: 15px;
 }
 .sidebar-menu>li>a>.fa {
 	width: 20px;
 }
 .sidebar-menu>li:hover>a, .sidebar-menu>li.active>a {
-	color: #008cff;
-    background: rgba(0, 140, 255, 0.15);
+	color: #ffffff;
+    background: rgba(0, 140, 255, 0.24);
     border-left-color: #008cff;
 }
 .sidebar-menu>li .label, .sidebar-menu>li .badge {
@@ -96,7 +96,7 @@
 	padding: 5px 5px 5px 15px;
 	display: block;
 	font-size: 14px;
-	color: #223035;
+	color: #95a7b5;
 }
 .sidebar-menu .sidebar-submenu>li>a>.fa {
 	width: 20px;
@@ -106,7 +106,7 @@
 	width: auto;
 }
 .sidebar-menu .sidebar-submenu>li.active>a, .sidebar-menu .sidebar-submenu>li>a:hover {
-	color: #008cff;
+	color: #ffffff;
 }
 .sidebar-menu-rtl {
 	list-style: none;

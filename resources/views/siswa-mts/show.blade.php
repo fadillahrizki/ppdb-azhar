@@ -17,7 +17,7 @@
     </div>
     <div class="col-sm-3">
         <div class="btn-group float-sm-right">
-            <a href="{{ route('siswa-smk.index') }}" class="btn btn-outline-primary waves-effect waves-light"><i class="fa fa-arrow-left mr-1"></i> Kembali</a>
+            <a href="{{ route('siswa-mts.index') }}" class="btn btn-outline-primary waves-effect waves-light"><i class="fa fa-arrow-left mr-1"></i> Kembali</a>
         </div>
     </div>
 </div>
@@ -28,10 +28,29 @@
 <div class="row">
     <div class="col-6">
 
-
-        <div class="mb-3 bg-dark p-3 text-center rounded">
-            <img src="{{asset('storage/'.$siswaMts->siswa_photo)}}" alt="{{$siswaMts->siswa_nama_lengkap}}" class="img-thumbnail">
+        <div class="mb-3 gradient-scooter p-3 text-center rounded">
+            <img src="{{asset('storage/'.$siswaMts->siswa_photo)}}" alt="{{$siswaMts->siswa_nama_lengkap}}" class="img-thumbnail img-profile">
         </div>
+
+        @if($siswaMts->siswa_status == null)
+
+        <div class="row mb-3">
+            <form method="POST" action="{{ route('siswa-mts.luluskan') }}" class="col-6" role="form" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="id" value="{{$siswaMts->id}}">
+                <input type="hidden" name="siswa_status" value="lulus">
+                <button class="btn btn-success btn-block">Luluskan</button>
+            </form>
+            <form method="POST" action="{{ route('siswa-mts.luluskan') }}" class="col-6" role="form" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="id" value="{{$siswaMts->id}}">
+                <input type="hidden" name="siswa_status" value="tidak lulus">
+                <button class="btn btn-danger btn-block">Tidak Luluskan</button>
+            </form>
+
+        </div>
+
+        @endif
 
         <div class="card">
 
@@ -42,6 +61,17 @@
                 <hr>
 
                 <div id="info-siswa">
+                    <div class="form-group">
+                        <strong>Status :</strong>
+                        <span id="siswa_status"></span>
+                        @if($siswaMts->siswa_status == "lulus")
+                        <span class="badge badge-success">{{$siswaMts->siswa_status}}</span>
+                        @elseif($siswaMts->siswa_status == "tidak lulus")
+                        <span class="badge badge-danger">{{$siswaMts->siswa_status}}</span>
+                        @else
+                        <span class="badge badge-secondary">belum diketahui</span>
+                        @endif
+                    </div>
                     <div class="form-group">
                         <strong>Nama Lengkap:</strong>
                         {{ $siswaMts->siswa_nama_lengkap ?? '-' }}

@@ -1,0 +1,20 @@
+.img-profile {
+    object-fit: cover;
+    object-position: center;
+    width: 200px;
+    height: 250px;
+}
+
+#print {
+    display: none !important;
+}
+
+@media print {
+    div:not(#print) {
+        display: none;
+    }
+
+    #print {
+        display: block !important;
+    }
+}

@@ -18,6 +18,9 @@ class CreateSiswaSmksTable extends Migration
 
             // Siswa 
 
+            $table->string('username')->nullable();
+            $table->string('password')->nullable();
+
             $table->string('siswa_nama_lengkap');
             $table->string('siswa_nama_panggilan');
             $table->string('siswa_NIK');
@@ -31,6 +34,8 @@ class CreateSiswaSmksTable extends Migration
             $table->string('siswa_hobi');
             $table->string('siswa_email');
             $table->string('siswa_photo');
+
+            $table->string('siswa_status')->nullable();
 
             // Asal Sekolah
 

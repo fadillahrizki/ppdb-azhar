@@ -19,10 +19,32 @@ class SiswaSmpController extends Controller
      */
     public function index()
     {
-        $siswaSmps = SiswaSmp::paginate();
+        $siswaSmps = SiswaSmp::get();
 
         return view('siswa-smp.index', compact('siswaSmps'))
-            ->with('i', (request()->input('page', 1) - 1) * $siswaSmps->perPage());
+            ->with('i', 0);
+    }
+
+    public function kelulusan()
+    {
+        $siswaSmps = SiswaSmp::where('siswa_status', 'lulus')->get();
+
+        return view('siswa-smp.kelulusan', compact('siswaSmps'))
+            ->with('i', 0);
+    }
+
+    public function luluskan(Request $request)
+    {
+        $SiswaSmp = SiswaSmp::find($request->id);
+
+        $SiswaSmp->siswa_status = $request->siswa_status;
+
+        if ($SiswaSmp->save()) {
+            return redirect()->route('siswa-smp.kelulusan')
+                ->with('success', 'SiswaSmp updated successfully');
+        }
+
+        return redirect()->route('siswa-smp.kelulusan')->with('failed', 'SiswaSmp updated failed');
     }
 
     /**
@@ -53,9 +75,12 @@ class SiswaSmpController extends Controller
             $res = array_merge($request->all(), ['siswa_photo' => $photo]);
 
             $siswaSmp = SiswaSmp::create($res);
+            if ($siswaSmp) {
+                return redirect()->route('siswa-smp.index')
+                    ->with('success', 'SiswaSmp created successfully.');
+            }
 
-            return redirect()->route('siswa-smp.index')
-                ->with('success', 'SiswaSmp created successfully.');
+            return redirect()->route('siswa-smp.index')->with('failed', 'SiswaSmp created failed');
         }
     }
 
@@ -96,25 +121,30 @@ class SiswaSmpController extends Controller
     {
         request()->validate(SiswaSmp::$rules);
 
-        $photo = $request->file('siswa_photo')->store('siswa-smp');
+        if ($request->file('siswa_photo')) {
+            $photo = $request->file('siswa_photo')->store('siswa-smp');
 
-        if ($photo) {
+            if ($photo) {
 
-            if (Storage::delete($siswaSmp->siswa_photo)) {
+                if (Storage::delete($siswaSmp->siswa_photo)) {
 
-                $res = array_merge($request->all(), ['siswa_photo' => $photo]);
+                    $res = array_merge($request->all(), ['siswa_photo' => $photo]);
 
-                $siswaSmp->update($res);
+                    if ($siswaSmp->update($res)) {
 
-                return redirect()->route('siswa-smp.index')
-                    ->with('success', 'SiswaSmp updated successfully.');
+                        return redirect()->route('siswa-smp.index')
+                            ->with('success', 'SiswaSmp updated successfully.');
+                    }
+                }
             }
         } else {
-            $siswaSmp->update($request->except('siswa_photo'));
-
-            return redirect()->route('siswa-smp.index')
-                ->with('success', 'SiswaSmp updated successfully');
+            if ($siswaSmp->update($request->except('siswa_photo'))) {
+                return redirect()->route('siswa-smp.index')
+                    ->with('success', 'SiswaSmp updated successfully');
+            }
         }
+
+        return redirect()->route('siswa-smp.index')->with('failed', 'SiswaSmp updated failed');
     }
 
     /**
@@ -128,9 +158,11 @@ class SiswaSmpController extends Controller
 
         Storage::delete($siswaSmp->siswa_photo);
 
-        $siswaSmp->delete();
+        if ($siswaSmp->delete()) {
+            return redirect()->route('siswa-smp.index')
+                ->with('success', 'SiswaSmp deleted successfully');
+        }
 
-        return redirect()->route('siswa-smp.index')
-            ->with('success', 'SiswaSmp deleted successfully');
+        return redirect()->route('siswa-smp.index')->with('failed', 'SiswaSmp deleted failed');
     }
 }

@@ -11,70 +11,72 @@
     <div class="col-md-2">
         <div class="row">
             <div class="col-md-12 col-sm-6">
-                <div class="card border-info border-left-sm">
+                <div class="card bg-pattern-primary">
                     <div class="card-body">
                         <div class="media">
                             <div class="media-body text-left">
-                                <h4 class="text-info">{{$countSiswaRa}}</h4>
-                                <span>Total Siswa RA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card border-danger border-left-sm">
-                    <div class="card-body">
-                        <div class="media">
-                            <div class="media-body text-left">
-                                <h4 class="text-danger">{{$countSiswaMts}}</h4>
-                                <span>Total Siswa MTS</span>
+                                <h4 class="text-white">{{$countSiswaRa}}</h4>
+                                <span class="text-white">Total Siswa RA</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-12 col-sm-6">
-                <div class="card border-success border-left-sm">
+                <div class="card bg-pattern-danger">
                     <div class="card-body">
                         <div class="media">
                             <div class="media-body text-left">
-                                <h4 class="text-success">{{$countSiswaSmp}}</h4>
-                                <span>Total Siswa SMP</span>
+                                <h4 class="text-white">{{$countSiswaMts}}</h4>
+                                <span class="text-white">Total Siswa MTS</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-12 col-sm-6">
-                <div class="card border-warning border-left-sm">
+                <div class="card bg-pattern-success">
                     <div class="card-body">
                         <div class="media">
                             <div class="media-body text-left">
-                                <h4 class="text-warning">{{$countSiswaSma}}</h4>
-                                <span>Total Siswa SMA</span>
+                                <h4 class="text-white">{{$countSiswaSmp}}</h4>
+                                <span class="text-white">Total Siswa SMP</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-12 col-sm-6">
-                <div class="card border-dark border-left-sm">
+                <div class="card bg-pattern-warning">
                     <div class="card-body">
                         <div class="media">
                             <div class="media-body text-left">
-                                <h4 class="text-dark">{{$countSiswaMa}}</h4>
-                                <span>Total Siswa MA</span>
+                                <h4 class="text-white">{{$countSiswaSma}}</h4>
+                                <span class="text-white">Total Siswa SMA</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-12 col-sm-6">
-                <div class="card border-primary border-left-sm">
+                <div class="card bg-pattern-dark">
                     <div class="card-body">
                         <div class="media">
                             <div class="media-body text-left">
-                                <h4 class="text-primary">{{$countSiswaSmk}}</h4>
-                                <span>Total Siswa SMK</span>
+                                <h4 class="text-white">{{$countSiswaMa}}</h4>
+                                <span class="text-white">Total Siswa MA</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-6">
+                <div class="card bg-pattern-info">
+                    <div class="card-body">
+                        <div class="media">
+                            <div class="media-body text-left">
+                                <h4 class="text-white">{{$countSiswaSmk}}</h4>
+                                <span class="text-white">Total Siswa SMK</span>
                             </div>
                         </div>
                     </div>
@@ -86,7 +88,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body ">
                         <ul class="nav nav-tabs nav-tabs-primary">
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#tab-ra"><i class="icon-people"></i> <span>Siswa RA</span></a>
@@ -109,7 +111,7 @@
                         </ul>
 
                         <!-- Tab panes -->
-                        <div class="tab-content">
+                        <div class="tab-content ">
                             <div id="tab-ra" class="tab-pane active">
                                 <div class="table-responsive">
                                     <table class="table align-items-center table-flush table-striped">
@@ -118,13 +120,14 @@
                                                 <th>Nama Lengkap</th>
                                                 <th>NIK</th>
                                                 <th>EMAIL</th>
+                                                <th>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @if(!count($siswaRa))
 
                                             <tr>
-                                                <td colspan="3" class="text-center">Tidak ada data!</td>
+                                                <td colspan="4" class="text-center">Tidak ada data!</td>
                                             </tr>
 
                                             @else
@@ -134,6 +137,7 @@
                                                 <td>{{$siswa->siswa_nama_lengkap}}</td>
                                                 <td>{{$siswa->siswa_NIK}}</td>
                                                 <td>{{$siswa->siswa_email}}</td>
+                                                <td>{{$siswa->siswa_status}}</td>
                                             </tr>
                                             @endforeach
 
@@ -152,13 +156,14 @@
                                                 <th>NISN</th>
                                                 <th>EMAIL</th>
                                                 <th>No Hp</th>
+                                                <th>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @if(!count($siswaMts))
 
                                             <tr>
-                                                <td colspan="5" class="text-center">Tidak ada data!</td>
+                                                <td colspan="6" class="text-center">Tidak ada data!</td>
                                             </tr>
 
                                             @else
@@ -170,6 +175,7 @@
                                                 <td>{{$siswa->siswa_NISN}}</td>
                                                 <td>{{$siswa->siswa_email}}</td>
                                                 <td>{{$siswa->siswa_no_hp}}</td>
+                                                <td>{{$siswa->siswa_status}}</td>
                                             </tr>
                                             @endforeach
 
@@ -188,13 +194,14 @@
                                                 <th>NISN</th>
                                                 <th>EMAIL</th>
                                                 <th>No Hp</th>
+                                                <th>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @if(!count($siswaSmp))
 
                                             <tr>
-                                                <td colspan="5" class="text-center">Tidak ada data!</td>
+                                                <td colspan="6" class="text-center">Tidak ada data!</td>
                                             </tr>
 
                                             @else
@@ -206,6 +213,7 @@
                                                 <td>{{$siswa->siswa_NISN}}</td>
                                                 <td>{{$siswa->siswa_email}}</td>
                                                 <td>{{$siswa->siswa_no_hp}}</td>
+                                                <td>{{$siswa->siswa_status}}</td>
                                             </tr>
                                             @endforeach
 
@@ -224,13 +232,14 @@
                                                 <th>EMAIL</th>
                                                 <th>No Hp</th>
                                                 <th>Jurusan</th>
+                                                <th>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @if(!count($siswaSma))
 
                                             <tr>
-                                                <td colspan="5" class="text-center">Tidak ada data!</td>
+                                                <td colspan="6" class="text-center">Tidak ada data!</td>
                                             </tr>
 
                                             @else
@@ -242,6 +251,7 @@
                                                 <td>{{$siswa->siswa_email}}</td>
                                                 <td>{{$siswa->siswa_no_hp}}</td>
                                                 <td>{{$siswa->siswa_jurusan}}</td>
+                                                <td>{{$siswa->siswa_status}}</td>
                                             </tr>
                                             @endforeach
 
@@ -258,13 +268,14 @@
                                                 <th>Nama Lengkap</th>
                                                 <th>NIK</th>
                                                 <th>EMAIL</th>
+                                                <th>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @if(!count($siswaMa))
 
                                             <tr>
-                                                <td colspan="3" class="text-center">Tidak ada data!</td>
+                                                <td colspan="4" class="text-center">Tidak ada data!</td>
                                             </tr>
 
                                             @else
@@ -274,6 +285,7 @@
                                                 <td>{{$siswa->siswa_nama_lengkap}}</td>
                                                 <td>{{$siswa->siswa_NIK}}</td>
                                                 <td>{{$siswa->siswa_email}}</td>
+                                                <td>{{$siswa->siswa_status}}</td>
                                             </tr>
                                             @endforeach
 
@@ -290,13 +302,14 @@
                                                 <th>Nama Lengkap</th>
                                                 <th>NIK</th>
                                                 <th>EMAIL</th>
+                                                <th>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @if(!count($siswaSmk))
 
                                             <tr>
-                                                <td colspan="3" class="text-center">Tidak ada data!</td>
+                                                <td colspan="4" class="text-center">Tidak ada data!</td>
                                             </tr>
 
                                             @else
@@ -306,6 +319,7 @@
                                                 <td>{{$siswa->siswa_nama_lengkap}}</td>
                                                 <td>{{$siswa->siswa_NIK}}</td>
                                                 <td>{{$siswa->siswa_email}}</td>
+                                                <td>{{$siswa->siswa_status}}</td>
                                             </tr>
                                             @endforeach
 

@@ -28,9 +28,29 @@
 <div class="row">
     <div class="col-6">
 
-        <div class="mb-3 bg-dark p-3 text-center rounded">
-            <img src="{{asset('storage/'.$siswaSmk->siswa_photo)}}" alt="{{$siswaSmk->siswa_nama_lengkap}}" class="img-thumbnail">
+        <div class="mb-3 gradient-scooter p-3 text-center rounded">
+            <img src="{{asset('storage/'.$siswaSmk->siswa_photo)}}" alt="{{$siswaSmk->siswa_nama_lengkap}}" class="img-thumbnail img-profile">
         </div>
+
+        @if($siswaSmk->siswa_status == null)
+
+        <div class="row mb-3">
+            <form method="POST" action="{{ route('siswa-smk.luluskan') }}" class="col-6" role="form" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="id" value="{{$siswaSmk->id}}">
+                <input type="hidden" name="siswa_status" value="lulus">
+                <button class="btn btn-success btn-block">Luluskan</button>
+            </form>
+            <form method="POST" action="{{ route('siswa-smk.luluskan') }}" class="col-6" role="form" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="id" value="{{$siswaSmk->id}}">
+                <input type="hidden" name="siswa_status" value="tidak lulus">
+                <button class="btn btn-danger btn-block">Tidak Luluskan</button>
+            </form>
+
+        </div>
+
+        @endif
 
         <div class="card">
 
@@ -41,6 +61,17 @@
                 <hr>
 
                 <div id="info-siswa">
+                    <div class="form-group">
+                        <strong>Status :</strong>
+                        <span id="siswa_status"></span>
+                        @if($siswaSmk->siswa_status == "lulus")
+                        <span class="badge badge-success">{{$siswaSmk->siswa_status}}</span>
+                        @elseif($siswaSmk->siswa_status == "tidak lulus")
+                        <span class="badge badge-danger">{{$siswaSmk->siswa_status}}</span>
+                        @else
+                        <span class="badge badge-secondary">belum diketahui</span>
+                        @endif
+                    </div>
                     <div class="form-group">
                         <strong>Nama Lengkap:</strong>
                         {{ $siswaSmk->siswa_nama_lengkap ?? '-' }}

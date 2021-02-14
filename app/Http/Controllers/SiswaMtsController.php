@@ -19,10 +19,32 @@ class SiswaMtsController extends Controller
      */
     public function index()
     {
-        $siswaMts = SiswaMts::paginate();
+        $siswaMts = SiswaMts::get();
 
         return view('siswa-mts.index', compact('siswaMts'))
-            ->with('i', (request()->input('page', 1) - 1) * $siswaMts->perPage());
+            ->with('i', 0);
+    }
+
+    public function kelulusan()
+    {
+        $siswaMts = SiswaMts::where('siswa_status', 'lulus')->get();
+
+        return view('siswa-mts.kelulusan', compact('siswaMts'))
+            ->with('i', 0);
+    }
+
+    public function luluskan(Request $request)
+    {
+        $siswaMts = SiswaMts::find($request->id);
+
+        $siswaMts->siswa_status = $request->siswa_status;
+
+        if ($siswaMts->save()) {
+            return redirect()->route('siswa-mts.kelulusan')
+                ->with('success', 'SiswaMts updated successfully');
+        }
+
+        return redirect()->route('siswa-mts.kelulusan')->with('failed', 'SiswaMts updated failed');
     }
 
     /**
@@ -32,8 +54,8 @@ class SiswaMtsController extends Controller
      */
     public function create()
     {
-        $siswaMts = new SiswaMts();
-        return view('siswa-mts.create', compact('siswaMts'));
+        $siswaMt = new SiswaMts();
+        return view('siswa-mts.create', compact('siswaMt'));
     }
 
     /**
@@ -54,9 +76,13 @@ class SiswaMtsController extends Controller
 
             $siswaMts = SiswaMts::create($res);
 
-            return redirect()->route('siswa-mts.index')
-                ->with('success', 'SiswaMts created successfully.');
+            if ($siswaMts) {
+                return redirect()->route('siswa-mts.index')
+                    ->with('success', 'SiswaMts created successfully.');
+            }
         }
+
+        return redirect()->route('siswa-mts.index')->with('failed', 'SiswaMts created failed');
     }
 
     /**
@@ -80,9 +106,9 @@ class SiswaMtsController extends Controller
      */
     public function edit($id)
     {
-        $siswaMts = SiswaMts::find($id);
+        $siswaMt = SiswaMts::find($id);
 
-        return view('siswa-mts.edit', compact('siswaMts'));
+        return view('siswa-mts.edit', compact('siswaMt'));
     }
 
     /**
@@ -92,29 +118,33 @@ class SiswaMtsController extends Controller
      * @param  SiswaMts $siswaMts
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SiswaMts $siswaMts)
+    public function update(Request $request, SiswaMts $siswaMt)
     {
         request()->validate(SiswaMts::$rules);
 
-        $photo = $request->file('siswa_photo')->store('siswa-mts');
+        if ($request->file('siswa_photo')) {
+            $photo = $request->file('siswa_photo')->store('siswa-mts');
 
-        if ($photo) {
+            if ($photo) {
 
-            if (Storage::delete($siswaMts->siswa_photo)) {
+                if (Storage::delete($siswaMt->siswa_photo)) {
 
-                $res = array_merge($request->all(), ['siswa_photo' => $photo]);
+                    $res = array_merge($request->all(), ['siswa_photo' => $photo]);
 
-                $siswaMts->update($res);
-
+                    if ($siswaMt->update($res)) {
+                        return redirect()->route('siswa-mts.index')
+                            ->with('success', 'SiswaMts updated successfully');
+                    }
+                }
+            }
+        } else {
+            if ($siswaMt->update($request->except('siswa_photo'))) {
                 return redirect()->route('siswa-mts.index')
                     ->with('success', 'SiswaMts updated successfully');
             }
-        } else {
-            $siswaMts->update($request->except('siswa_photo'));
-
-            return redirect()->route('siswa-mts.index')
-                ->with('success', 'SiswaMts updated successfully');
         }
+
+        return redirect()->route('siswa-mts.index')->with('failed', 'SiswaMts updated failed');
     }
 
     /**
@@ -128,9 +158,11 @@ class SiswaMtsController extends Controller
 
         Storage::delete($siswaMts->siswa_photo);
 
-        $siswaMts->delete();
+        if ($siswaMts->delete()) {
+            return redirect()->route('siswa-mts.index')
+                ->with('success', 'SiswaMts deleted successfully');
+        }
 
-        return redirect()->route('siswa-mts.index')
-            ->with('success', 'SiswaMts deleted successfully');
+        return redirect()->route('siswa-mts.index')->with('failed', 'SiswaMts deleted failed');
     }
 }

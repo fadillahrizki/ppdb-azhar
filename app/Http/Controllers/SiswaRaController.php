@@ -19,10 +19,31 @@ class SiswaRaController extends Controller
      */
     public function index()
     {
-        $siswaRas = SiswaRa::paginate();
+        $siswaRas = SiswaRa::get();
 
         return view('siswa-ra.index', compact('siswaRas'))
-            ->with('i', (request()->input('page', 1) - 1) * $siswaRas->perPage());
+            ->with('i', 0);
+    }
+
+    public function kelulusan()
+    {
+        $siswaRas = SiswaRa::where('siswa_status', 'lulus')->get();
+
+        return view('siswa-ra.kelulusan', compact('siswaRas'))->with('i', 0);
+    }
+
+    public function luluskan(Request $request)
+    {
+        $siswaRa = SiswaRa::find($request->id);
+
+        $siswaRa->siswa_status = $request->siswa_status;
+
+        if ($siswaRa->save()) {
+            return redirect()->route('siswa-ra.kelulusan')
+                ->with('success', 'SiswaRa updated successfully');
+        }
+
+        return redirect()->route('siswa-ra.kelulusan')->with('failed', 'SiswaRa updated failed');
     }
 
     /**
@@ -46,17 +67,17 @@ class SiswaRaController extends Controller
     {
         request()->validate(SiswaRa::$rules);
 
-        $photo = $request->file('siswa_photo')->store('siswa-ra');
-
-        if ($photo) {
+        if ($photo = $request->file('siswa_photo')->store('siswa-ra')) {
 
             $res = array_merge($request->all(), ['siswa_photo' => $photo]);
 
-            $siswaRa = SiswaRa::create($res);
-
-            return redirect()->route('siswa-ra.index')
-                ->with('success', 'SiswaRa created successfully.');
+            if (SiswaRa::create($res)) {
+                return redirect()->route('siswa-ra.index')
+                    ->with('success', 'SiswaRa created successfully.');
+            }
         }
+
+        return redirect()->route('siswa-ra.index')->with('failed', 'SiswaRa created failed');
     }
 
     /**
@@ -71,6 +92,7 @@ class SiswaRaController extends Controller
 
         return view('siswa-ra.show', compact('siswaRa'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -96,25 +118,27 @@ class SiswaRaController extends Controller
     {
         request()->validate(SiswaRa::$rules);
 
-        $photo = $request->file('siswa_photo')->store('siswa-ra');
+        if ($request->file('siswa_photo')) {
+            if ($photo = $request->file('siswa_photo')->store('siswa-ra')) {
 
-        if ($photo) {
+                if (Storage::delete($siswaRa->siswa_photo)) {
+                    $res = array_merge($request->all(), ['siswa_photo' => $photo]);
 
-            if (Storage::delete($siswaRa->siswa_photo)) {
-                $res = array_merge($request->all(), ['siswa_photo' => $photo]);
+                    if ($siswaRa->update($res)) {
+                        return redirect()->route('siswa-ra.index')
+                            ->with('success', 'SiswaRa updated successfully');
+                    }
+                }
+            }
+        } else {
 
-                $siswaRa->update($res);
-
+            if ($siswaRa->update($request->except('siswa_photo'))) {
                 return redirect()->route('siswa-ra.index')
                     ->with('success', 'SiswaRa updated successfully');
             }
-        } else {
-            $siswaRa->update($request->except('siswa_photo'));
-
-
-            return redirect()->route('siswa-ra.index')
-                ->with('success', 'SiswaRa updated successfully');
         }
+
+        return redirect()->route('siswa-ra.index')->with('failed', 'SiswaRa updated failed');
     }
 
     /**
@@ -128,9 +152,11 @@ class SiswaRaController extends Controller
 
         Storage::delete($siswaRa->siswa_photo);
 
-        $siswaRa->delete();
+        if ($siswaRa->delete()) {
+            return redirect()->route('siswa-ra.index')
+                ->with('success', 'SiswaRa deleted successfully');
+        }
 
-        return redirect()->route('siswa-ra.index')
-            ->with('success', 'SiswaRa deleted successfully');
+        return redirect()->route('siswa-ra.index')->with('failed', 'SiswaRa deleted failed');
     }
 }

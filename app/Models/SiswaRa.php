@@ -78,7 +78,6 @@ class SiswaRa extends Model
 		'siswa_tinggi_badan' => 'required',
 		'siswa_transportasi' => 'required',
 		'siswa_email' => 'required',
-		'siswa_photo' => 'required',
 		'asal_nama_sekolah' => 'required',
 		'asal_alamat_sekolah' => 'required',
 		'asal_no_telepon_sekolah' => 'required',
@@ -91,5 +90,5 @@ class SiswaRa extends Model
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['siswa_nama_lengkap', 'siswa_photo', 'siswa_nama_panggilan', 'siswa_NIK', 'siswa_jenis_kelamin', 'siswa_tempat', 'siswa_tanggal_lahir', 'siswa_anak_ke', 'siswa_jumlah_saudara', 'siswa_usia', 'siswa_alamat_tempat_tinggal', 'siswa_hobi', 'siswa_cita_cita', 'siswa_ukuran_sepatu', 'siswa_ukuran_baju', 'siswa_berat_badan', 'siswa_tinggi_badan', 'siswa_transportasi', 'siswa_email', 'ayah_nama_lengkap', 'ayah_NIK', 'ayah_tempat', 'ayah_tanggal_lahir', 'ayah_agama', 'ayah_pendidikan_terakhir', 'ayah_pekerjaan', 'ayah_penghasilan', 'ayah_no_hp', 'ibu_nama_lengkap', 'ibu_NIK', 'ibu_tempat', 'ibu_tanggal_lahir', 'ibu_agama', 'ibu_pendidikan_terakhir', 'ibu_pekerjaan', 'ibu_penghasilan', 'wali_nama_Lengkap', 'wali_alamat_tinggal', 'wali_pekerjaan', 'wali_no_hp', 'asal_nama_sekolah', 'asal_alamat_sekolah', 'asal_no_telepon_sekolah'];
+	protected $fillable = ['siswa_nama_lengkap', 'siswa_status', 'siswa_photo', 'siswa_nama_panggilan', 'siswa_NIK', 'siswa_jenis_kelamin', 'siswa_tempat', 'siswa_tanggal_lahir', 'siswa_anak_ke', 'siswa_jumlah_saudara', 'siswa_usia', 'siswa_alamat_tempat_tinggal', 'siswa_hobi', 'siswa_cita_cita', 'siswa_ukuran_sepatu', 'siswa_ukuran_baju', 'siswa_berat_badan', 'siswa_tinggi_badan', 'siswa_transportasi', 'siswa_email', 'ayah_nama_lengkap', 'ayah_NIK', 'ayah_tempat', 'ayah_tanggal_lahir', 'ayah_agama', 'ayah_pendidikan_terakhir', 'ayah_pekerjaan', 'ayah_penghasilan', 'ayah_no_hp', 'ibu_nama_lengkap', 'ibu_NIK', 'ibu_tempat', 'ibu_tanggal_lahir', 'ibu_agama', 'ibu_pendidikan_terakhir', 'ibu_pekerjaan', 'ibu_penghasilan', 'wali_nama_Lengkap', 'wali_alamat_tinggal', 'wali_pekerjaan', 'wali_no_hp', 'asal_nama_sekolah', 'asal_alamat_sekolah', 'asal_no_telepon_sekolah'];
 }

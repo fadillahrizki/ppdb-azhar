@@ -32,6 +32,20 @@ Auth::routes();
 
 Route::get('home', [HomeController::class, 'index'])->name('home');
 
+Route::get('siswa-ra-kelulusan', [SiswaRaController::class, 'kelulusan'])->middleware('auth')->name('siswa-ra.kelulusan');
+Route::get('siswa-mts-kelulusan', [SiswaMtsController::class, 'kelulusan'])->middleware('auth')->name('siswa-mts.kelulusan');
+Route::get('siswa-smp-kelulusan', [SiswaSmpController::class, 'kelulusan'])->middleware('auth')->name('siswa-smp.kelulusan');
+Route::get('siswa-sma-kelulusan', [SiswaSmaController::class, 'kelulusan'])->middleware('auth')->name('siswa-sma.kelulusan');
+Route::get('siswa-ma-kelulusan', [SiswaMaController::class, 'kelulusan'])->middleware('auth')->name('siswa-ma.kelulusan');
+Route::get('siswa-smk-kelulusan', [SiswaSmkController::class, 'kelulusan'])->middleware('auth')->name('siswa-smk.kelulusan');
+
+Route::post('siswa-ra-luluskan', [SiswaRaController::class, 'luluskan'])->middleware('auth')->name('siswa-ra.luluskan');
+Route::post('siswa-mts-luluskan', [SiswaMtsController::class, 'luluskan'])->middleware('auth')->name('siswa-mts.luluskan');
+Route::post('siswa-smp-luluskan', [SiswaSmpController::class, 'luluskan'])->middleware('auth')->name('siswa-smp.luluskan');
+Route::post('siswa-sma-luluskan', [SiswaSmaController::class, 'luluskan'])->middleware('auth')->name('siswa-sma.luluskan');
+Route::post('siswa-ma-luluskan', [SiswaMaController::class, 'luluskan'])->middleware('auth')->name('siswa-ma.luluskan');
+Route::post('siswa-smk-luluskan', [SiswaSmkController::class, 'luluskan'])->middleware('auth')->name('siswa-smk.luluskan');
+
 Route::resource('siswa-ra', SiswaRaController::class)->middleware('auth');
 Route::resource('siswa-smk', SiswaSmkController::class)->middleware('auth');
 Route::resource('siswa-ma', SiswaMaController::class)->middleware('auth');

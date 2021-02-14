@@ -37,7 +37,7 @@ Tambah Siswa SMK
 
         </form>
     </div>
-</div>=
+</div>
 @endsection
 
 
