@@ -81,7 +81,11 @@ Register Siswa MA
 
     $("#btn-submit").click(function() {
 
-        console.log('yo')
+        $("form").validate()
+
+        if ($("form").valid() == false) {
+            return
+        }
 
         $("#form").addClass("d-none")
         $("#review").removeClass("d-none")

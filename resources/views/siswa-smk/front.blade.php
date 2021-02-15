@@ -76,6 +76,13 @@ Register Siswa SMK
 <script>
     $("#btn-submit").click(function() {
 
+        $("form").validate()
+
+        if ($("form").valid() == false) {
+            return
+        }
+
+
         $("#form").addClass("d-none")
         $("#review").removeClass("d-none")
 

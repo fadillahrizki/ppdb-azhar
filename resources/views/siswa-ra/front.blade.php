@@ -75,13 +75,19 @@ Register Siswa RA
 <script>
     $("#btn-submit").click(function() {
 
+        $("form").validate()
+
+        if ($("form").valid() == false) {
+            return
+        }
+
         $("#form").addClass("d-none")
         $("#review").removeClass("d-none")
 
         var siswa = `
 
         <div class="form-group">
-            <strong>Nama Lengkap:</strong>
+            <strong>Nama Lengkap:</strong>  
             ${$("[name=siswa_nama_lengkap]").val() ? $("[name=siswa_nama_lengkap]").val() : '-'}
         </div>
         <div class="form-group">
