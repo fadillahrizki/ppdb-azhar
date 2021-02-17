@@ -161,4 +161,19 @@
     </div>
 </div>
 
-<button type="button" class="btn btn-primary mb-3" id="btn-submit">Submit</button>
+<div class="form-group">
+    <label for="license">
+        {!! Form::checkbox("license", 1, false, ['id'=>'license','onchange'=>'enableBtn(this)']) !!}
+        Saya menyatakan dengan sesungguhnya bahwa isian data dalam formulir ini adalah benar. Apabila ternyata data tersebut tidak benar / palsu, maka saya bersedia menerima sanksi berupa Pembatalan sebagai Calon Peserta Didik MA Al Azhar
+    </label>
+</div>
+
+<button type="button" id="btn-submit" class="btn btn-primary mb-3" disabled="disabled">Submit</button>
+<script>
+function enableBtn(el)
+{
+    document.getElementById("btn-submit").setAttribute('disabled','disabled')
+    if(el.checked)
+        document.getElementById("btn-submit").removeAttribute('disabled')
+}
+</script>

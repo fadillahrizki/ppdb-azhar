@@ -38,7 +38,7 @@ class SiswaSmk extends Model
 	static $rules = [
 		'siswa_nama_lengkap' => 'required',
 		'siswa_nama_panggilan' => 'required',
-		'siswa_NIK' => 'required',
+		'siswa_NIK' => 'required|unique:siswa_smk',
 		'siswa_jenis_kelamin' => 'required',
 		'siswa_tempat' => 'required',
 		'siswa_tanggal_lahir' => 'required',
@@ -47,7 +47,7 @@ class SiswaSmk extends Model
 		'siswa_usia' => 'required',
 		'siswa_alamat_tempat_tinggal' => 'required',
 		'siswa_hobi' => 'required',
-		'siswa_email' => 'required',
+		'siswa_email' => 'required|unique:siswa_smk',
 		'asal_nama_sekolah' => 'required',
 		'asal_alamat_sekolah' => 'required',
 		'asal_no_telepon_sekolah' => 'required',

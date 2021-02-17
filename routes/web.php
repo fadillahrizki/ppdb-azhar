@@ -2,16 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\SiswaMaController;
+use App\Http\Controllers\SiswaRaController;
 use App\Http\Controllers\CriteriaController;
+use App\Http\Controllers\SiswaMtsController;
+use App\Http\Controllers\SiswaSmaController;
+use App\Http\Controllers\SiswaSmkController;
+use App\Http\Controllers\SiswaSmpController;
 use App\Http\Controllers\ValuationController;
 use App\Http\Controllers\AlternatifController;
 use App\Http\Controllers\SubcriteriaController;
-use App\Http\Controllers\SiswaRaController;
-use App\Http\Controllers\SiswaSmkController;
-use App\Http\Controllers\SiswaMaController;
-use App\Http\Controllers\SiswaMtsController;
-use App\Http\Controllers\SiswaSmaController;
-use App\Http\Controllers\SiswaSmpController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,7 @@ Route::post('siswa-sma-luluskan', [SiswaSmaController::class, 'luluskan'])->midd
 Route::post('siswa-ma-luluskan', [SiswaMaController::class, 'luluskan'])->middleware('auth')->name('siswa-ma.luluskan');
 Route::post('siswa-smk-luluskan', [SiswaSmkController::class, 'luluskan'])->middleware('auth')->name('siswa-smk.luluskan');
 
+Route::resource('users', UserController::class)->middleware('auth');
 Route::resource('siswa-ra', SiswaRaController::class)->middleware('auth');
 Route::resource('siswa-smk', SiswaSmkController::class)->middleware('auth');
 Route::resource('siswa-ma', SiswaMaController::class)->middleware('auth');

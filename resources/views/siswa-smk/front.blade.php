@@ -1,5 +1,7 @@
 @extends('layouts.app-front')
 
+@section('icon-jenjang',asset('assets/images/SMK.png'))
+
 @section('title')
 Register Siswa SMK
 @endsection

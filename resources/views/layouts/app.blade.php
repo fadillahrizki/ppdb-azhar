@@ -9,7 +9,7 @@
     <meta name="author" content="" />
     <title>PPDB Azhar - @yield('title','Home')</title>
     <!--favicon-->
-    <link rel="icon" href="{{asset('assets/images/favicon.ico')}}" type="image/x-icon">
+    <link rel="icon" href="{{asset('assets/images/MA.png')}}" type="image/x-icon">
     <!-- Vector CSS -->
     <link href="{{asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.css')}}" rel="stylesheet" />
     <!-- simplebar CSS-->
@@ -43,7 +43,7 @@
         <div id="sidebar-wrapper" data-simplebar="" data-simplebar-auto-hide="true">
             <div class="brand-logo">
                 <a href="/">
-                    <img src="{{asset('assets/images/logo-icon.png')}}" class="logo-icon" alt="logo icon">
+                    <img src="{{asset('assets/images/MA.png')}}" class="logo-icon" alt="logo icon">
                     <h5 class="logo-text">PPDB Azhar</h5>
                 </a>
             </div>
@@ -191,7 +191,7 @@
         <footer class="footer">
             <div class="container">
                 <div class="text-center">
-                    Copyright © 2021 Hoster Web
+                    Copyright © 2021 Development by <a href="https://hosterweb.co.id">Hosterweb</a>
                 </div>
             </div>
         </footer>

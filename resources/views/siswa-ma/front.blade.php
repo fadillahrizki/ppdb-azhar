@@ -1,5 +1,7 @@
 @extends('layouts.app-front')
 
+@section('icon-jenjang',asset('assets/images/MA.png'))
+
 @section('title')
 Register Siswa MA
 @endsection

@@ -16,11 +16,6 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         User::truncate();
-        User::create([
-            'name'   => 'Bot Scrapper',
-            'email'  => 'bot@scrapper.com',
-            'password' => bcrypt('password'),
-        ]);
 
         User::create([
             'name'   => 'Administrator',

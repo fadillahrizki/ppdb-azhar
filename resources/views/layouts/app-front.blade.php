@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>PPDB Azhar - @yield('title','Home')</title>
+    <title>PPDB Al Azhar - @yield('title','Home')</title>
     <!--favicon-->
     <link rel="icon" href="{{asset('assets/images/favicon.ico')}}" type="image/x-icon">
     <!-- Vector CSS -->
@@ -37,11 +37,11 @@
 
         <!--Start topbar header-->
         <header class="topbar-nav">
-            <nav class="navbar navbar-expand fixed-top bg-white">
+            <nav class="navbar navbar-expand fixed-top gradient-scooter">
                 <div class="navbar-nav mr-auto align-items-center">
                     <a href="/">
-                        <img src="{{asset('assets/images/logo-icon.png')}}" class="logo-icon" alt="logo icon">
-                        <h5 class="logo-text">PPDB Azhar</h5>
+                        <img src="@yield('icon-jenjang')" class="logo-icon" alt="logo icon">
+                        <h5 class="logo-text">@yield('title','PPDB AL AZHAR')</h5>
                     </a>
                 </div>
                 {{-- <ul class="navbar-nav mr-auto align-items-center">
@@ -95,7 +95,7 @@
         <footer class="footer">
             <div class="container">
                 <div class="text-center">
-                    Copyright © 2021 Hoster Web
+                    Copyright © 2021 Development by <a href="https://hosterweb.co.id">Hosterweb</a>
                 </div>
             </div>
         </footer>

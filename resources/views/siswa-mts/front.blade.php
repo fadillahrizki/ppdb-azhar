@@ -1,5 +1,7 @@
 @extends('layouts.app-front')
 
+@section('icon-jenjang',asset('assets/images/SMP.png'))
+
 @section('title')
 Register Siswa MTS
 @endsection

@@ -62,7 +62,7 @@ class SiswaRa extends Model
 	static $rules = [
 		'siswa_nama_lengkap' => 'required',
 		'siswa_nama_panggilan' => 'required',
-		'siswa_NIK' => 'required',
+		'siswa_NIK' => 'required|unique:siswa_ra',
 		'siswa_jenis_kelamin' => 'required',
 		'siswa_tempat' => 'required',
 		'siswa_tanggal_lahir' => 'required',
@@ -77,7 +77,7 @@ class SiswaRa extends Model
 		'siswa_berat_badan' => 'required',
 		'siswa_tinggi_badan' => 'required',
 		'siswa_transportasi' => 'required',
-		'siswa_email' => 'required',
+		'siswa_email' => 'required|unique:siswa_ra',
 		'asal_nama_sekolah' => 'required',
 		'asal_alamat_sekolah' => 'required',
 		'asal_no_telepon_sekolah' => 'required',

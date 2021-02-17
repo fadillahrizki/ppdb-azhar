@@ -25,6 +25,8 @@ Siswa SMK
 <!-- End Breadcrumb-->
 @endsection
 
+
+@section('content')
 <div id="print" class="d-none">
     <h2 class="text-center mb-5">Laporan Seluruh Siswa Smk</h2>
 
@@ -61,8 +63,6 @@ Siswa SMK
         </tbody>
     </table>
 </div>
-
-@section('content')
 
 @if ($message = Session::get('success'))
 <div class="row">
