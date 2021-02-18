@@ -50,7 +50,7 @@
         {!! $errors->first('siswa_email', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
-        {{ Form::label('no_hp*') }}
+        {{ Form::label('no telp / wa* (Contoh: 081234567890)') }}
         {{ Form::text('siswa_no_hp', $siswaSmp->siswa_no_hp, ['required','class' => 'form-control' . ($errors->has('siswa_no_hp') ? ' is-invalid' : ''), 'placeholder' => 'No Hp']) }}
         {!! $errors->first('siswa_no_hp', '<p class="invalid-feedback">:message</p>') !!}
     </div>
@@ -71,34 +71,29 @@
     <hr>
 
     <div class="form-group">
-        {{ Form::label('nama_lengkap') }}
+        {{ Form::label('nama_lengkap*') }}
         {{ Form::text('ayah_nama_lengkap', $siswaSmp->ayah_nama_lengkap, ['required','class' => 'form-control' . ($errors->has('ayah_nama_lengkap') ? ' is-invalid' : ''), 'placeholder' => 'Nama Lengkap']) }}
         {!! $errors->first('ayah_nama_lengkap', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
-        {{ Form::label('agama') }}
-        {{ Form::text('ayah_agama', $siswaSmp->ayah_agama, ['class' => 'form-control' . ($errors->has('ayah_agama') ? ' is-invalid' : ''), 'placeholder' => 'Agama']) }}
+        {{ Form::label('agama*') }}
+        {{ Form::text('ayah_agama', $siswaSmp->ayah_agama, ['required','class' => 'form-control' . ($errors->has('ayah_agama') ? ' is-invalid' : ''), 'placeholder' => 'Agama']) }}
         {!! $errors->first('ayah_agama', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
-        {{ Form::label('pendidikan_terakhir') }}
-        {{ Form::select('ayah_pendidikan_terakhir',['SMA'=>'SMA','Akademi'=>'Akademi','Sarjana'=>'Sarjana'], $siswaSmp->ayah_pendidikan_terakhir, ['class' => 'form-control' . ($errors->has('ayah_pendidikan_terakhir') ? ' is-invalid' : ''), 'placeholder' => '- Pilih Pendidikan Terakhir -']) }}
+        {{ Form::label('pendidikan_terakhir*') }}
+        {{ Form::select('ayah_pendidikan_terakhir',['SMA'=>'SMA','Akademi'=>'Akademi','Sarjana'=>'Sarjana'], $siswaSmp->ayah_pendidikan_terakhir, ['required','class' => 'form-control' . ($errors->has('ayah_pendidikan_terakhir') ? ' is-invalid' : ''), 'placeholder' => '- Pilih Pendidikan Terakhir -']) }}
         {!! $errors->first('ayah_pendidikan_terakhir', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
-        {{ Form::label('pekerjaan') }}
-        {{ Form::text('ayah_pekerjaan', $siswaSmp->ayah_pekerjaan, ['class' => 'form-control' . ($errors->has('ayah_pekerjaan') ? ' is-invalid' : ''), 'placeholder' => 'Pekerjaan']) }}
+        {{ Form::label('pekerjaan*') }}
+        {{ Form::text('ayah_pekerjaan', $siswaSmp->ayah_pekerjaan, ['required','class' => 'form-control' . ($errors->has('ayah_pekerjaan') ? ' is-invalid' : ''), 'placeholder' => 'Pekerjaan']) }}
         {!! $errors->first('ayah_pekerjaan', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
-        {{ Form::label('penghasilan') }}
-        {{ Form::select('ayah_penghasilan', ['< 500.000'=>'< 500.000','> 500.000'=>'> 500.000','> 1 juta'=>'> 1 juta'] , $siswaSmp->ayah_penghasilan, ['class' => 'form-control' . ($errors->has('ayah_penghasilan') ? ' is-invalid' : ''), 'placeholder' => '- Pilih Penghasilan -']) }}
+        {{ Form::label('penghasilan*') }}
+        {{ Form::select('ayah_penghasilan', ['< 500.000'=>'< 500.000','> 500.000'=>'> 500.000','> 1 juta'=>'> 1 juta'] , $siswaSmp->ayah_penghasilan, ['required','class' => 'form-control' . ($errors->has('ayah_penghasilan') ? ' is-invalid' : ''), 'placeholder' => '- Pilih Penghasilan -']) }}
         {!! $errors->first('ayah_penghasilan', '<p class="invalid-feedback">:message</p>') !!}
-    </div>
-    <div class="form-group">
-        {{ Form::label('no_hp') }}
-        {{ Form::text('ayah_no_hp', $siswaSmp->ayah_no_hp, ['class' => 'form-control' . ($errors->has('ayah_no_hp') ? ' is-invalid' : ''), 'placeholder' => 'No Hp']) }}
-        {!! $errors->first('ayah_no_hp', '<p class="invalid-feedback">:message</p>') !!}
     </div>
 </div>
 
@@ -107,34 +102,29 @@
 
     <hr>
     <div class="form-group">
-        {{ Form::label('nama_lengkap') }}
-        {{ Form::text('ibu_nama_lengkap', $siswaSmp->ibu_nama_lengkap, ['class' => 'form-control' . ($errors->has('ibu_nama_lengkap') ? ' is-invalid' : ''), 'placeholder' => 'Nama Lengkap']) }}
+        {{ Form::label('nama_lengkap*') }}
+        {{ Form::text('ibu_nama_lengkap', $siswaSmp->ibu_nama_lengkap, ['required','class' => 'form-control' . ($errors->has('ibu_nama_lengkap') ? ' is-invalid' : ''), 'placeholder' => 'Nama Lengkap']) }}
         {!! $errors->first('ibu_nama_lengkap', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
-        {{ Form::label('agama') }}
-        {{ Form::text('ibu_agama', $siswaSmp->ibu_agama, ['class' => 'form-control' . ($errors->has('ibu_agama') ? ' is-invalid' : ''), 'placeholder' => 'Agama']) }}
+        {{ Form::label('agama*') }}
+        {{ Form::text('ibu_agama', $siswaSmp->ibu_agama, ['required','class' => 'form-control' . ($errors->has('ibu_agama') ? ' is-invalid' : ''), 'placeholder' => 'Agama']) }}
         {!! $errors->first('ibu_agama', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
-        {{ Form::label('pendidikan_terakhir') }}
-        {{ Form::select('ibu_pendidikan_terakhir',['SMA'=>'SMA','Akademi'=>'Akademi','Sarjana'=>'Sarjana'], $siswaSmp->ibu_pendidikan_terakhir, ['class' => 'form-control' . ($errors->has('ibu_pendidikan_terakhir') ? ' is-invalid' : ''), 'placeholder' => '- Pilih Pendidikan Terakhir -']) }}
+        {{ Form::label('pendidikan_terakhir*') }}
+        {{ Form::select('ibu_pendidikan_terakhir',['SMA'=>'SMA','Akademi'=>'Akademi','Sarjana'=>'Sarjana'], $siswaSmp->ibu_pendidikan_terakhir, ['required','class' => 'form-control' . ($errors->has('ibu_pendidikan_terakhir') ? ' is-invalid' : ''), 'placeholder' => '- Pilih Pendidikan Terakhir -']) }}
         {!! $errors->first('ibu_pendidikan_terakhir', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
-        {{ Form::label('pekerjaan') }}
-        {{ Form::text('ibu_pekerjaan', $siswaSmp->ibu_pekerjaan, ['class' => 'form-control' . ($errors->has('ibu_pekerjaan') ? ' is-invalid' : ''), 'placeholder' => 'Pekerjaan']) }}
+        {{ Form::label('pekerjaan*') }}
+        {{ Form::text('ibu_pekerjaan', $siswaSmp->ibu_pekerjaan, ['required','class' => 'form-control' . ($errors->has('ibu_pekerjaan') ? ' is-invalid' : ''), 'placeholder' => 'Pekerjaan']) }}
         {!! $errors->first('ibu_pekerjaan', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
-        {{ Form::label('penghasilan') }}
-        {{ Form::select('ibu_penghasilan', ['< 500.000'=>'< 500.000','> 500.000'=>'> 500.000','> 1 juta'=>'> 1 juta'] , $siswaSmp->ibu_penghasilan, ['class' => 'form-control' . ($errors->has('ibu_penghasilan') ? ' is-invalid' : ''), 'placeholder' => '- Pilih Penghasilan -']) }}
+        {{ Form::label('penghasilan*') }}
+        {{ Form::select('ibu_penghasilan', ['< 500.000'=>'< 500.000','> 500.000'=>'> 500.000','> 1 juta'=>'> 1 juta'] , $siswaSmp->ibu_penghasilan, ['required','class' => 'form-control' . ($errors->has('ibu_penghasilan') ? ' is-invalid' : ''), 'placeholder' => '- Pilih Penghasilan -']) }}
         {!! $errors->first('ibu_penghasilan', '<p class="invalid-feedback">:message</p>') !!}
-    </div>
-    <div class="form-group">
-        {{ Form::label('no_hp') }}
-        {{ Form::text('ibu_no_hp', $siswaSmp->ibu_no_hp, ['class' => 'form-control' . ($errors->has('ibu_no_hp') ? ' is-invalid' : ''), 'placeholder' => 'No Hp']) }}
-        {!! $errors->first('ibu_no_hp', '<p class="invalid-feedback">:message</p>') !!}
     </div>
 </div>
 

@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Rocker - Bootstrap4 Admin Dashboard Template</title>
+    <title>PPDB Al Azhar Login</title>
     <!--favicon-->
-    <link rel="icon" href="{{asset('assets/images/favicon.ico')}}" type="image/x-icon">
+    <link rel="icon" href="{{asset('assets/images/MA.png')}}" type="image/x-icon">
     <!-- Bootstrap core CSS-->
     <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" />
     <!-- animate CSS-->
@@ -28,7 +28,7 @@
             <div class="card-body">
                 <div class="card-content p-2">
                     <div class="text-center">
-                        <img src="assets/images/logo-icon.png">
+                        <img src="{{asset('assets/images/MA.png')}}">
                     </div>
                     <div class="card-title text-uppercase text-center py-3">Sign In</div>
                     <form action="{{ route('login') }}" method="post">

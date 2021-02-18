@@ -34,6 +34,7 @@ class CreateSiswaMasTable extends Migration
             $table->text('siswa_alamat_tempat_tinggal');
             $table->string('siswa_hobi');
             $table->string('siswa_email');
+            $table->string('siswa_no_hp');
             $table->string('siswa_photo');
 
             $table->string('siswa_status')->nullable();
@@ -48,7 +49,6 @@ class CreateSiswaMasTable extends Migration
             $table->string('ayah_pendidikan_terakhir')->nullable();
             $table->string('ayah_pekerjaan')->nullable();
             $table->string('ayah_penghasilan')->nullable();
-            $table->string('ayah_no_hp')->nullable();
 
             // Ibu
 

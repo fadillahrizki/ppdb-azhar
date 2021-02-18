@@ -95,11 +95,6 @@
         {{ Form::select('ayah_penghasilan', ['< 500.000'=>'< 500.000','> 500.000'=>'> 500.000','> 1 juta'=>'> 1 juta'] , $siswaSmp->ayah_penghasilan, ['class' => 'form-control' . ($errors->has('ayah_penghasilan') ? ' is-invalid' : ''), 'placeholder' => '- Pilih Penghasilan -']) }}
         {!! $errors->first('ayah_penghasilan', '<p class="invalid-feedback">:message</p>') !!}
     </div>
-    <div class="form-group">
-        {{ Form::label('no_hp') }}
-        {{ Form::text('ayah_no_hp', $siswaSmp->ayah_no_hp, ['class' => 'form-control' . ($errors->has('ayah_no_hp') ? ' is-invalid' : ''), 'placeholder' => 'No Hp']) }}
-        {!! $errors->first('ayah_no_hp', '<p class="invalid-feedback">:message</p>') !!}
-    </div>
 </div>
 
 <div class="card card-body">
@@ -130,11 +125,6 @@
         {{ Form::label('penghasilan') }}
         {{ Form::select('ibu_penghasilan', ['< 500.000'=>'< 500.000','> 500.000'=>'> 500.000','> 1 juta'=>'> 1 juta'] , $siswaSmp->ibu_penghasilan, ['class' => 'form-control' . ($errors->has('ibu_penghasilan') ? ' is-invalid' : ''), 'placeholder' => '- Pilih Penghasilan -']) }}
         {!! $errors->first('ibu_penghasilan', '<p class="invalid-feedback">:message</p>') !!}
-    </div>
-    <div class="form-group">
-        {{ Form::label('no_hp') }}
-        {{ Form::text('ibu_no_hp', $siswaSmp->ibu_no_hp, ['class' => 'form-control' . ($errors->has('ibu_no_hp') ? ' is-invalid' : ''), 'placeholder' => 'No Hp']) }}
-        {!! $errors->first('ibu_no_hp', '<p class="invalid-feedback">:message</p>') !!}
     </div>
 </div>
 

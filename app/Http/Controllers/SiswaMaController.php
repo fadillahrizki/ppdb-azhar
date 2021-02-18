@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\SiswaMa;
+use App\Models\Whatsapp;
+use App\Mail\GlobalMailer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 /**
@@ -39,6 +42,17 @@ class SiswaMaController extends Controller
 
         $SiswaMa->siswa_status = $request->siswa_status;
 
+        $data = [
+            'title' => $request->siswa_status == 'lulus' ? 'Selamat!' : 'Maaf!',
+            'subject' => 'Pengumuman Hasil Penerimaan Peserta Didik Baru',
+            'message' => $request->siswa_status == 'lulus' ? 'Anda dinyatakan lulus sebagai siswa MA Al Azhar' : ' Anda tidak dinyatakan lulus sebagai siswa MA Al Azhar'
+        ];
+        
+        Mail::to($SiswaMa->siswa_email)->send(new GlobalMailer($data));
+
+        $pesan = "*".$data['title']."*\n".$data['message'];
+        (new Whatsapp)->send($SiswaMa->siswa_no_hp,$pesan);
+
         if ($SiswaMa->save()) {
             return redirect()->route('siswa-ma.kelulusan')
                 ->with('success', 'SiswaMa updated successfully');
@@ -66,7 +80,7 @@ class SiswaMaController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(SiswaMa::$rules);
+        request()->validate(SiswaMa::$rules,SiswaMa::$customMessage);
 
         $photo = $request->file('siswa_photo')->store('siswa-ma');
 
@@ -120,7 +134,7 @@ class SiswaMaController extends Controller
      */
     public function update(Request $request, SiswaMa $siswaMa)
     {
-        request()->validate(SiswaMa::$rules);
+        request()->validate(SiswaMa::$rules,SiswaMa::$customMessage);
 
         if ($request->file('siswa_photo')) {
             $photo = $request->file('siswa_photo')->store('siswa-ma');
@@ -145,7 +159,7 @@ class SiswaMaController extends Controller
             }
         }
 
-        return redirect()->route('siswa-ma.index')->with('failed', 'SiswaRa updated failed');
+        return redirect()->route('siswa-ma.index')->with('failed', 'SiswaMa updated failed');
     }
 
     /**

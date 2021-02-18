@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\SiswaSmk;
+use App\Models\Whatsapp;
+use App\Mail\GlobalMailer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 /**
@@ -38,6 +41,17 @@ class SiswaSmkController extends Controller
 
         $SiswaSmk->siswa_status = $request->siswa_status;
 
+        $data = [
+            'title' => $request->siswa_status == 'lulus' ? 'Selamat!' : 'Maaf!',
+            'subject' => 'Pengumuman Hasil Penerimaan Peserta Didik Baru',
+            'message' => $request->siswa_status == 'lulus' ? 'Anda dinyatakan lulus sebagai siswa SMK Al Azhar' : ' Anda tidak dinyatakan lulus sebagai siswa SMK Al Azhar'
+        ];
+        
+        Mail::to($SiswaSmk->siswa_email)->send(new GlobalMailer($data));
+
+        $pesan = "*".$data['title']."*\n".$data['message'];
+        (new Whatsapp)->send($SiswaSmk->siswa_no_hp,$pesan);
+
         if ($SiswaSmk->save()) {
             return redirect()->route('siswa-smk.kelulusan')
                 ->with('success', 'SiswaSmk updated successfully');
@@ -65,7 +79,7 @@ class SiswaSmkController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(SiswaSmk::$rules);
+        request()->validate(SiswaSmk::$rules,SiswaSmk::$customMessage);
 
 
         $photo = $request->file('siswa_photo')->store('siswa-smk');
@@ -120,7 +134,7 @@ class SiswaSmkController extends Controller
      */
     public function update(Request $request, SiswaSmk $siswaSmk)
     {
-        request()->validate(SiswaSmk::$rules);
+        request()->validate(SiswaSmk::$rules,SiswaSmk::$customMessage);
 
         if ($request->file('siswa_photo')) {
             $photo = $request->file('siswa_photo')->store('siswa-smk');

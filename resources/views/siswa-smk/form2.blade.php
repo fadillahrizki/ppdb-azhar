@@ -65,6 +65,11 @@
         {!! $errors->first('siswa_email', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
+        {{ Form::label('no telp / wa* (Contoh: 081234567890)') }}
+        {{ Form::text('siswa_no_hp', $siswaSmk->siswa_no_hp, ['required','class' => 'form-control' . ($errors->has('siswa_no_hp') ? ' is-invalid' : ''), 'placeholder' => 'No Hp']) }}
+        {!! $errors->first('siswa_no_hp', '<p class="invalid-feedback">:message</p>') !!}
+    </div>
+    <div class="form-group">
         {{ Form::label('photo*') }}
         <div class="custom-file">
             <input type="file" class="custom-file-input" id="customFile" required name="siswa_photo">

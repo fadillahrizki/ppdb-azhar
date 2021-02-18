@@ -33,15 +33,16 @@ class CreateSiswaSmksTable extends Migration
             $table->text('siswa_alamat_tempat_tinggal');
             $table->string('siswa_hobi');
             $table->string('siswa_email');
+            $table->string('siswa_no_hp');
             $table->string('siswa_photo');
 
             $table->string('siswa_status')->nullable();
 
             // Asal Sekolah
 
-            $table->string("asal_nama_sekolah");
-            $table->text("asal_alamat_sekolah");
-            $table->string("asal_no_telepon_sekolah");
+            $table->string("asal_nama_sekolah")->nullable();
+            $table->text("asal_alamat_sekolah")->nullable();
+            $table->string("asal_no_telepon_sekolah")->nullable();
 
             // Jurusan
 

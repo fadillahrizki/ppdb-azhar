@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 /**
  * Class SiswaSmp
@@ -43,23 +44,31 @@ use Illuminate\Database\Eloquent\Model;
  */
 class SiswaSmp extends Model
 {
+	use Notifiable;
 
 	static $rules = [
 		'siswa_nama_lengkap' => 'required',
 		'siswa_nama_panggilan' => 'required',
-		'siswa_NIK' => 'required|unique:siswa_smp',
-		'siswa_NISN' => 'required|unique:siswa_smp',
+		'siswa_NIK' => 'required|unique:siswa_smps',
+		'siswa_NISN' => 'required|unique:siswa_smps',
 		'siswa_jenis_kelamin' => 'required',
 		'siswa_tempat' => 'required',
 		'siswa_tanggal_lahir' => 'required',
 		'siswa_alamat_tempat_tinggal' => 'required',
-		'siswa_email' => 'required|unique:siswa_smp',
-		'siswa_no_hp' => 'required|unique:siswa_smp',
+		'siswa_email' => 'required|unique:siswa_smps',
+		'siswa_no_hp' => 'required|unique:siswa_smps',
 		'asal_nama_sekolah' => 'required',
 		'asal_alamat_sekolah' => 'required',
 		'asal_no_telepon_sekolah' => 'required',
 		'kelas_pilihan_pertama' => 'required',
 		'kelas_pilihan_kedua' => 'required',
+	];
+
+	static $customMessage = [
+		'siswa_NIK.unique' => 'NIK sudah digunakan',
+		'siswa_email.unique' => 'Email sudah digunakan',
+		'siswa_NISN.unique' => 'NISN sudah digunakan',
+		'siswa_no_hp.unique' => 'No HP sudah digunakan',
 	];
 
 	protected $perPage = 20;
@@ -69,5 +78,12 @@ class SiswaSmp extends Model
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['siswa_photo', 'siswa_status', 'siswa_nama_lengkap', 'siswa_nama_panggilan', 'siswa_NIK', 'siswa_NISN', 'siswa_jenis_kelamin', 'siswa_tempat', 'siswa_tanggal_lahir', 'siswa_alamat_tempat_tinggal', 'siswa_email', 'siswa_no_hp', 'ayah_nama_lengkap', 'ayah_agama', 'ayah_pendidikan_terakhir', 'ayah_pekerjaan', 'ayah_penghasilan', 'ayah_no_hp', 'ibu_nama_lengkap', 'ibu_agama', 'ibu_pendidikan_terakhir', 'ibu_pekerjaan', 'ibu_penghasilan', 'ibu_no_hp', 'asal_nama_sekolah', 'asal_alamat_sekolah', 'asal_no_telepon_sekolah', 'kelas_pilihan_pertama', 'kelas_pilihan_kedua'];
+	protected $fillable = ['siswa_photo', 'siswa_status', 'siswa_nama_lengkap', 'siswa_nama_panggilan', 'siswa_NIK', 'siswa_NISN', 'siswa_jenis_kelamin', 'siswa_tempat', 'siswa_tanggal_lahir', 'siswa_alamat_tempat_tinggal', 'siswa_email', 'siswa_no_hp', 'ayah_nama_lengkap', 'ayah_agama', 'ayah_pendidikan_terakhir', 'ayah_pekerjaan', 'ayah_penghasilan', 'ibu_nama_lengkap', 'ibu_agama', 'ibu_pendidikan_terakhir', 'ibu_pekerjaan', 'ibu_penghasilan', 'asal_nama_sekolah', 'asal_alamat_sekolah', 'asal_no_telepon_sekolah', 'kelas_pilihan_pertama', 'kelas_pilihan_kedua'];
+
+	function getNomorAttribute()
+	{
+		$id = $this->id < 10 ? "0".$this->id : $this->id;
+		$tanggal = $this->created_at->format('dmy');
+		return "SMP.".$id.$tanggal;
+	}
 }

@@ -64,6 +64,11 @@
         {!! $errors->first('siswa_email', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
+        {{ Form::label('no telp / wa*') }}
+        {{ Form::text('siswa_no_hp', $siswaMa->siswa_no_hp, ['required','class' => 'form-control' . ($errors->has('siswa_no_hp') ? ' is-invalid' : ''), 'placeholder' => 'No Hp']) }}
+        {!! $errors->first('siswa_no_hp', '<p class="invalid-feedback">:message</p>') !!}
+    </div>
+    <div class="form-group">
         {{ Form::label('photo') }}
         <div class="custom-file">
             <input type="file" class="custom-file-input" id="customFile" name="siswa_photo">
@@ -118,11 +123,6 @@
         {{ Form::label('penghasilan') }}
         {{ Form::select('ayah_penghasilan', ['< 500.000'=>'< 500.000','> 500.000'=>'> 500.000','> 1 juta'=>'> 1 juta'] , $siswaMa->ayah_penghasilan, ['class' => 'form-control' . ($errors->has('ayah_penghasilan') ? ' is-invalid' : ''), 'placeholder' => '- Pilih Penghasilan -']) }}
         {!! $errors->first('ayah_penghasilan', '<p class="invalid-feedback">:message</p>') !!}
-    </div>
-    <div class="form-group">
-        {{ Form::label('no_hp') }}
-        {{ Form::text('ayah_no_hp', $siswaMa->ayah_no_hp, ['class' => 'form-control' . ($errors->has('ayah_no_hp') ? ' is-invalid' : ''), 'placeholder' => 'No Hp']) }}
-        {!! $errors->first('ayah_no_hp', '<p class="invalid-feedback">:message</p>') !!}
     </div>
 </div>
 

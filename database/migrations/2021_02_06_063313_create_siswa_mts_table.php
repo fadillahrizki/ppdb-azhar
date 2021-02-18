@@ -42,7 +42,6 @@ class CreateSiswaMtsTable extends Migration
             $table->string('ayah_pendidikan_terakhir')->nullable();
             $table->string('ayah_pekerjaan')->nullable();
             $table->string('ayah_penghasilan')->nullable();
-            $table->string('ayah_no_hp')->nullable();
 
             // Ibu
 
@@ -55,9 +54,9 @@ class CreateSiswaMtsTable extends Migration
 
             // Asal Sekolah
 
-            $table->string("asal_nama_sekolah");
-            $table->text("asal_alamat_sekolah");
-            $table->string("asal_no_telepon_sekolah");
+            $table->string("asal_nama_sekolah")->nullable();
+            $table->text("asal_alamat_sekolah")->nullable();
+            $table->string("asal_no_telepon_sekolah")->nullable();
 
             $table->timestamps();
         });

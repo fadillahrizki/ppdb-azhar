@@ -97,6 +97,11 @@
         {!! $errors->first('siswa_email', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
+        {{ Form::label('no telp / wa*') }}
+        {{ Form::text('siswa_no_hp', $siswaRa->siswa_no_hp, ['required','class' => 'form-control' . ($errors->has('siswa_no_hp') ? ' is-invalid' : ''), 'placeholder' => 'No Hp']) }}
+        {!! $errors->first('siswa_no_hp', '<p class="invalid-feedback">:message</p>') !!}
+    </div>
+    <div class="form-group">
         {{ Form::label('photo') }}
         <div class="custom-file">
             <input type="file" class="custom-file-input" id="customFile" name="siswa_photo">
@@ -151,11 +156,6 @@
         {{ Form::label('penghasilan') }}
         {{ Form::select('ayah_penghasilan', ['< 500.000'=>'< 500.000','> 500.000'=>'> 500.000','> 1 juta'=>'> 1 juta'] , $siswaRa->ayah_penghasilan, ['class' => 'form-control' . ($errors->has('ayah_penghasilan') ? ' is-invalid' : ''), 'placeholder' => '- Pilih Penghasilan -']) }}
         {!! $errors->first('ayah_penghasilan', '<p class="invalid-feedback">:message</p>') !!}
-    </div>
-    <div class="form-group">
-        {{ Form::label('no_hp') }}
-        {{ Form::text('ayah_no_hp', $siswaRa->ayah_no_hp, ['class' => 'form-control' . ($errors->has('ayah_no_hp') ? ' is-invalid' : ''), 'placeholder' => 'No Hp']) }}
-        {!! $errors->first('ayah_no_hp', '<p class="invalid-feedback">:message</p>') !!}
     </div>
 </div>
 
@@ -226,11 +226,6 @@
         {{ Form::label('pekerjaan') }}
         {{ Form::text('wali_pekerjaan', $siswaRa->wali_pekerjaan, ['class' => 'form-control' . ($errors->has('wali_pekerjaan') ? ' is-invalid' : ''), 'placeholder' => 'Pekerjaan']) }}
         {!! $errors->first('wali_pekerjaan', '<p class="invalid-feedback">:message</p>') !!}
-    </div>
-    <div class="form-group">
-        {{ Form::label('no_hp') }}
-        {{ Form::text('wali_no_hp', $siswaRa->wali_no_hp, ['class' => 'form-control' . ($errors->has('wali_no_hp') ? ' is-invalid' : ''), 'placeholder' => 'No Hp']) }}
-        {!! $errors->first('wali_no_hp', '<p class="invalid-feedback">:message</p>') !!}
     </div>
 </div>
 

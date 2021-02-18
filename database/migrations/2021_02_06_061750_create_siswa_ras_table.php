@@ -39,6 +39,7 @@ class CreateSiswaRasTable extends Migration
             $table->string('siswa_tinggi_badan');
             $table->string('siswa_transportasi');
             $table->string('siswa_email');
+            $table->string('siswa_no_hp');
             $table->string('siswa_photo');
 
             $table->string('siswa_status')->nullable();
@@ -53,7 +54,6 @@ class CreateSiswaRasTable extends Migration
             $table->string('ayah_pendidikan_terakhir')->nullable();
             $table->string('ayah_pekerjaan')->nullable();
             $table->string('ayah_penghasilan')->nullable();
-            $table->string('ayah_no_hp')->nullable();
 
             // Ibu
 
@@ -71,13 +71,12 @@ class CreateSiswaRasTable extends Migration
             $table->string("wali_nama_lengkap")->nullable();
             $table->text("wali_alamat_tinggal")->nullable();
             $table->string("wali_pekerjaan")->nullable();
-            $table->string("wali_no_hp")->nullable();
 
             // Asal Sekolah
 
-            $table->string("asal_nama_sekolah");
-            $table->text("asal_alamat_sekolah");
-            $table->string("asal_no_telepon_sekolah");
+            $table->string("asal_nama_sekolah")->nullable();
+            $table->text("asal_alamat_sekolah")->nullable();
+            $table->string("asal_no_telepon_sekolah")->nullable();
 
             $table->timestamps();
         });

@@ -9,7 +9,7 @@
     <meta name="author" content="" />
     <title>PPDB Al Azhar - @yield('title','Home')</title>
     <!--favicon-->
-    <link rel="icon" href="{{asset('assets/images/favicon.ico')}}" type="image/x-icon">
+    <link rel="icon" href="@yield('icon-jenjang')" type="image/x-icon">
     <!-- Vector CSS -->
     <link href="{{asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.css')}}" rel="stylesheet" />
     <!-- simplebar CSS-->

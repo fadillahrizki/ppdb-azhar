@@ -108,6 +108,14 @@
                         <li><a href="{{route('siswa-smk.kelulusan')}}"><i class="fa fa-circle-o"></i> Data Kelulusan</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="#" class="waves-effect">
+                        <i class="icon-people"></i> <span>Pengguna</span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li><a href="{{route('users.index')}}"><i class="fa fa-circle-o"></i> Semua Data</a></li>
+                    </ul>
+                </li>
 
             </ul>
 

@@ -1,5 +1,10 @@
 <?php
 
+use App\Models\SiswaSmk;
+use App\Models\Whatsapp;
+use App\Mail\SmkRegistration;
+use App\Notifications\Registration;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -31,6 +36,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// Route::get('test-send',function(){
+    // $siswa = SiswaSmk::find(1);
+    // (new Whatsapp)->send("082369378823","Pendaftaran Siswa Berhasil");
+    // Mail::to($siswa->siswa_email)->send(new SmkRegistration($siswa));
+// });
+
 Route::get('home', [HomeController::class, 'index'])->name('home');
 
 Route::get('siswa-ra-kelulusan', [SiswaRaController::class, 'kelulusan'])->middleware('auth')->name('siswa-ra.kelulusan');
@@ -61,3 +72,5 @@ Route::match(['get', 'post'], 'form-smp', [HomeController::class, 'siswa_smp']);
 Route::match(['get', 'post'], 'form-sma', [HomeController::class, 'siswa_sma']);
 Route::match(['get', 'post'], 'form-smk', [HomeController::class, 'siswa_smk']);
 Route::match(['get', 'post'], 'form-ma', [HomeController::class, 'siswa_ma']);
+
+Route::get('thankyou', [HomeController::class, 'thankyou']);
