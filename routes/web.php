@@ -73,4 +73,5 @@ Route::match(['get', 'post'], 'form-sma', [HomeController::class, 'siswa_sma']);
 Route::match(['get', 'post'], 'form-smk', [HomeController::class, 'siswa_smk']);
 Route::match(['get', 'post'], 'form-ma', [HomeController::class, 'siswa_ma']);
 
+Route::get('download/{jenjang}/{id}', [HomeController::class, 'download']);
 Route::get('thankyou', [HomeController::class, 'thankyou']);

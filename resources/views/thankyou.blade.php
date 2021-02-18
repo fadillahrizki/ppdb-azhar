@@ -30,9 +30,13 @@
                     <div class="text-center">
                         <img src="{{asset('assets/images/'.$_GET['jenjang'].'.png')}}">
                     </div>
-                    <div class="card-title text-uppercase text-center py-3">
+                    <div class="text-uppercase text-center py-3">
                         <p>{{$_GET['message']}}</p>
+                        <center>
+                            <b>Nomor pendaftaran</b> : {{$siswa->nomor}}
+                        </center>
                         <br><br>
+                        <a href="{{url()->to('download/'.strtolower($_GET['jenjang']).'/'.$_GET['id'])}}" class="btn btn-primary shadow-primary btn-round btn-block waves-effect waves-light">Cetak Bukti Pendaftaran</a>
                         <a href="{{url()->to('form-'.strtolower($_GET['jenjang']))}}" class="btn btn-primary shadow-primary btn-round btn-block waves-effect waves-light">Kembali Ke Form Pendaftaran</a>
                     </div>
                 </div>

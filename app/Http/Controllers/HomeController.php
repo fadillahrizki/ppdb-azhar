@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Dompdf\Dompdf;
 use App\Models\SiswaMa;
 use App\Models\SiswaRa;
 use App\Models\SiswaMts;
@@ -13,8 +14,10 @@ use Illuminate\Http\Request;
 use App\Mail\SmaRegistration;
 use App\Mail\SmkRegistration;
 use App\Mail\SmpRegistration;
+use LaravelQRCode\Facades\QRCode;
 use App\Notifications\Registration;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
@@ -73,7 +76,11 @@ class HomeController extends Controller
                         \n*Password :* ".$request->siswa_NIK;
                     (new Whatsapp)->send($request->siswa_no_hp,$pesan);
 
-                    return redirect()->to('thankyou',['message'=>'Pendaftaran Calon Peserta Didik Baru Berhasil','jenjang'=>'RA']);
+                    return redirect()->to('thankyou',[
+                        'message'=>'Pendaftaran Calon Peserta Didik Baru Berhasil',
+                        'jenjang'=>'RA',
+                        'id' => $siswa->id
+                    ]);
                 }
             }
 
@@ -107,7 +114,11 @@ class HomeController extends Controller
                 (new Whatsapp)->send($request->siswa_no_hp,$pesan);
 
                 if ($siswaMa) {
-                    return redirect()->to('thankyou',['message'=>'Pendaftaran Calon Peserta Didik Baru Berhasil','jenjang'=>'MA']);
+                    return redirect()->to('thankyou',[
+                        'message'=>'Pendaftaran Calon Peserta Didik Baru Berhasil',
+                        'jenjang'=>'MA',
+                        'id' => $SiswaMa->id
+                    ]);
                 }
             }
 
@@ -141,7 +152,11 @@ class HomeController extends Controller
                 (new Whatsapp)->send($request->siswa_no_hp,$pesan);
 
                 if ($siswaMt) {
-                    return redirect()->to('thankyou',['message'=>'Pendaftaran Calon Peserta Didik Baru Berhasil','jenjang'=>'MTS']);
+                    return redirect()->to('thankyou',[
+                        'message'=>'Pendaftaran Calon Peserta Didik Baru Berhasil',
+                        'jenjang'=>'MTS',
+                        'id' => $SiswaMt->id
+                    ]);
                 }
             }
 
@@ -175,7 +190,11 @@ class HomeController extends Controller
                 (new Whatsapp)->send($request->siswa_no_hp,$pesan);
 
                 if ($SiswaSmp) {
-                    return redirect()->to('thankyou',['message'=>'Pendaftaran Calon Peserta Didik Baru Berhasil','jenjang'=>'SMP']);
+                    return redirect()->to('thankyou',[
+                        'message'=>'Pendaftaran Calon Peserta Didik Baru Berhasil',
+                        'jenjang'=>'SMP',
+                        'id' => $SiswaSmp->id
+                    ]);
                 }
             }
 
@@ -209,7 +228,11 @@ class HomeController extends Controller
                 (new Whatsapp)->send($request->siswa_no_hp,$pesan);
 
                 if ($SiswaSma) {
-                    return redirect()->to('thankyou',['message'=>'Pendaftaran Calon Peserta Didik Baru Berhasil','jenjang'=>'SMA']);
+                    return redirect()->to('thankyou',[
+                        'message'=>'Pendaftaran Calon Peserta Didik Baru Berhasil',
+                        'jenjang'=>'SMA',
+                        'id' => $SiswaSma->id
+                    ]);
                 }
             }
 
@@ -243,7 +266,11 @@ class HomeController extends Controller
                 (new Whatsapp)->send($request->siswa_no_hp,$pesan);
 
                 if ($SiswaSmk) {
-                    return redirect()->to('thankyou',['message'=>'Pendaftaran Calon Peserta Didik Baru Berhasil','jenjang'=>'SMK']);
+                    return redirect()->to('thankyou',[
+                        'message'=>'Pendaftaran Calon Peserta Didik Baru Berhasil',
+                        'jenjang'=>'SMK',
+                        'id' => $SiswaSmk->id
+                    ]);
                 }
             }
 
@@ -255,6 +282,46 @@ class HomeController extends Controller
 
     function thankyou()
     {
-        return view('thankyou');
+        $jenjang = $_GET['jenjang'];
+        $id = $_GET['id'];
+        $siswa = "";
+        if($jenjang == 'MA') $siswa = SiswaMa::find($id);
+        if($jenjang == 'MTS') $siswa = SiswaMts::find($id);
+        if($jenjang == 'RA') $siswa = SiswaRa::find($id);
+        if($jenjang == 'SMA') $siswa = SiswaSma::find($id);
+        if($jenjang == 'SMK') $siswa = SiswaSmk::find($id);
+        if($jenjang == 'SMP') $siswa = SiswaSmp::find($id);
+        return view('thankyou',compact('siswa'));
+    }
+
+    function download($jenjang, $id)
+    {
+        $jenjang = strtoupper($jenjang);
+        if($jenjang == 'MA') $siswa = SiswaMa::find($id);
+        if($jenjang == 'MTS') $siswa = SiswaMts::find($id);
+        if($jenjang == 'RA') $siswa = SiswaRa::find($id);
+        if($jenjang == 'SMA') $siswa = SiswaSma::find($id);
+        if($jenjang == 'SMK') $siswa = SiswaSmk::find($id);
+        if($jenjang == 'SMP') $siswa = SiswaSmp::find($id);
+
+        // $foto = Storage::get($siswa->siswa_photo);
+        $foto = public_path().'/storage/'.$siswa->siswa_photo;
+        $type = pathinfo($foto, PATHINFO_EXTENSION);
+        $data = file_get_contents($foto);
+        $foto = 'data:image/' . $type . ';base64,' . base64_encode($data);
+
+        QRCode::text($siswa->nomor)->setOutfile(public_path().'/qrcode/'.$siswa->nomor.'.png')->png();
+
+        $qrcode = public_path().'/qrcode/'.$siswa->nomor.'.png';
+        $type = pathinfo($qrcode, PATHINFO_EXTENSION);
+        $data = file_get_contents($qrcode);
+        $qrcode = 'data:image/' . $type . ';base64,' . base64_encode($data);
+
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml(view('downloads.bukti',compact('siswa','foto','qrcode')));
+
+        $dompdf->render();
+
+        $dompdf->stream('Bukti-Pendaftaran-'.$siswa->nomor.'.pdf',array("Attachment" => false));
     }
 }
