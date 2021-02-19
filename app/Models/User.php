@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,7 +10,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasRoles;
+
+    static $rules = [
+        'name' => 'required',
+        'email' => 'sometimes|required|unique:users',
+        'password' => 'required',
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -54,5 +61,10 @@ class User extends Authenticatable
     public function adminlte_profile_url()
     {
         return 'profile';
+    }
+
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
     }
 }

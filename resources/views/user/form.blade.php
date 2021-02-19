@@ -13,7 +13,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('password') }}
-            <input type="password" value="{{$user->password}}" class="form-control {{$errors->has('password') ? ' is-invalid' : ''}}" placeholder="Password">
+            <input name="password" type="password" value="{{$user->password}}" class="form-control {{$errors->has('password') ? ' is-invalid' : ''}}" placeholder="Password">
             {!! $errors->first('password', '<div class="invalid-feedback">:message</p>') !!}
         </div>
     </div>

@@ -58,7 +58,7 @@ Route::post('siswa-sma-luluskan', [SiswaSmaController::class, 'luluskan'])->midd
 Route::post('siswa-ma-luluskan', [SiswaMaController::class, 'luluskan'])->middleware('auth')->name('siswa-ma.luluskan');
 Route::post('siswa-smk-luluskan', [SiswaSmkController::class, 'luluskan'])->middleware('auth')->name('siswa-smk.luluskan');
 
-Route::resource('users', UserController::class)->middleware('auth');
+Route::resource('users', UserController::class)->middleware(['auth','role_or_permission:super admin']);
 Route::resource('siswa-ra', SiswaRaController::class)->middleware('auth');
 Route::resource('siswa-smk', SiswaSmkController::class)->middleware('auth');
 Route::resource('siswa-ma', SiswaMaController::class)->middleware('auth');
@@ -73,5 +73,6 @@ Route::match(['get', 'post'], 'form-sma', [HomeController::class, 'siswa_sma']);
 Route::match(['get', 'post'], 'form-smk', [HomeController::class, 'siswa_smk']);
 Route::match(['get', 'post'], 'form-ma', [HomeController::class, 'siswa_ma']);
 
-Route::get('download/{jenjang}/{id}', [HomeController::class, 'download']);
-Route::get('thankyou', [HomeController::class, 'thankyou']);
+Route::get('download/{jenjang}/{id}', [HomeController::class, 'download'])->name('download');
+Route::get('thankyou', [HomeController::class, 'thankyou'])->name('thankyou');
+Route::post('users/{user}/update-permission', [UserController::class, 'updatePermission'])->name('users.update-permission')->middleware(['auth','role_or_permission:super admin']);

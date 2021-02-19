@@ -20,6 +20,21 @@
 @endsection
 
 @section('content')
+    @if ($message = Session::get('success'))
+    <div class="row">
+        <div class="col">
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <div class="alert-icon">
+                    <i class="icon-check"></i>
+                </div>
+                <div class="alert-message">
+                    <span><strong>Success!</strong> {{$message}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
     <section class="content">
         <div class="row">
             <div class="col-md-12">
@@ -27,9 +42,6 @@
                     <div class="card-header">
                         <div class="float-left">
                             <span class="card-title">Show User</span>
-                        </div>
-                        <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
                         </div>
                     </div>
 
@@ -44,6 +56,35 @@
                             {{ $user->email }}
                         </div>
 
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="float-left">
+                            <span class="card-title">Permission</span>
+                        </div>
+                    </div>
+
+                    <div class="card-body container">
+                        <form action="{{route('users.update-permission',$user->id)}}" method="POST">
+                            <div class="row">
+                                @csrf
+                                @foreach($permissions as $permission)
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="form-group">
+                                        <label for="permission{{$permission->id}}">
+                                            <input type="checkbox" name="permissions[]" id="permission{{$permission->id}}" value="{{$permission->name}}" {{$user->can($permission->name)?'checked=""':''}}>
+                                            {{$permission->name}}
+                                        </label>
+                                    </div>
+                                </div>
+                                @endforeach
+                                <div class="col-12">
+                                    <button class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -16,9 +16,12 @@ Siswa SMP
     </div>
     <div class="col-sm-3">
         <div class="btn-group float-sm-right">
+            @if(auth()->user()->hasAnyPermission(['laporan smp','super admin']))
             <button class="btn btn-primary waves-effect waves-light" onclick="window.print()"><i class="fa fa-fw fa-print"></i> Print Laporan</button>
-
+            @endif
+            @if(auth()->user()->hasAnyPermission(['tambah smp','super admin']))
             <a href="{{ route('siswa-smp.create') }}" class="btn btn-outline-primary waves-effect waves-light"><i class="fa fa-plus mr-1"></i> Tambah Siswa</a>
+            @endif
         </div>
     </div>
 </div>
@@ -136,13 +139,19 @@ Siswa SMP
                                 <td>{{ $siswaSmp->siswa_status ?? 'Belum Diketahui' }}</td>
 
                                 <td>
+                                    @if(auth()->user()->hasAnyPermission(['detail smp','super admin']))
+                                    <a class="btn btn-sm btn-primary " href="{{ route('siswa-smp.show',$siswaSmp->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
+                                    @endif
+                                    @if(auth()->user()->hasAnyPermission(['edit smp','super admin']))
+                                    <a class="btn btn-sm btn-success" href="{{ route('siswa-smp.edit',$siswaSmp->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                    @endif
+                                    @if(auth()->user()->hasAnyPermission(['hapus smp','super admin']))
                                     <form action="{{ route('siswa-smp.destroy',$siswaSmp->id) }}" method="POST">
-                                        <a class="btn btn-sm btn-primary " href="{{ route('siswa-smp.show',$siswaSmp->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                        <a class="btn btn-sm btn-success" href="{{ route('siswa-smp.edit',$siswaSmp->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
                                     </form>
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

@@ -35,7 +35,7 @@
 </head>
 
 <body>
-
+    @php($user=auth()->user())
     <!-- Start wrapper-->
     <div id="wrapper">
 
@@ -54,60 +54,97 @@
                         <i class="icon-home"></i> <span>Dashboard</span>
                     </a>
                 </li>
+                @if($user->hasAnyPermission(['lihat ra','tambah ra','edit ra','hapus ra','detail ra','laporan ra','kelulusan ra','super admin']))
                 <li>
                     <a href="#" class="waves-effect">
                         <i class="icon-people"></i> <span>Siswa RA</span> <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="sidebar-submenu">
+                        @if($user->hasAnyPermission(['lihat ra','tambah ra','edit ra','hapus ra','detail ra','laporan ra','super admin']))
                         <li><a href="{{route('siswa-ra.index')}}"><i class="fa fa-circle-o"></i> Semua Data</a></li>
+                        @endif
+                        @if($user->can('kelulusan ra') || $user->can('super admin'))
                         <li><a href="{{route('siswa-ra.kelulusan')}}"><i class="fa fa-circle-o"></i> Data Kelulusan</a></li>
+                        @endif
                     </ul>
                 </li>
+                @endif
+                @if($user->hasAnyPermission(['lihat mts','tambah mts','edit mts','hapus mts','detail mts','laporan mts','kelulusan mts','super admin']))
                 <li>
                     <a href="#" class="waves-effect">
                         <i class="icon-people"></i> <span>Siswa MTS</span> <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="sidebar-submenu">
+                        @if($user->hasAnyPermission(['lihat mts','tambah mts','edit mts','hapus mts','detail mts','laporan mts','super admin']))
                         <li><a href="{{route('siswa-mts.index')}}"><i class="fa fa-circle-o"></i> Semua Data</a></li>
+                        @endif
+                        @if($user->can('kelulusan mts') || $user->can('super admin'))
                         <li><a href="{{route('siswa-mts.kelulusan')}}"><i class="fa fa-circle-o"></i> Data Kelulusan</a></li>
+                        @endif
                     </ul>
                 </li>
+                @endif
+                @if($user->hasAnyPermission(['lihat smp','tambah smp','edit smp','hapus smp','detail smp','laporan smp','kelulusan smp','super admin']))
                 <li>
                     <a href="#" class="waves-effect">
                         <i class="icon-people"></i> <span>Siswa SMP</span> <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="sidebar-submenu">
+                        @if($user->hasAnyPermission(['lihat smp','tambah smp','edit smp','hapus smp','detail smp','laporan smp','super admin']))
                         <li><a href="{{route('siswa-smp.index')}}"><i class="fa fa-circle-o"></i> Semua Data</a></li>
+                        @endif
+                        @if($user->can('kelulusan smp') || $user->can('super admin'))
                         <li><a href="{{route('siswa-smp.kelulusan')}}"><i class="fa fa-circle-o"></i> Data Kelulusan</a></li>
+                        @endif
                     </ul>
                 </li>
+                @endif
+                @if($user->hasAnyPermission(['lihat sma','tambah sma','edit sma','hapus sma','detail sma','laporan sma','kelulusan sma','super admin']))
                 <li>
                     <a href="#" class="waves-effect">
                         <i class="icon-people"></i> <span>Siswa SMA</span> <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="sidebar-submenu">
+                        @if($user->hasAnyPermission(['lihat sma','tambah sma','edit sma','hapus sma','detail sma','laporan sma','super admin']))
                         <li><a href="{{route('siswa-sma.index')}}"><i class="fa fa-circle-o"></i> Semua Data</a></li>
+                        @endif
+                        @if($user->can('kelulusan sma') || $user->can('super admin'))
                         <li><a href="{{route('siswa-sma.kelulusan')}}"><i class="fa fa-circle-o"></i> Data Kelulusan</a></li>
+                        @endif
                     </ul>
                 </li>
+                @endif
+                @if($user->hasAnyPermission(['lihat ma','tambah ma','edit ma','hapus ma','detail ma','laporan ma','kelulusan ma','super admin']))
                 <li>
                     <a href="#" class="waves-effect">
                         <i class="icon-people"></i> <span>Siswa MA</span> <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="sidebar-submenu">
+                        @if($user->hasAnyPermission(['lihat ma','tambah ma','edit ma','hapus ma','detail ma','laporan ma','super admin']))
                         <li><a href="{{route('siswa-ma.index')}}"><i class="fa fa-circle-o"></i> Semua Data</a></li>
+                        @endif
+                        @if($user->can('kelulusan ma') || $user->can('super admin'))
                         <li><a href="{{route('siswa-ma.kelulusan')}}"><i class="fa fa-circle-o"></i> Data Kelulusan</a></li>
+                        @endif
                     </ul>
                 </li>
+                @endif
+                @if($user->hasAnyPermission(['lihat smk','tambah smk','edit smk','hapus smk','detail smk','laporan smk','kelulusan smk','super admin']))
                 <li>
                     <a href="#" class="waves-effect">
                         <i class="icon-people"></i> <span>Siswa SMK</span> <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="sidebar-submenu">
+                        @if($user->hasAnyPermission(['lihat smk','tambah smk','edit smk','hapus smk','detail smk','laporan smk','super admin']))
                         <li><a href="{{route('siswa-smk.index')}}"><i class="fa fa-circle-o"></i> Semua Data</a></li>
+                        @endif
+                        @if($user->can('kelulusan smk') || $user->can('super admin'))
                         <li><a href="{{route('siswa-smk.kelulusan')}}"><i class="fa fa-circle-o"></i> Data Kelulusan</a></li>
+                        @endif
                     </ul>
                 </li>
+                @endif
+                @if($user->hasAnyPermission(['super admin']))
                 <li>
                     <a href="#" class="waves-effect">
                         <i class="icon-people"></i> <span>Pengguna</span> <i class="fa fa-angle-left pull-right"></i>
@@ -116,6 +153,7 @@
                         <li><a href="{{route('users.index')}}"><i class="fa fa-circle-o"></i> Semua Data</a></li>
                     </ul>
                 </li>
+                @endif
 
             </ul>
 

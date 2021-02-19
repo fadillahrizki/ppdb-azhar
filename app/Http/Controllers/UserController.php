@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
 
 /**
  * Class UserController
@@ -11,6 +12,10 @@ use Illuminate\Http\Request;
  */
 class UserController extends Controller
 {
+    function __construct()
+    {
+        $this->permissions = Permission::where('guard_name','web')->get();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -60,8 +65,14 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
+        $permissions = $this->permissions;
 
-        return view('user.show', compact('user'));
+        return view('user.show', compact('user','permissions'));
+    }
+
+    function updatePermission(Request $request, User $user){
+        $user->syncPermissions($request->permissions);
+        return redirect()->route('users.show',$user->id)->with('success','update user permission success');
     }
 
     /**
@@ -86,7 +97,9 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        request()->validate(User::$rules);
+        $rules = User::$rules;
+        $rules['email'] = $rules['email'] . ',id,' . $user->id;
+        request()->validate($rules);
 
         $user->update($request->all());
 
