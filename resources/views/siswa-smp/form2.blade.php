@@ -16,7 +16,7 @@
     </div>
     <div class="form-group">
         {{ Form::label('NIK*') }}
-        {{ Form::text('siswa_NIK', $siswaSmp->siswa_NIK, ['required','class' => 'form-control' . ($errors->has('siswa_NIK') ? ' is-invalid' : ''), 'placeholder' => 'NIK']) }}
+        {{ Form::text('siswa_NIK', $siswaSmp->siswa_NIK, ['required', 'pattern' => '[0-9]{16}','class' => 'form-control' . ($errors->has('siswa_NIK') ? ' is-invalid' : ''), 'placeholder' => 'NIK']) }}
         {!! $errors->first('siswa_NIK', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">

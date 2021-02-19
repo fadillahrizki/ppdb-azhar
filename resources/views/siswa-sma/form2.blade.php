@@ -15,7 +15,7 @@
     </div>
     <div class="form-group">
         {{ Form::label('NIK*') }}
-        {{ Form::text('siswa_NIK', $siswaSma->siswa_NIK, ['required','class' => 'form-control' . ($errors->has('siswa_NIK') ? ' is-invalid' : ''), 'placeholder' => 'NIK']) }}
+        {{ Form::text('siswa_NIK', $siswaSma->siswa_NIK, ['required', 'pattern' => '[0-9]{16}','class' => 'form-control' . ($errors->has('siswa_NIK') ? ' is-invalid' : ''), 'placeholder' => 'NIK']) }}
         {!! $errors->first('siswa_NIK', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
@@ -71,7 +71,7 @@
     </div>
     <div class="form-group">
         {{ Form::label('NIK*') }}
-        {{ Form::text('ayah_NIK', $siswaSma->ayah_NIK, ['required','class' => 'form-control' . ($errors->has('ayah_NIK') ? ' is-invalid' : ''), 'placeholder' => 'NIK']) }}
+        {{ Form::text('ayah_NIK', $siswaSma->ayah_NIK, ['required', 'pattern' => '[0-9]{16}','class' => 'form-control' . ($errors->has('ayah_NIK') ? ' is-invalid' : ''), 'placeholder' => 'NIK']) }}
         {!! $errors->first('ayah_NIK', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
@@ -118,7 +118,7 @@
     </div>
     <div class="form-group">
         {{ Form::label('NIK*') }}
-        {{ Form::text('ibu_NIK', $siswaSma->ibu_NIK, ['required','class' => 'form-control' . ($errors->has('ibu_NIK') ? ' is-invalid' : ''), 'placeholder' => 'Nik']) }}
+        {{ Form::text('ibu_NIK', $siswaSma->ibu_NIK, ['required', 'pattern' => '[0-9]{16}','class' => 'form-control' . ($errors->has('ibu_NIK') ? ' is-invalid' : ''), 'placeholder' => 'Nik']) }}
         {!! $errors->first('ibu_NIK', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
