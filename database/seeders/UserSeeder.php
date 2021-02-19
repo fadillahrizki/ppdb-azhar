@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
         $user = User::create([
             'name'   => 'Administrator',
             'email'  => 'admin@admin.com',
-            'password' => bcrypt('password'),
+            'password' => 'password',
         ]);
 
         $user->givePermissionTo('super admin');
