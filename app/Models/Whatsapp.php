@@ -17,6 +17,9 @@ class Whatsapp extends Model
 
         $ganti = str_replace($n,"628",$a);
 
+        $message = str_replace("<b>","*",$message);
+        $message = str_replace("</b>","*",$message);
+
         $demokey=env('WOO_WA_KEY'); //this is demo key please change with your own key
         $url=env('WOO_WA_URL');
         $data = array(

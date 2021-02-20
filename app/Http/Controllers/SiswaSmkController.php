@@ -42,7 +42,7 @@ class SiswaSmkController extends Controller
         $SiswaSmk->siswa_status = $request->siswa_status;
 
         $message = "
-Selamat, $SiswaSmk->siswa_nama_lengkap telah dinyatakan LULUS dan telah diterima sebagai siswa/i SMK AL AZHAR MENGANTI GRESIK,
+Selamat, <b>$SiswaSmk->siswa_nama_lengkap</b> telah dinyatakan <b>LULUS</b> dan telah diterima sebagai siswa/i SMK AL AZHAR MENGANTI GRESIK,
 =====================
 Di Mohon Segera melakukan proses daftar ulang untuk tahap terakhir dengan membawa syarat-syarat yang bisa di lihat melalui website https://ppdb.alazharmenganti.id/daftarulang
 

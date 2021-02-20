@@ -42,7 +42,7 @@ class SiswaRaController extends Controller
         $siswaRa->siswa_status = $request->siswa_status;
 
         $message = "
-Selamat, $siswaRa->siswa_nama_lengkap telah dinyatakan LULUS dan telah diterima sebagai siswa/i RA AL AZHAR MENGANTI GRESIK,
+Selamat, <b>$siswaRa->siswa_nama_lengkap</b> telah dinyatakan <b>LULUS</b> dan telah diterima sebagai siswa/i RA AL AZHAR MENGANTI GRESIK,
 =====================
 Di Mohon Segera melakukan proses daftar ulang untuk tahap terakhir dengan membawa syarat-syarat yang bisa di lihat melalui website https://ppdb.alazharmenganti.id/daftarulang
 
