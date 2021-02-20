@@ -167,14 +167,14 @@ atau bisa mengunjungi website https://ppdb.alazhargresik.id";
 
                 $siswaMt = SiswaMts::create($res);
 
-                Mail::to($SiswaMt->siswa_email)->send(new MtRegistration($SiswaMt));
+                Mail::to($siswaMt->siswa_email)->send(new MtRegistration($SiswaMt));
                 $pesan = "
 *Selamat! Pendaftaran Peserta Didik Baru LPI AL Azhar Menganti Gresik Sudah Berhasil*
 ================================
 Berikut adalah informasi data anda dan akses login untuk mengikuti seleksi ujian online tes masuk.
 ================================
-*No. Pendaftaran :* ".$SiswaMt->nomor."
-*Nama Lengkap :* ".$SiswaMt->siswa_nama_lengkap."
+*No. Pendaftaran :* ".$siswaMt->nomor."
+*Nama Lengkap :* ".$siswaMt->siswa_nama_lengkap."
 *Jenjang :* MTS
 ================================
 *Username :* ".$request->siswa_NIK."
