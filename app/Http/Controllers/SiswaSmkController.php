@@ -41,15 +41,26 @@ class SiswaSmkController extends Controller
 
         $SiswaSmk->siswa_status = $request->siswa_status;
 
+        $message = "
+Selamat, $SiswaSmk->siswa_nama_lengkap telah dinyatakan LULUS dan telah diterima sebagai siswa/i SMK AL AZHAR MENGANTI GRESIK,
+=====================
+Di Mohon Segera melakukan proses daftar ulang untuk tahap terakhir dengan membawa syarat-syarat yang bisa di lihat melalui website https://ppdb.alazharmenganti.id/daftarulang
+
+
+
+Salam,
+Panitia PPDB LPI AL Azhar Menganti Gresik";
+        if($request->siswa_status != 'lulus') $message = "Maaf, $SiswaSmk->siswa_nama_lengkap telah dinyatakan TIDAK LULUS sebagai siswa/i MA AL AZHAR MENGANTI GRESIK";
+
         $data = [
             'title' => $request->siswa_status == 'lulus' ? 'Selamat!' : 'Maaf!',
-            'subject' => 'Pengumuman Hasil Penerimaan Peserta Didik Baru',
-            'message' => $request->siswa_status == 'lulus' ? 'Anda dinyatakan lulus sebagai siswa SMK Al Azhar' : ' Anda tidak dinyatakan lulus sebagai siswa SMK Al Azhar'
+            'subject' => 'INFORMASI KELULUSAN PPDB LPI AL AZHAR MENGANTI GRESIK',
+            'message' => $message
         ];
         
         Mail::to($SiswaSmk->siswa_email)->send(new GlobalMailer($data));
 
-        $pesan = "*".$data['title']."*\n".$data['message'];
+        $pesan = $message;
         (new Whatsapp)->send($SiswaSmk->siswa_no_hp,$pesan);
 
         if ($SiswaSmk->save()) {

@@ -41,16 +41,27 @@ class SiswaRaController extends Controller
 
         $siswaRa->siswa_status = $request->siswa_status;
 
+        $message = "
+Selamat, $siswaRa->siswa_nama_lengkap telah dinyatakan LULUS dan telah diterima sebagai siswa/i RA AL AZHAR MENGANTI GRESIK,
+=====================
+Di Mohon Segera melakukan proses daftar ulang untuk tahap terakhir dengan membawa syarat-syarat yang bisa di lihat melalui website https://ppdb.alazharmenganti.id/daftarulang
+
+
+
+Salam,
+Panitia PPDB LPI AL Azhar Menganti Gresik";
+        if($request->siswa_status != 'lulus') $message = "Maaf, $siswaRa->siswa_nama_lengkap telah dinyatakan TIDAK LULUS sebagai siswa/i MA AL AZHAR MENGANTI GRESIK";
+
         $data = [
             'title' => $request->siswa_status == 'lulus' ? 'Selamat!' : 'Maaf!',
-            'subject' => 'Pengumuman Hasil Penerimaan Peserta Didik Baru',
-            'message' => $request->siswa_status == 'lulus' ? 'Anda dinyatakan lulus sebagai siswa RA Al Azhar' : ' Anda tidak dinyatakan lulus sebagai siswa RA Al Azhar'
+            'subject' => 'INFORMASI KELULUSAN PPDB LPI AL AZHAR MENGANTI GRESIK',
+            'message' => $message
         ];
         
-        Mail::to($SiswaRa->siswa_email)->send(new GlobalMailer($data));
+        Mail::to($siswaRa->siswa_email)->send(new GlobalMailer($data));
 
-        $pesan = "*".$data['title']."*\n".$data['message'];
-        (new Whatsapp)->send($SiswaRa->siswa_no_hp,$pesan);
+        $pesan = $message;
+        (new Whatsapp)->send($siswaRa->siswa_no_hp,$pesan);
 
         if ($siswaRa->save()) {
             return redirect()->route('siswa-ra.kelulusan')

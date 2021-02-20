@@ -1,3 +1,3 @@
 <h2>{{$data['title']}}</h2>
 
-<p>{{$data['message']}}</p>
+<p>{!!nl2br($data['message'])!!}</p>
