@@ -75,7 +75,6 @@
                         @yield('content')
                     </div>
                     <div class="col-12 col-sm-5">
-                        <h4 style="position: fixed">Isi formulir untuk melakukan pendaftaran peserta didik baru</h4>
                     </div>
                 </div>
 

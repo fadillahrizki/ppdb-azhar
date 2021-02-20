@@ -3,7 +3,7 @@
 @section('icon-jenjang',asset('assets/images/SMP.png'))
 
 @section('title')
-Register Siswa SMP
+Formulir Pendaftaran Peserta Didik Baru SMP Al Azhar Menganti Gresik
 @endsection
 
 

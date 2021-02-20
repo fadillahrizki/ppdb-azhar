@@ -3,7 +3,7 @@
 @section('icon-jenjang',asset('assets/images/SMA.png'))
 
 @section('title')
-Register Siswa SMA
+Formulir Pendaftaran Peserta Didik Baru SMA Al Azhar Menganti Gresik
 @endsection
 
 @section('content_header')

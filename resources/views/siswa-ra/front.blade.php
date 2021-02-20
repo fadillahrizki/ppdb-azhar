@@ -3,7 +3,7 @@
 @section('icon-jenjang',asset('assets/images/MA.png'))
 
 @section('title')
-Register Siswa RA
+Formulir Pendaftaran Peserta Didik Baru RA Al Azhar Menganti Gresik
 @endsection
 
 @section('content_header')

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@if(isset($siswa))
+@php($siswaSmk=$siswa)
+@endif
+
 @section('title')
 {{ $siswaSmk->siswa_nama_lengkap ?? 'Show Siswa Smk' }}
 @endsection

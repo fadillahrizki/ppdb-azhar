@@ -3,7 +3,7 @@
 @section('icon-jenjang',asset('assets/images/SMP.png'))
 
 @section('title')
-Register Siswa MTS
+Formulir Pendaftaran Peserta Didik Baru MTS Al Azhar Menganti Gresik
 @endsection
 
 

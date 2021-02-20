@@ -76,7 +76,7 @@ class HomeController extends Controller
                         \n*Password :* ".$request->siswa_NIK;
                     (new Whatsapp)->send($request->siswa_no_hp,$pesan);
 
-                    return redirect()->to('thankyou',[
+                    return redirect()->route('thankyou',[
                         'message'=>'Pendaftaran Calon Peserta Didik Baru Berhasil',
                         'jenjang'=>'RA',
                         'id' => $siswa->id
@@ -114,7 +114,7 @@ class HomeController extends Controller
                 (new Whatsapp)->send($request->siswa_no_hp,$pesan);
 
                 if ($siswaMa) {
-                    return redirect()->to('thankyou',[
+                    return redirect()->route('thankyou',[
                         'message'=>'Pendaftaran Calon Peserta Didik Baru Berhasil',
                         'jenjang'=>'MA',
                         'id' => $SiswaMa->id
@@ -152,7 +152,7 @@ class HomeController extends Controller
                 (new Whatsapp)->send($request->siswa_no_hp,$pesan);
 
                 if ($siswaMt) {
-                    return redirect()->to('thankyou',[
+                    return redirect()->route('thankyou',[
                         'message'=>'Pendaftaran Calon Peserta Didik Baru Berhasil',
                         'jenjang'=>'MTS',
                         'id' => $SiswaMt->id
@@ -190,7 +190,7 @@ class HomeController extends Controller
                 (new Whatsapp)->send($request->siswa_no_hp,$pesan);
 
                 if ($SiswaSmp) {
-                    return redirect()->to('thankyou',[
+                    return redirect()->route('thankyou',[
                         'message'=>'Pendaftaran Calon Peserta Didik Baru Berhasil',
                         'jenjang'=>'SMP',
                         'id' => $SiswaSmp->id
@@ -228,7 +228,7 @@ class HomeController extends Controller
                 (new Whatsapp)->send($request->siswa_no_hp,$pesan);
 
                 if ($SiswaSma) {
-                    return redirect()->to('thankyou',[
+                    return redirect()->route('thankyou',[
                         'message'=>'Pendaftaran Calon Peserta Didik Baru Berhasil',
                         'jenjang'=>'SMA',
                         'id' => $SiswaSma->id
@@ -266,7 +266,7 @@ class HomeController extends Controller
                 (new Whatsapp)->send($request->siswa_no_hp,$pesan);
 
                 if ($SiswaSmk) {
-                    return redirect()->to('thankyou',[
+                    return redirect()->route('thankyou',[
                         'message'=>'Pendaftaran Calon Peserta Didik Baru Berhasil',
                         'jenjang'=>'SMK',
                         'id' => $SiswaSmk->id
@@ -297,12 +297,42 @@ class HomeController extends Controller
     function download($jenjang, $id)
     {
         $jenjang = strtoupper($jenjang);
-        if($jenjang == 'MA') $siswa = SiswaMa::find($id);
-        if($jenjang == 'MTS') $siswa = SiswaMts::find($id);
-        if($jenjang == 'RA') $siswa = SiswaRa::find($id);
-        if($jenjang == 'SMA') $siswa = SiswaSma::find($id);
-        if($jenjang == 'SMK') $siswa = SiswaSmk::find($id);
-        if($jenjang == 'SMP') $siswa = SiswaSmp::find($id);
+        $view = "";
+        if($jenjang == 'MA')
+        {
+            $view = "siswa-ma.ringkasan";
+            $siswa = SiswaMa::find($id);
+        } 
+        
+        if($jenjang == 'MTS') 
+        {
+            $view = "siswa-mts.ringkasan";
+            $siswa = SiswaMts::find($id);
+        }
+
+        if($jenjang == 'RA')
+        {
+            $view = "siswa-ra.ringkasan";
+            $siswa = SiswaRa::find($id);
+        } 
+
+        if($jenjang == 'SMA')
+        {
+            $view = "siswa-sma.ringkasan";
+            $siswa = SiswaSma::find($id);
+        }
+
+        if($jenjang == 'SMK')
+        {
+            $view = "siswa-smk.ringkasan";
+            $siswa = SiswaSmk::find($id);
+        }
+
+        if($jenjang == 'SMP')
+        {
+            $view = "siswa-smp.ringkasan";
+            $siswa = SiswaSmp::find($id);
+        }
 
         // $foto = Storage::get($siswa->siswa_photo);
         $foto = public_path().'/storage/'.$siswa->siswa_photo;
@@ -318,7 +348,7 @@ class HomeController extends Controller
         $qrcode = 'data:image/' . $type . ';base64,' . base64_encode($data);
 
         $dompdf = new Dompdf();
-        $dompdf->loadHtml(view('downloads.bukti',compact('siswa','foto','qrcode')));
+        $dompdf->loadHtml(view($view,compact('siswa','foto','qrcode')));
 
         $dompdf->render();
 
