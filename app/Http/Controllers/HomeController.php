@@ -28,6 +28,12 @@ class HomeController extends Controller
      */
     public function __construct()
     {
+        $this->link_ma = "";
+        $this->link_mts = "";
+        $this->link_ra = "";
+        $this->link_sma = "";
+        $this->link_smk = "";
+        $this->link_smp = "";
     }
 
     /**
@@ -70,10 +76,19 @@ class HomeController extends Controller
 
                     Mail::to($siswa->siswa_email)->send(new RaRegistration($siswa));
                     $pesan = "
-                        *Selamat! Pendaftaran Peserta Didik Baru Jenjang RA Berhasil*
-                        \nBerikut adalah informasi username dan password yang akan digunakan untuk ujian seleksi masuk.
-                        \n*Username :* ".$request->siswa_NIK."
-                        \n*Password :* ".$request->siswa_NIK;
+*Selamat! Pendaftaran Peserta Didik Baru LPI AL Azhar Menganti Gresik Sudah Berhasil*
+=====================================
+Berikut adalah informasi data anda dan akses login untuk mengikuti seleksi ujian online tes masuk.
+=====================================
+*No. Pendaftaran :* ".$siswa->nomor."
+*Nama Lengkap :* ".$siswa->siswa_nama_lengkap."
+*Jenjang :* RA
+=====================================
+*Username :* ".$request->siswa_NIK."
+*Password :* ".$request->siswa_NIK."
+Untuk informasi lebih lanjut silahkan klik link group whatsapp dibawah ini
+".$this->link_smk."
+atau bisa mengunjungi website https://ppdb.alazhargresik.id";
                     (new Whatsapp)->send($request->siswa_no_hp,$pesan);
 
                     return redirect()->route('thankyou',[
@@ -107,10 +122,19 @@ class HomeController extends Controller
 
                 Mail::to($SiswaMa->siswa_email)->send(new SmpRegistration($SiswaMa));
                 $pesan = "
-                        *Selamat! Pendaftaran Peserta Didik Baru Jenjang MA Berhasil*
-                        \nBerikut adalah informasi username dan password yang akan digunakan untuk ujian seleksi masuk.
-                        \n*Username :* ".$request->siswa_NIK."
-                        \n*Password :* ".$request->siswa_NIK;
+*Selamat! Pendaftaran Peserta Didik Baru LPI AL Azhar Menganti Gresik Sudah Berhasil*
+=====================================
+Berikut adalah informasi data anda dan akses login untuk mengikuti seleksi ujian online tes masuk.
+=====================================
+*No. Pendaftaran :* ".$SiswaMa->nomor."
+*Nama Lengkap :* ".$SiswaMa->siswa_nama_lengkap."
+*Jenjang :* MA
+=====================================
+*Username :* ".$request->siswa_NIK."
+*Password :* ".$request->siswa_NIK."
+Untuk informasi lebih lanjut silahkan klik link group whatsapp dibawah ini
+".$this->link_smk."
+atau bisa mengunjungi website https://ppdb.alazhargresik.id";
                 (new Whatsapp)->send($request->siswa_no_hp,$pesan);
 
                 if ($siswaMa) {
@@ -145,10 +169,19 @@ class HomeController extends Controller
 
                 Mail::to($SiswaMt->siswa_email)->send(new MtRegistration($SiswaMt));
                 $pesan = "
-                        *Selamat! Pendaftaran Peserta Didik Baru Jenjang MTS Berhasil*
-                        \nBerikut adalah informasi username dan password yang akan digunakan untuk ujian seleksi masuk.
-                        \n*Username :* ".$request->siswa_NIK."
-                        \n*Password :* ".$request->siswa_NIK;
+*Selamat! Pendaftaran Peserta Didik Baru LPI AL Azhar Menganti Gresik Sudah Berhasil*
+=====================================
+Berikut adalah informasi data anda dan akses login untuk mengikuti seleksi ujian online tes masuk.
+=====================================
+*No. Pendaftaran :* ".$SiswaMt->nomor."
+*Nama Lengkap :* ".$SiswaMt->siswa_nama_lengkap."
+*Jenjang :* MTS
+=====================================
+*Username :* ".$request->siswa_NIK."
+*Password :* ".$request->siswa_NIK."
+Untuk informasi lebih lanjut silahkan klik link group whatsapp dibawah ini
+".$this->link_mts."
+atau bisa mengunjungi website https://ppdb.alazhargresik.id";
                 (new Whatsapp)->send($request->siswa_no_hp,$pesan);
 
                 if ($siswaMt) {
@@ -183,10 +216,19 @@ class HomeController extends Controller
 
                 Mail::to($SiswaSmp->siswa_email)->send(new SmpRegistration($SiswaSmp));
                 $pesan = "
-                        *Selamat! Pendaftaran Peserta Didik Baru Jenjang SMP Berhasil*
-                        \nBerikut adalah informasi username dan password yang akan digunakan untuk ujian seleksi masuk.
-                        \n*Username :* ".$request->siswa_NIK."
-                        \n*Password :* ".$request->siswa_NIK;
+*Selamat! Pendaftaran Peserta Didik Baru LPI AL Azhar Menganti Gresik Sudah Berhasil*
+=====================================
+Berikut adalah informasi data anda dan akses login untuk mengikuti seleksi ujian online tes masuk.
+=====================================
+*No. Pendaftaran :* ".$SiswaSmp->nomor."
+*Nama Lengkap :* ".$SiswaSmp->siswa_nama_lengkap."
+*Jenjang :* SMP
+=====================================
+*Username :* ".$request->siswa_NIK."
+*Password :* ".$request->siswa_NIK."
+Untuk informasi lebih lanjut silahkan klik link group whatsapp dibawah ini
+".$this->link_smp."
+atau bisa mengunjungi website https://ppdb.alazhargresik.id";
                 (new Whatsapp)->send($request->siswa_no_hp,$pesan);
 
                 if ($SiswaSmp) {
@@ -221,10 +263,19 @@ class HomeController extends Controller
 
                 Mail::to($SiswaSma->siswa_email)->send(new SmaRegistration($SiswaSma));
                 $pesan = "
-                        *Selamat! Pendaftaran Peserta Didik Baru Jenjang SMA Berhasil*
-                        \nBerikut adalah informasi username dan password yang akan digunakan untuk ujian seleksi masuk.
-                        \n*Username :* ".$request->siswa_NIK."
-                        \n*Password :* ".$request->siswa_NIK;
+*Selamat! Pendaftaran Peserta Didik Baru LPI AL Azhar Menganti Gresik Sudah Berhasil*
+=====================================
+Berikut adalah informasi data anda dan akses login untuk mengikuti seleksi ujian online tes masuk.
+=====================================
+*No. Pendaftaran :* ".$SiswaSma->nomor."
+*Nama Lengkap :* ".$SiswaSma->siswa_nama_lengkap."
+*Jenjang :* SMA
+=====================================
+*Username :* ".$request->siswa_NIK."
+*Password :* ".$request->siswa_NIK."
+Untuk informasi lebih lanjut silahkan klik link group whatsapp dibawah ini
+".$this->link_sma."
+atau bisa mengunjungi website https://ppdb.alazhargresik.id";
                 (new Whatsapp)->send($request->siswa_no_hp,$pesan);
 
                 if ($SiswaSma) {
@@ -259,10 +310,19 @@ class HomeController extends Controller
 
                 Mail::to($SiswaSmk->siswa_email)->send(new SmkRegistration($SiswaSmk));
                 $pesan = "
-                        *Selamat! Pendaftaran Peserta Didik Baru Jenjang SMK Berhasil*
-                        \nBerikut adalah informasi username dan password yang akan digunakan untuk ujian seleksi masuk.
-                        \n*Username :* ".$request->siswa_NIK."
-                        \n*Password :* ".$request->siswa_NIK;
+*Selamat! Pendaftaran Peserta Didik Baru LPI AL Azhar Menganti Gresik Sudah Berhasil*
+=====================================
+Berikut adalah informasi data anda dan akses login untuk mengikuti seleksi ujian online tes masuk.
+=====================================
+*No. Pendaftaran :* ".$SiswaSmk->nomor."
+*Nama Lengkap :* ".$SiswaSmk->siswa_nama_lengkap."
+*Jenjang :* SMK
+=====================================
+*Username :* ".$request->siswa_NIK."
+*Password :* ".$request->siswa_NIK."
+Untuk informasi lebih lanjut silahkan klik link group whatsapp dibawah ini
+".$this->link_smk."
+atau bisa mengunjungi website https://ppdb.alazhargresik.id";
                 (new Whatsapp)->send($request->siswa_no_hp,$pesan);
 
                 if ($SiswaSmk) {
