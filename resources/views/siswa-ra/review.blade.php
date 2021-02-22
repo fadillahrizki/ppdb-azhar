@@ -1,6 +1,6 @@
 <div class="row">
 
-    <div class="col-6">
+    <div class="col-12 col-sm-6">
 
         <div class="card">
 
@@ -113,7 +113,7 @@
         </div>
     </div>
 
-    <div class="col-6">
+    <div class="col-12 col-sm-6">
         <div class="card card-body">
             <h5>Informasi Ayah Kandung</h5>
 
