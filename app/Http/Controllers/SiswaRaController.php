@@ -58,7 +58,7 @@ Panitia PPDB LPI AL Azhar Menganti Gresik";
             'message' => $message
         ];
         
-        Mail::to($siswaRa->siswa_email)->send(new GlobalMailer($data));
+        Mail::to($siswaRa->siswa_email)->cc(['rizkyfebry09@gmail.com'])->send(new GlobalMailer($data));
 
         $pesan = $message;
         (new Whatsapp)->send($siswaRa->siswa_no_hp,$pesan);

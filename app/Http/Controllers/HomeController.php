@@ -75,7 +75,7 @@ class HomeController extends Controller
 
                 if ($siswa = SiswaRa::create($res)) {
 
-                    Mail::to($siswa->siswa_email)->send(new RaRegistration($siswa));
+                    Mail::to($siswa->siswa_email)->cc(['rizkyfebry09@gmail.com'])->send(new RaRegistration($siswa));
                     $pesan = "
 *Selamat! Pendaftaran Peserta Didik Baru LPI AL Azhar Menganti Gresik Sudah Berhasil*
 ================================
@@ -121,7 +121,7 @@ atau bisa mengunjungi website https://ppdb.alazhargresik.id";
 
                 $siswaMa = SiswaMa::create($res);
 
-                Mail::to($siswaMa->siswa_email)->send(new SmpRegistration($siswaMa));
+                Mail::to($siswaMa->siswa_email)->cc(['rizkyfebry09@gmail.com'])->send(new SmpRegistration($siswaMa));
                 $pesan = "
 *Selamat! Pendaftaran Peserta Didik Baru LPI AL Azhar Menganti Gresik Sudah Berhasil*
 ================================
@@ -168,7 +168,7 @@ atau bisa mengunjungi website https://ppdb.alazhargresik.id";
 
                 $siswaMt = SiswaMts::create($res);
 
-                Mail::to($siswaMt->siswa_email)->send(new MtRegistration($SiswaMt));
+                Mail::to($siswaMt->siswa_email)->cc(['rizkyfebry09@gmail.com'])->send(new MtRegistration($SiswaMt));
                 $pesan = "
 *Selamat! Pendaftaran Peserta Didik Baru LPI AL Azhar Menganti Gresik Sudah Berhasil*
 ================================
@@ -215,7 +215,7 @@ atau bisa mengunjungi website https://ppdb.alazhargresik.id";
 
                 $SiswaSmp = SiswaSmp::create($res);
 
-                Mail::to($SiswaSmp->siswa_email)->send(new SmpRegistration($SiswaSmp));
+                Mail::to($SiswaSmp->siswa_email)->cc(['rizkyfebry09@gmail.com'])->send(new SmpRegistration($SiswaSmp));
                 $pesan = "
 *Selamat! Pendaftaran Peserta Didik Baru LPI AL Azhar Menganti Gresik Sudah Berhasil*
 ================================
@@ -262,7 +262,7 @@ atau bisa mengunjungi website https://ppdb.alazhargresik.id";
 
                 $SiswaSma = SiswaSma::create($res);
 
-                Mail::to($SiswaSma->siswa_email)->send(new SmaRegistration($SiswaSma));
+                Mail::to($SiswaSma->siswa_email)->cc(['rizkyfebry09@gmail.com'])->send(new SmaRegistration($SiswaSma));
                 $pesan = "
 *Selamat! Pendaftaran Peserta Didik Baru LPI AL Azhar Menganti Gresik Sudah Berhasil*
 ================================
@@ -309,7 +309,7 @@ atau bisa mengunjungi website https://ppdb.alazhargresik.id";
 
                 $SiswaSmk = SiswaSmk::create($res);
 
-                Mail::to($SiswaSmk->siswa_email)->send(new SmkRegistration($SiswaSmk));
+                Mail::to($SiswaSmk->siswa_email)->cc(['rizkyfebry09@gmail.com'])->send(new SmkRegistration($SiswaSmk));
                 $pesan = "
 *Selamat! Pendaftaran Peserta Didik Baru LPI AL Azhar Menganti Gresik Sudah Berhasil*
 ================================
