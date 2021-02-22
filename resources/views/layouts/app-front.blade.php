@@ -39,7 +39,7 @@
         <header class="topbar-nav">
             <nav class="navbar navbar-expand fixed-top gradient-scooter">
                 <div class="navbar-nav mr-auto align-items-center">
-                    <a href="/">
+                    <a href="javascript:void(0)">
                         <img src="@yield('icon-jenjang')" class="logo-icon" alt="logo icon">
                         <h5 class="logo-text">@yield('title','PPDB AL AZHAR')</h5>
                     </a>
