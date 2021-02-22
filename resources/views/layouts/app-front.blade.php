@@ -28,6 +28,21 @@
     <!--Data Tables -->
     <link href="{{asset('assets/plugins/bootstrap-datatable/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('assets/plugins/bootstrap-datatable/css/buttons.bootstrap4.min.css')}}" rel="stylesheet" type="text/css">
+    <style>
+        .front-bg {
+            background-image: url({{asset('assets/images/boy-01.svg')}});
+            background-position: top right;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        @media only screen and (max-width: 575px) {
+            .front-bg {
+                background-image: none;
+            }
+            .logo-text { display: none; }
+        }
+
+    </style>
 </head>
 
 <body>
@@ -64,7 +79,7 @@
         <div class="clearfix"></div>
 
         <div class="content-wrapper">
-            <div class="container-fluid" style="background-image: url({{asset('assets/images/boy-01.svg')}});background-position: top right;background-repeat: no-repeat;background-attachment: fixed;">
+            <div class="container-fluid front-bg">
 
                 <!--Start Content-->
 
