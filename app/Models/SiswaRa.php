@@ -72,7 +72,6 @@ class SiswaRa extends Model
 		'siswa_jumlah_saudara' => 'required',
 		'siswa_usia' => 'required',
 		'siswa_alamat_tempat_tinggal' => 'required',
-		'siswa_hobi' => 'required',
 		'siswa_cita_cita' => 'required',
 		'siswa_ukuran_sepatu' => 'required',
 		'siswa_ukuran_baju' => 'required',

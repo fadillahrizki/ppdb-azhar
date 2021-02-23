@@ -65,7 +65,6 @@ class SiswaMa extends Model
 		'siswa_jumlah_saudara' => 'required',
 		'siswa_usia' => 'required',
 		'siswa_alamat_tempat_tinggal' => 'required',
-		'siswa_hobi' => 'required',
 		'siswa_no_hp' => 'required|unique:siswa_mas',
 		'siswa_email' => 'required|unique:siswa_mas',
 		'siswa_photo' => 'required|mimes:jpeg,jpg,png|max:5120',
