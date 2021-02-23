@@ -32,7 +32,7 @@ class CreateSiswaMasTable extends Migration
             $table->string('siswa_jumlah_saudara');
             $table->integer('siswa_usia');
             $table->text('siswa_alamat_tempat_tinggal');
-            $table->string('siswa_hobi');
+            $table->string('siswa_hobi')->nullable();
             $table->string('siswa_email');
             $table->string('siswa_no_hp');
             $table->string('siswa_photo');

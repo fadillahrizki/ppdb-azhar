@@ -31,7 +31,7 @@ class CreateSiswaRasTable extends Migration
             $table->string('siswa_jumlah_saudara');
             $table->integer('siswa_usia');
             $table->text('siswa_alamat_tempat_tinggal');
-            $table->string('siswa_hobi');
+            $table->string('siswa_hobi')->nullable();
             $table->string('siswa_cita_cita');
             $table->string('siswa_ukuran_sepatu');
             $table->string('siswa_ukuran_baju');
