@@ -55,8 +55,8 @@
         {!! $errors->first('siswa_alamat_tempat_tinggal', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
-        {{ Form::label('hobi*') }}
-        {{ Form::text('siswa_hobi', $siswaSmk->siswa_hobi, ['required','class' => 'form-control' . ($errors->has('siswa_hobi') ? ' is-invalid' : ''), 'placeholder' => 'Hobi']) }}
+        {{ Form::label('hobi') }}
+        {{ Form::text('siswa_hobi', $siswaSmk->siswa_hobi, ['class' => 'form-control' . ($errors->has('siswa_hobi') ? ' is-invalid' : ''), 'placeholder' => 'Hobi']) }}
         {!! $errors->first('siswa_hobi', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
@@ -70,7 +70,8 @@
         {!! $errors->first('siswa_no_hp', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
-        {{ Form::label('photo*') }}
+        {{ Form::label('Foto Formal 4x6*') }}
+        <div class="alert alert-info p-2">Jenis file harus PNG, JPG atau JPEG. Max. 5mb</div>
         <div class="custom-file">
             <input type="file" class="custom-file-input" id="customFile" required name="siswa_photo">
             <label class="custom-file-label" for="customFile">Pilih file</label>
@@ -96,8 +97,8 @@
         {!! $errors->first('asal_alamat_sekolah', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
-        {{ Form::label('no_telepon_sekolah*') }}
-        {{ Form::text('asal_no_telepon_sekolah', $siswaSmk->asal_no_telepon_sekolah, ['required','class' => 'form-control' . ($errors->has('asal_no_telepon_sekolah') ? ' is-invalid' : ''), 'placeholder' => 'No Telepon Sekolah']) }}
+        {{ Form::label('no_telepon_sekolah') }}
+        {{ Form::text('asal_no_telepon_sekolah', $siswaSmk->asal_no_telepon_sekolah, ['class' => 'form-control' . ($errors->has('asal_no_telepon_sekolah') ? ' is-invalid' : ''), 'placeholder' => 'No Telepon Sekolah']) }}
         {!! $errors->first('asal_no_telepon_sekolah', '<p class="invalid-feedback">:message</p>') !!}
     </div>
 </div>
@@ -145,16 +146,30 @@
 <div class="form-group">
     <label for="license">
         {!! Form::checkbox("license", 1, false, ['id'=>'license','onchange'=>'enableBtn(this)']) !!}
-        Saya menyatakan dengan sesungguhnya bahwa isian data dalam formulir ini adalah benar. Apabila ternyata data tersebut tidak benar / palsu, maka saya bersedia menerima sanksi berupa Pembatalan sebagai Calon Peserta Didik MA Al Azhar
+        SAYA MENYATAKAN DENGAN SESUNGGUHNYA BAHWA ISIAN DATA DALAM FORMULIR INI ADALAH BENAR.
     </label>
 </div>
 
-<button type="button" id="btn-submit" class="btn btn-primary mb-3" disabled="disabled">Submit</button>
+<button type="button" id="btn-submit" class="btn btn-primary mb-3" {{old('license') ? '' : 'disabled="disabled"'}} >SIMPAN</button>
 <script>
 function enableBtn(el)
 {
     document.getElementById("btn-submit").setAttribute('disabled','disabled')
     if(el.checked)
         document.getElementById("btn-submit").removeAttribute('disabled')
+}
+
+document.querySelector('[name=jurusan_pilihan_pertama]').onchange = function() {
+    var jurusan1 = this.value
+    var jurusan_kedua = document.querySelector('[name=jurusan_pilihan_kedua]')
+    jurusan_kedua.value = ""
+    for(i=0;i<jurusan_kedua.options.length;i++)
+    {
+        jurusan_kedua.options[i].style.display="block"
+        if(jurusan_kedua.options[i].value == jurusan1)
+            jurusan_kedua.options[i].style.display="none"
+        else
+            jurusan_kedua.options[i].style.display="block"
+    }
 }
 </script>

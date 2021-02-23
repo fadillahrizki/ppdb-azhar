@@ -35,6 +35,28 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
         }
+        .custom-file-input:lang(en)~.custom-file-label::after {
+            content: "Upload";
+        }
+        .loading-overlay {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255,255,255,0.2);
+            position: fixed;
+            overflow: hidden;
+            z-index: 2;
+        }
+        
+        .loader{
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url('http://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Phi_fenomeni.gif/50px-Phi_fenomeni.gif') 50% 50% no-repeat rgba(0,0,0,0.5);
+        
+        }
         @media only screen and (max-width: 575px) {
             .front-bg {
                 background-image: none;
@@ -46,7 +68,9 @@
 </head>
 
 <body>
-
+    <div class="loading-overlay" style="display:none;">
+        <div class="loader"></div>
+    </div>
     <!-- Start wrapper-->
     <div id="wrapper" class="toggled">
 
@@ -124,36 +148,17 @@
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
     <script src="{{asset('assets/js/popper.min.js')}}"></script>
     <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
-
-    <!-- simplebar js -->
-    <script src="{{asset('assets/plugins/simplebar/js/simplebar.js')}}"></script>
-    <!-- waves effect js -->
-    <script src="{{asset('assets/js/waves.js')}}"></script>
-    <!-- sidebar-menu js -->
-    <script src="{{asset('assets/js/sidebar-menu.js')}}"></script>
-    <!-- Custom scripts -->
-    <script src="{{asset('assets/js/app-script.js')}}"></script>
-
-    <!-- Vector map JavaScript -->
-    <script src="{{asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
-    <!-- Chart js -->
-    <script src="{{asset('assets/plugins/Chart.js/Chart.min.js')}}"></script>
-    <!-- Index js -->
-    <script src="{{asset('assets/js/index.js')}}"></script>
-
-
-    <!--Data Tables js-->
-    <script src="{{asset('assets/plugins/bootstrap-datatable/js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/bootstrap-datatable/js/dataTables.bootstrap4.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/bootstrap-datatable/js/dataTables.buttons.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/bootstrap-datatable/js/buttons.bootstrap4.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/bootstrap-datatable/js/jszip.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/bootstrap-datatable/js/pdfmake.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/bootstrap-datatable/js/vfs_fonts.js')}}"></script>
-    <script src="{{asset('assets/plugins/bootstrap-datatable/js/buttons.html5.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/bootstrap-datatable/js/buttons.print.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/bootstrap-datatable/js/buttons.colVis.min.js')}}"></script>
+    <script>
+    $('form').submit(e => {
+        // event.preventDefault()
+        showOverlay()
+        // return false;
+    })
+    function showOverlay()
+    {
+        $('.loading-overlay').css('display','block')
+    }
+    </script>
 
 
     @yield('js')

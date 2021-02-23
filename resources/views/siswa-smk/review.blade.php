@@ -56,6 +56,6 @@
 </div>
 
 <div class="mb-3">
-    <button type="button" id="btn-edit" class="btn btn-info">Edit</button>
-    <button class="btn btn-primary">Proses</button>
+    <button type="button" id="btn-edit" class="btn btn-info">EDIT</button>
+    <button class="btn btn-primary">LANJUT SIMPAN</button>
 </div>

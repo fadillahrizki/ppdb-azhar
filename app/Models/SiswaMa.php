@@ -68,9 +68,9 @@ class SiswaMa extends Model
 		'siswa_hobi' => 'required',
 		'siswa_no_hp' => 'required|unique:siswa_mas',
 		'siswa_email' => 'required|unique:siswa_mas',
+		'siswa_photo' => 'required|mimes:jpeg,jpg,png|max:5120',
 		'asal_nama_sekolah' => 'required',
 		'asal_alamat_sekolah' => 'required',
-		'asal_no_telepon_sekolah' => 'required',
 		'jurusan_pilihan_pertama' => 'required',
 		'jurusan_pilihan_kedua' => 'required',
 	];

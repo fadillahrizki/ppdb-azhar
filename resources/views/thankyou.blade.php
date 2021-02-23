@@ -28,12 +28,13 @@
             <div class="card-body">
                 <div class="card-content p-2">
                     <div class="text-center">
-                        <img src="{{asset('assets/images/'.$_GET['jenjang'].'.png')}}">
+                        <img src="{{asset('assets/images/check.png')}}" width="100%">
                     </div>
                     <div class="text-uppercase text-center py-3">
-                        <p>{{$_GET['message']}}</p>
+                        <p>PENDAFTARAN TELAH BERHASIL<br>Silahkan Cek Email Dan Whatsapp Anda</p>
                         <center>
-                            <b>Nomor pendaftaran</b> : {{$siswa->nomor}}
+                            {{$siswa->siswa_nama_lengkap}}<br>
+                            <b>{{$siswa->nomor}}</b>
                         </center>
                         <br><br>
                         <a href="{{url()->to('download/'.strtolower($_GET['jenjang']).'/'.$_GET['id'])}}" class="btn btn-primary shadow-primary btn-round btn-block waves-effect waves-light">Cetak Bukti Pendaftaran</a>

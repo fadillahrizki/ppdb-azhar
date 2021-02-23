@@ -102,7 +102,8 @@
         {!! $errors->first('siswa_no_hp', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
-        {{ Form::label('photo*') }}
+        {{ Form::label('Foto Formal 4x6*') }}
+        <div class="alert alert-info p-2">Jenis file harus PNG, JPG atau JPEG. Max. 5mb</div>
         <div class="custom-file">
             <input type="file" class="custom-file-input" id="customFile" name="siswa_photo" required>
             <label class="custom-file-label" for="customFile">Pilih file</label>
@@ -123,13 +124,13 @@
         {!! $errors->first('ayah_nama_lengkap', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
-        {{ Form::label('NIK*') }}
-        {{ Form::text('ayah_NIK', $siswaRa->ayah_NIK, ['required','maxlength'=>'16', 'pattern' => '[0-9]{16}','class' => 'form-control' . ($errors->has('ayah_NIK') ? ' is-invalid' : ''), 'placeholder' => 'NIK']) }}
+        {{ Form::label('NIK') }}
+        {{ Form::text('ayah_NIK', $siswaRa->ayah_NIK, ['maxlength'=>'16', 'pattern' => '[0-9]{16}','class' => 'form-control' . ($errors->has('ayah_NIK') ? ' is-invalid' : ''), 'placeholder' => 'NIK']) }}
         {!! $errors->first('ayah_NIK', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
-        {{ Form::label('tempat_lahir*') }}
-        {{ Form::text('ayah_tempat', $siswaRa->ayah_tempat, ['required','class' => 'form-control' . ($errors->has('ayah_tempat') ? ' is-invalid' : ''), 'placeholder' => 'Tempat Lahir']) }}
+        {{ Form::label('tempat_lahir') }}
+        {{ Form::text('ayah_tempat', $siswaRa->ayah_tempat, ['class' => 'form-control' . ($errors->has('ayah_tempat') ? ' is-invalid' : ''), 'placeholder' => 'Tempat Lahir']) }}
         {!! $errors->first('ayah_tempat', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
@@ -170,13 +171,13 @@
         {!! $errors->first('ibu_nama_lengkap', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
-        {{ Form::label('NIK*') }}
-        {{ Form::text('ibu_NIK', $siswaRa->ibu_NIK, ['required','maxlength'=>'16', 'pattern' => '[0-9]{16}','class' => 'form-control' . ($errors->has('ibu_NIK') ? ' is-invalid' : ''), 'placeholder' => 'NIK']) }}
+        {{ Form::label('NIK') }}
+        {{ Form::text('ibu_NIK', $siswaRa->ibu_NIK, ['maxlength'=>'16', 'pattern' => '[0-9]{16}','class' => 'form-control' . ($errors->has('ibu_NIK') ? ' is-invalid' : ''), 'placeholder' => 'NIK']) }}
         {!! $errors->first('ibu_NIK', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
-        {{ Form::label('tempat_lahir*') }}
-        {{ Form::text('ibu_tempat', $siswaRa->ibu_tempat, ['required','class' => 'form-control' . ($errors->has('ibu_tempat') ? ' is-invalid' : ''), 'placeholder' => 'Tempat Lahir']) }}
+        {{ Form::label('tempat_lahir') }}
+        {{ Form::text('ibu_tempat', $siswaRa->ibu_tempat, ['class' => 'form-control' . ($errors->has('ibu_tempat') ? ' is-invalid' : ''), 'placeholder' => 'Tempat Lahir']) }}
         {!! $errors->first('ibu_tempat', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
@@ -260,11 +261,11 @@
 <div class="form-group">
     <label for="license">
         {!! Form::checkbox("license", 1, false, ['id'=>'license','onchange'=>'enableBtn(this)']) !!}
-        Saya menyatakan dengan sesungguhnya bahwa isian data dalam formulir ini adalah benar. Apabila ternyata data tersebut tidak benar / palsu, maka saya bersedia menerima sanksi berupa Pembatalan sebagai Calon Peserta Didik MA Al Azhar
+        SAYA MENYATAKAN DENGAN SESUNGGUHNYA BAHWA ISIAN DATA DALAM FORMULIR INI ADALAH BENAR.
     </label>
 </div>
 
-<button type="button" id="btn-submit" class="btn btn-primary mb-3" disabled="disabled">Submit</button>
+<button type="button" id="btn-submit" class="btn btn-primary mb-3" disabled="disabled">SIMPAN</button>
 <script>
 function enableBtn(el)
 {
