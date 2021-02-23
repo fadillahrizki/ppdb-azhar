@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>PPDB Al Azhar Login</title>
+    <title>PPDB LPI AL AZHAR MENGANTI GRESIK</title>
     <!--favicon-->
     <link rel="icon" href="{{asset('assets/images/MA.png')}}" type="image/x-icon">
     <!-- Bootstrap core CSS-->
@@ -30,13 +30,13 @@
                     <div class="text-center">
                         <img src="{{asset('assets/images/MA.png')}}">
                     </div>
-                    <div class="card-title text-uppercase text-center py-3">Sign In</div>
+                    <div class="card-title text-uppercase text-center py-3">Silahkan Login Disini</div>
                     <form action="{{ route('login') }}" method="post">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <div class="position-relative has-icon-right">
-                                <label for="exampleInputEmail" class="sr-only">Email</label>
-                                <input type="email" id="exampleInputEmail" name="email" class="form-control form-control-rounded {{ $errors->has('email') ? 'is-invalid' : '' }}" value="{{ old('email') }}" placeholder="Email">
+                                <label for="exampleInputEmail" class="sr-only">Username</label>
+                                <input type="email" id="exampleInputEmail" name="email" class="form-control form-control-rounded {{ $errors->has('email') ? 'is-invalid' : '' }}" value="{{ old('email') }}" placeholder="Username">
                                 <div class="form-control-position">
                                     <i class="icon-user"></i>
                                 </div>
@@ -63,15 +63,15 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-row mr-0 ml-0">
+                        {{-- <div class="form-row mr-0 ml-0">
                             <div class="form-group col-6">
                                 <div class="icheck-primary">
                                     <input type="checkbox" id="remember" name="remember" />
                                     <label for="remember">Remember me</label>
                                 </div>
                             </div>
-                        </div>
-                        <button class="btn btn-primary shadow-primary btn-round btn-block waves-effect waves-light">Sign In</button>
+                        </div> --}}
+                        <button class="btn btn-primary shadow-primary btn-round btn-block waves-effect waves-light">LOGIN</button>
                     </form>
                 </div>
             </div>
