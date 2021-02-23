@@ -396,10 +396,10 @@ atau bisa mengunjungi website https://ppdb.alazhargresik.id";
         }
 
         // $foto = Storage::get($siswa->siswa_photo);
-        $foto = public_path().'/storage/'.$siswa->siswa_photo;
+        $foto = public_path().'/assets/images/kop/'.$jenjang.".jpg";
         $type = pathinfo($foto, PATHINFO_EXTENSION);
         $data = file_get_contents($foto);
-        $foto = 'data:image/' . $type . ';base64,' . base64_encode($data);
+        $kop = 'data:image/' . $type . ';base64,' . base64_encode($data);
 
         QRCode::text($siswa->nomor)->setOutfile(public_path().'/qrcode/'.$siswa->nomor.'.png')->png();
 
@@ -408,9 +408,12 @@ atau bisa mengunjungi website https://ppdb.alazhargresik.id";
         $data = file_get_contents($qrcode);
         $qrcode = 'data:image/' . $type . ';base64,' . base64_encode($data);
 
-        $dompdf = new Dompdf();
-        $dompdf->loadHtml(view($view,compact('siswa','foto','qrcode')));
+        \Carbon\Carbon::setLocale('id');
+        $today = \Carbon\Carbon::now()->isoFormat('D MMMM Y');
 
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml(view($view,compact('siswa','kop','qrcode','today')));
+        $dompdf->setPaper('Folio','portraot');
         $dompdf->render();
 
         $dompdf->stream('Bukti-Pendaftaran-'.$siswa->nomor.'.pdf',array("Attachment" => false));

@@ -27,19 +27,6 @@
         <td colspan="2">{{$siswa->created_at->format('d-M-Y')}}</td>
     </tr>
     <tr>
-        <td>Status Calon</td>
-        <td>:</td>
-        <td colspan="2">{{$siswa->pondok_pilihan}}</td>
-    </tr>
-    <tr>
-        <td>Pilihan Jurusan</td>
-        <td>:</td>
-        <td colspan="2">
-            1. {{$siswa->jurusan_pilihan_pertama}} <br>
-            2. {{$siswa->jurusan_pilihan_kedua}}
-        </td>
-    </tr>
-    <tr>
         <td colspan="4" style="background:grey">DATA CALON SISWA</td>
     </tr>
     <tr>
@@ -116,7 +103,7 @@
         <td>Tes Kesehatan</td>
         <td>:</td>
         <td>08 April 2021</td>
-        <td>Pukul 08.00 di Aula SMK Al-Azhar</td>
+        <td>Pukul 08.00 di Aula MTS Al-Azhar</td>
     </tr>
     <tr>
         <td>Pengumuman</td>

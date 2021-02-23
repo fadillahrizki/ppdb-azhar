@@ -27,11 +27,6 @@
         <td colspan="2">{{$siswa->created_at->format('d-M-Y')}}</td>
     </tr>
     <tr>
-        <td>Status Calon</td>
-        <td>:</td>
-        <td colspan="2">{{$siswa->pondok_pilihan}}</td>
-    </tr>
-    <tr>
         <td>Pilihan Jurusan</td>
         <td>:</td>
         <td colspan="2">
@@ -116,7 +111,7 @@
         <td>Tes Kesehatan</td>
         <td>:</td>
         <td>08 April 2021</td>
-        <td>Pukul 08.00 di Aula SMK Al-Azhar</td>
+        <td>Pukul 08.00 di Aula MA Al-Azhar</td>
     </tr>
     <tr>
         <td>Pengumuman</td>
