@@ -27,11 +27,11 @@ class CreateSiswaSmksTable extends Migration
             $table->string('siswa_jenis_kelamin');
             $table->string('siswa_tempat');
             $table->date('siswa_tanggal_lahir');
-            $table->string('siswa_anak_ke');
-            $table->string('siswa_jumlah_saudara');
+            // $table->string('siswa_anak_ke');
+            // $table->string('siswa_jumlah_saudara');
             $table->integer('siswa_usia');
             $table->text('siswa_alamat_tempat_tinggal');
-            $table->string('siswa_hobi');
+            // $table->string('siswa_hobi');
             $table->string('siswa_email');
             $table->string('siswa_no_hp');
             $table->string('siswa_photo');
@@ -42,7 +42,7 @@ class CreateSiswaSmksTable extends Migration
 
             $table->string("asal_nama_sekolah")->nullable();
             $table->text("asal_alamat_sekolah")->nullable();
-            $table->string("asal_no_telepon_sekolah")->nullable();
+            // $table->string("asal_no_telepon_sekolah")->nullable();
 
             // Jurusan
 

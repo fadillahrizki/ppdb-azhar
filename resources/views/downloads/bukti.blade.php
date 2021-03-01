@@ -28,7 +28,7 @@
         </tr>
         <tr>
         <td>Tempat / Tanggal Lahir</td>
-        <td>{{$siswa->siswa_tempat}}, {{\Carbon\Carbon::parse($siswa->tanggal_lahir)->format('d-M-Y')}}</td>
+        <td>{{$siswa->siswa_tempat}}, {{\Carbon\Carbon::parse($siswa->tanggal_lahir)->format('d-m-Y')}}</td>
         </tr>
         <tr>
         <td>Waktu Mendaftar</td>

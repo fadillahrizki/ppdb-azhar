@@ -3,7 +3,11 @@
     <h5>Informasi Siswa</h5>
 
     <hr>
-
+    <div class="form-group">
+        {{ Form::label('jenjang*') }}
+        {{ Form::select('jenjang', [ 'TK'=>'TK', 'PAUD'=>'PAUD', 'MI'=>'MI'] , $siswaRa->jenjang, ['required','class' => 'form-control' . ($errors->has('jenjang') ? ' is-invalid' : ''), 'placeholder' => '- Pilih Jenis Kelamin -']) }}
+        {!! $errors->first('jenjang', '<p class="invalid-feedback">:message</p>') !!}
+    </div>
     <div class="form-group">
         {{ Form::label('nama_lengkap') }}
         {{ Form::text('siswa_nama_lengkap', $siswaRa->siswa_nama_lengkap, ['class' => 'form-control' . ($errors->has('siswa_nama_lengkap') ? ' is-invalid' : ''), 'placeholder' => 'Nama Lengkap']) }}

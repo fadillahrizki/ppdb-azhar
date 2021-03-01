@@ -35,16 +35,6 @@
         {!! $errors->first('siswa_tanggal_lahir', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
-        {{ Form::label('anak_ke*') }}
-        {{ Form::number('siswa_anak_ke', $siswaSmk->siswa_anak_ke, ['required','class' => 'form-control' . ($errors->has('siswa_anak_ke') ? ' is-invalid' : ''), 'placeholder' => 'Anak Ke']) }}
-        {!! $errors->first('siswa_anak_ke', '<p class="invalid-feedback">:message</p>') !!}
-    </div>
-    <div class="form-group">
-        {{ Form::label('jumlah_saudara*') }}
-        {{ Form::number('siswa_jumlah_saudara', $siswaSmk->siswa_jumlah_saudara, ['required','class' => 'form-control' . ($errors->has('siswa_jumlah_saudara') ? ' is-invalid' : ''), 'placeholder' => 'Jumlah Saudara']) }}
-        {!! $errors->first('siswa_jumlah_saudara', '<p class="invalid-feedback">:message</p>') !!}
-    </div>
-    <div class="form-group">
         {{ Form::label('usia*') }}
         {{ Form::number('siswa_usia', $siswaSmk->siswa_usia, ['required','class' => 'form-control' . ($errors->has('siswa_usia') ? ' is-invalid' : ''), 'placeholder' => 'Usia']) }}
         {!! $errors->first('siswa_usia', '<p class="invalid-feedback">:message</p>') !!}
@@ -53,11 +43,6 @@
         {{ Form::label('alamat_tempat_tinggal*') }}
         {{ Form::textarea('siswa_alamat_tempat_tinggal', $siswaSmk->siswa_alamat_tempat_tinggal, ['required','class' => 'form-control' . ($errors->has('siswa_alamat_tempat_tinggal') ? ' is-invalid' : ''), 'placeholder' => 'Alamat Tempat Tinggal']) }}
         {!! $errors->first('siswa_alamat_tempat_tinggal', '<p class="invalid-feedback">:message</p>') !!}
-    </div>
-    <div class="form-group">
-        {{ Form::label('hobi') }}
-        {{ Form::text('siswa_hobi', $siswaSmk->siswa_hobi, ['class' => 'form-control' . ($errors->has('siswa_hobi') ? ' is-invalid' : ''), 'placeholder' => 'Hobi']) }}
-        {!! $errors->first('siswa_hobi', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
         {{ Form::label('email*') }}
@@ -95,11 +80,6 @@
         {{ Form::label('alamat_sekolah*') }}
         {{ Form::textarea('asal_alamat_sekolah', $siswaSmk->asal_alamat_sekolah, ['required','class' => 'form-control' . ($errors->has('asal_alamat_sekolah') ? ' is-invalid' : ''), 'placeholder' => 'Alamat Sekolah']) }}
         {!! $errors->first('asal_alamat_sekolah', '<p class="invalid-feedback">:message</p>') !!}
-    </div>
-    <div class="form-group">
-        {{ Form::label('no_telepon_sekolah') }}
-        {{ Form::text('asal_no_telepon_sekolah', $siswaSmk->asal_no_telepon_sekolah, ['class' => 'form-control' . ($errors->has('asal_no_telepon_sekolah') ? ' is-invalid' : ''), 'placeholder' => 'No Telepon Sekolah']) }}
-        {!! $errors->first('asal_no_telepon_sekolah', '<p class="invalid-feedback">:message</p>') !!}
     </div>
 </div>
 

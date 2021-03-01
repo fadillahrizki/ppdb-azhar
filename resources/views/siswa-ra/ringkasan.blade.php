@@ -16,6 +16,11 @@
         <td colspan="2">{{$siswa->nomor}}</td>
     </tr>
     <tr>
+        <td>Pilihan Jenjang</td>
+        <td>:</td>
+        <td colspan="2">{{$siswa->jenjang}}</td>
+    </tr>
+    <tr>
         <td>Gelombang</td>
         <td>:</td>
         <td colspan="2">2</td>
@@ -23,7 +28,7 @@
     <tr>
         <td>Tanggal Pendaftaran</td>
         <td>:</td>
-        <td colspan="2">{{$siswa->created_at->format('d-M-Y')}}</td>
+        <td colspan="2">{{$siswa->created_at->format('d-m-Y')}}</td>
     </tr>
     <tr>
         <td colspan="4" style="background:grey">DATA CALON SISWA</td>
@@ -36,7 +41,7 @@
     <tr>
         <td>Tempat, Tanggal Lahir</td>
         <td>:</td>
-        <td colspan="2">{{$siswa->siswa_tempat}}, {{$siswa->siswa_tanggal_lahir}}</td>
+        <td colspan="2">{{$siswa->siswa_tempat}}, {{\Carbon\Carbon::parse($siswa->siswa_tanggal_lahir)->format('d-m-Y')}}</td>
     </tr>
     <tr>
         <td>Jenis Kelamin</td>
@@ -69,12 +74,12 @@
     <tr>
         <td>Username</td>
         <td>:</td>
-        <td colspan="2">{{$siswa->siswa_NIK}}</td>
+        <td colspan="2">{{$siswa->nomor}}</td>
     </tr>
     <tr>
         <td>Password</td>
         <td>:</td>
-        <td colspan="2">{{$siswa->siswa_NIK}}</td>
+        <td colspan="2">{{$siswa->nomor}}</td>
     </tr>
     <tr>
         <td colspan="4" style="background:grey;">INFORMASI SEKITAR PPDB</td>
@@ -97,12 +102,6 @@
         <td>:</td>
         <td>07 April 2021</td>
         <td>Onilne Mulai Pukul 13.00 - Selesai</td>
-    </tr>
-    <tr>
-        <td>Tes Kesehatan</td>
-        <td>:</td>
-        <td>08 April 2021</td>
-        <td>Pukul 08.00 di Aula RA Al-Azhar</td>
     </tr>
     <tr>
         <td>Pengumuman</td>

@@ -20,6 +20,7 @@ class CreateSiswaRasTable extends Migration
 
             $table->string('username')->nullable();
             $table->string('password')->nullable();
+            $table->string('jenjang')->nullable();
 
             $table->string('siswa_nama_lengkap');
             $table->string('siswa_nama_panggilan');

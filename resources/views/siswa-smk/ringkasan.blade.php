@@ -50,7 +50,7 @@
     <tr>
         <td>Tempat, Tanggal Lahir</td>
         <td>:</td>
-        <td colspan="2">{{$siswa->siswa_tempat}}, {{$siswa->siswa_tanggal_lahir}}</td>
+        <td colspan="2">{{$siswa->siswa_tempat}}, {{\Carbon\Carbon::parse($siswa->siswa_tanggal_lahir)->format('d-m-Y')}}</td>
     </tr>
     <tr>
         <td>Jenis Kelamin</td>
@@ -83,12 +83,17 @@
     <tr>
         <td>Username</td>
         <td>:</td>
-        <td colspan="2">{{$siswa->siswa_NIK}}</td>
+        <td colspan="2">{{$siswa->nomor}}</td>
     </tr>
     <tr>
         <td>Password</td>
         <td>:</td>
-        <td colspan="2">{{$siswa->siswa_NIK}}</td>
+        <td colspan="2">{{$siswa->nomor}}</td>
+    </tr>
+    <tr>
+        <td>Link Group Whatsapp</td>
+        <td>:</td>
+        <td colspan="2">{{env('WA_URL','https://google.com')}}</td>
     </tr>
     <tr>
         <td colspan="4" style="background:grey;">INFORMASI SEKITAR PPDB</td>
