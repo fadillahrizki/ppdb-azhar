@@ -29,7 +29,7 @@
     <tr>
         <td>Pilihan Jurusan</td>
         <td>:</td>
-        <td colspan="2">{{$siswa->jurusan_pilihan_pertama}}</td>
+        <td colspan="2">{{$siswa->jurusan}}</td>
     </tr>
     <tr>
         <td colspan="4" style="background:grey">DATA CALON SISWA</td>

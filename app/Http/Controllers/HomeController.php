@@ -85,7 +85,7 @@ Berikut adalah informasi data anda dan akses login untuk mengikuti seleksi ujian
 =============================
 *No. Pendaftaran :* ".$siswa->nomor."
 *Nama Lengkap :* ".$siswa->siswa_nama_lengkap."
-*Jenjang :* RA
+*Jenjang :* ".$siswa->jenjang."
 =============================
 *Username :* ".$siswa->nomor."
 *Password :* ".$siswa->nomor."

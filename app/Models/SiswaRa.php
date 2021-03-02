@@ -106,6 +106,6 @@ class SiswaRa extends Model
 	{
 		$id = $this->id < 10 ? "0".$this->id : $this->id;
 		$tanggal = $this->created_at->format('dmy');
-		return "RA.".$id.$tanggal;
+		return $this->jenjang.".".$id.$tanggal;
 	}
 }
