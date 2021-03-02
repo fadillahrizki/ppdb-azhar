@@ -3,7 +3,7 @@
 <p>
     <b>No Pendaftaran : </b>{{$siswa->nomor}}<br>
     <b>Nama Lengkap : </b>{{$siswa->siswa_nama_lengkap}}<br>
-    <b>Jenjang : </b>RA<br>
+    <b>Jenjang : </b>{{$siswa->jenjang}}<br>
 </p>
 <p>
     <b>Username : </b>{{$siswa->nomor}}<br>
