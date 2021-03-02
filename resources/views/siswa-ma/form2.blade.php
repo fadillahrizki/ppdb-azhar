@@ -68,16 +68,6 @@
         {{ Form::email('siswa_email', $siswaMa->siswa_email, ['required','class' => 'form-control' . ($errors->has('siswa_email') ? ' is-invalid' : ''), 'placeholder' => 'Email']) }}
         {!! $errors->first('siswa_email', '<p class="invalid-feedback">:message</p>') !!}
     </div>
-    <div class="form-group">
-        {{ Form::label('Foto Formal 4x6*') }}
-        <div class="alert alert-info p-2">Jenis file harus PNG, JPG atau JPEG. Max. 5mb</div>
-        <div class="custom-file">
-            <input type="file" class="custom-file-input" id="customFile" required name="siswa_photo">
-            <label class="custom-file-label" for="customFile">Pilih file</label>
-        </div>
-        {!! $errors->first('siswa_photo', '<p class="invalid-feedback">:message</p>') !!}
-    </div>
-
 </div>
 
 <div class="card card-body">

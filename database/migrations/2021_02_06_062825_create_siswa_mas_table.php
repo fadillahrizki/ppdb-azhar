@@ -35,7 +35,7 @@ class CreateSiswaMasTable extends Migration
             $table->string('siswa_hobi')->nullable();
             $table->string('siswa_email');
             $table->string('siswa_no_hp');
-            $table->string('siswa_photo');
+            // $table->string('siswa_photo');
 
             $table->string('siswa_status')->nullable();
 

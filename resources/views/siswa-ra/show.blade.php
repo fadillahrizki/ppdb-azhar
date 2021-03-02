@@ -28,10 +28,6 @@
 
     <div class="col-md-6">
 
-        <div class="mb-3 gradient-scooter p-3 text-center rounded">
-            <img src="{{asset('storage/'.$siswaRa->siswa_photo)}}" alt="{{$siswaRa->siswa_nama_lengkap}}" class="img-thumbnail img-profile">
-        </div>
-
         @if($siswaRa->siswa_status == null)
 
         <div class="row mb-3">

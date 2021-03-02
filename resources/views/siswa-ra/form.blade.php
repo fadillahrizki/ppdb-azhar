@@ -5,7 +5,7 @@
     <hr>
     <div class="form-group">
         {{ Form::label('jenjang*') }}
-        {{ Form::select('jenjang', [ 'TK'=>'TK', 'PAUD'=>'PAUD', 'MI'=>'MI'] , $siswaRa->jenjang, ['required','class' => 'form-control' . ($errors->has('jenjang') ? ' is-invalid' : ''), 'placeholder' => '- Pilih Jenis Kelamin -']) }}
+        {{ Form::select('jenjang', [ 'TK'=>'TK', 'PAUD'=>'PAUD', 'MI'=>'MI'] , $siswaRa->jenjang, ['required','class' => 'form-control' . ($errors->has('jenjang') ? ' is-invalid' : ''), 'placeholder' => '- Pilih Jenjang -']) }}
         {!! $errors->first('jenjang', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
@@ -105,15 +105,7 @@
         {{ Form::text('siswa_no_hp', $siswaRa->siswa_no_hp, ['required','class' => 'form-control' . ($errors->has('siswa_no_hp') ? ' is-invalid' : ''), 'placeholder' => 'No Hp']) }}
         {!! $errors->first('siswa_no_hp', '<p class="invalid-feedback">:message</p>') !!}
     </div>
-    <div class="form-group">
-        {{ Form::label('photo') }}
-        <div class="custom-file">
-            <input type="file" class="custom-file-input" id="customFile" name="siswa_photo">
-            <label class="custom-file-label" for="customFile">Pilih file</label>
-        </div>
-        {!! $errors->first('siswa_photo', '<p class="invalid-feedback">:message</p>') !!}
-    </div>
-
+    
 </div>
 
 <div class="card card-body">

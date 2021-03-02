@@ -50,7 +50,7 @@ class SiswaSmk extends Model
 		'siswa_alamat_tempat_tinggal' => 'required',
 		'siswa_no_hp' => 'required|unique:siswa_smks',
 		'siswa_email' => 'required|unique:siswa_smks',
-		'siswa_photo' => 'required|mimes:jpeg,jpg,png|max:5120',
+		// 'siswa_photo' => 'required|mimes:jpeg,jpg,png|max:5120',
 		'asal_nama_sekolah' => 'required',
 		'asal_alamat_sekolah' => 'required',
 		'jurusan_pilihan_pertama' => 'required',
@@ -71,7 +71,8 @@ class SiswaSmk extends Model
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['siswa_no_hp','siswa_photo', 'siswa_status',  'siswa_nama_lengkap', 'siswa_nama_panggilan', 'siswa_NIK', 'siswa_jenis_kelamin', 'siswa_tempat', 'siswa_tanggal_lahir', 'siswa_usia', 'siswa_alamat_tempat_tinggal', 'siswa_email', 'asal_nama_sekolah', 'asal_alamat_sekolah', 'jurusan_pilihan_pertama', 'jurusan_pilihan_kedua', 'pondok_pilihan'];
+	protected $guarded = [];
+	// protected $fillable = ['siswa_no_hp','siswa_photo', 'siswa_status',  'siswa_nama_lengkap', 'siswa_nama_panggilan', 'siswa_NIK', 'siswa_jenis_kelamin', 'siswa_tempat', 'siswa_tanggal_lahir', 'siswa_usia', 'siswa_alamat_tempat_tinggal', 'siswa_email', 'asal_nama_sekolah', 'asal_alamat_sekolah', 'jurusan_pilihan_pertama', 'jurusan_pilihan_kedua', 'pondok_pilihan'];
 
 	function getNomorAttribute()
 	{

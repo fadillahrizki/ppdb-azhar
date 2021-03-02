@@ -30,7 +30,7 @@ class CreateSiswaSmasTable extends Migration
             $table->text('siswa_alamat_tempat_tinggal');
             $table->string('siswa_email');
             $table->string('siswa_no_hp');
-            $table->string('siswa_photo');
+            // $table->string('siswa_photo');
 
             $table->string('siswa_status')->nullable();
 

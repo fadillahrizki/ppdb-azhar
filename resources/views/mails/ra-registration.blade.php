@@ -6,8 +6,8 @@
     <b>Jenjang : </b>RA<br>
 </p>
 <p>
-    <b>Username : </b>{{$siswa->siswa_NIK}}<br>
-    <b>Password : </b>{{$siswa->siswa_NIK}}<br>
+    <b>Username : </b>{{$siswa->nomor}}<br>
+    <b>Password : </b>{{$siswa->nomor}}<br>
 </p>
 <p>
     Untuk Informasi lebih lanjut silahkan klik link group whatsapp dibawah ini
