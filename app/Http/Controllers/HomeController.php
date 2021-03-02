@@ -12,6 +12,7 @@ use App\Models\SiswaSmp;
 use App\Models\Whatsapp;
 use App\Mail\MaRegistration;
 use App\Mail\MtRegistration;
+use App\Mail\RaRegistration;
 use Illuminate\Http\Request;
 use App\Mail\SmaRegistration;
 use App\Mail\SmkRegistration;
