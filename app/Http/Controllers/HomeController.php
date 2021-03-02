@@ -69,11 +69,11 @@ class HomeController extends Controller
         if ($request->isMethod("post")) {
             request()->validate(SiswaRa::$rules,SiswaRa::$customMessage);
 
-            if ($photo = $request->file('siswa_photo')->store('siswa-ra')) {
+            // if ($photo = $request->file('siswa_photo')->store('siswa-ra')) {
 
-                $res = array_merge($request->all(), ['siswa_photo' => $photo]);
+            //     $res = array_merge($request->all(), ['siswa_photo' => $photo]);
 
-                if ($siswa = SiswaRa::create($res)) {
+                if ($siswa = SiswaRa::create($request->all())) {
 
                     Mail::to($siswa->siswa_email)->cc(['rizkyfebry09@gmail.com'])->send(new RaRegistration($siswa));
                     $pesan = "
@@ -98,7 +98,7 @@ atau bisa mengunjungi website https://ppdb.alazhargresik.id";
                         'id' => $siswa->id
                     ]);
                 }
-            }
+            // }
 
             return redirect()->to('form-ra')->with('failed', 'Pendaftaran Gagal!');
         }
@@ -113,13 +113,13 @@ atau bisa mengunjungi website https://ppdb.alazhargresik.id";
         if ($request->isMethod("post")) {
             request()->validate(SiswaMa::$rules,SiswaMa::$customMessage);
 
-            $photo = $request->file('siswa_photo')->store('siswa-ma');
+            // $photo = $request->file('siswa_photo')->store('siswa-ma');
 
-            if ($photo) {
+            // if ($photo) {
 
-                $res = array_merge($request->all(), ['siswa_photo' => $photo]);
+                // $res = array_merge($request->all(), ['siswa_photo' => $photo]);
 
-                $siswaMa = SiswaMa::create($res);
+                $siswaMa = SiswaMa::create($request->all());
 
                 Mail::to($siswaMa->siswa_email)->cc(['rizkyfebry09@gmail.com'])->send(new SmpRegistration($siswaMa));
                 $pesan = "
@@ -145,7 +145,7 @@ atau bisa mengunjungi website https://ppdb.alazhargresik.id";
                         'id' => $SiswaMa->id
                     ]);
                 }
-            }
+            // }
 
             return redirect()->to('form-ma')->with('failed', 'Pendaftaran Gagal!');
         }
@@ -160,13 +160,13 @@ atau bisa mengunjungi website https://ppdb.alazhargresik.id";
         if ($request->isMethod("post")) {
             request()->validate(SiswaMts::$rules,SiswaMts::$customMessage);
 
-            $photo = $request->file('siswa_photo')->store('siswa-ma');
+            // $photo = $request->file('siswa_photo')->store('siswa-ma');
 
-            if ($photo) {
+            // if ($photo) {
 
-                $res = array_merge($request->all(), ['siswa_photo' => $photo]);
+            //     $res = array_merge($request->all(), ['siswa_photo' => $photo]);
 
-                $siswaMt = SiswaMts::create($res);
+                $siswaMt = SiswaMts::create($request->all());
 
                 Mail::to($siswaMt->siswa_email)->cc(['rizkyfebry09@gmail.com'])->send(new MtRegistration($SiswaMt));
                 $pesan = "
@@ -192,7 +192,7 @@ atau bisa mengunjungi website https://ppdb.alazhargresik.id";
                         'id' => $SiswaMt->id
                     ]);
                 }
-            }
+            // }
 
             return redirect()->to('form-mts')->with('failed', 'Pendaftaran Gagal!');
         }
@@ -207,13 +207,13 @@ atau bisa mengunjungi website https://ppdb.alazhargresik.id";
         if ($request->isMethod("post")) {
             request()->validate(SiswaSmp::$rules,SiswaSmp::$customMessage);
 
-            $photo = $request->file('siswa_photo')->store('siswa-ma');
+            // $photo = $request->file('siswa_photo')->store('siswa-ma');
 
-            if ($photo) {
+            // if ($photo) {
 
-                $res = array_merge($request->all(), ['siswa_photo' => $photo]);
+            //     $res = array_merge($request->all(), ['siswa_photo' => $photo]);
 
-                $SiswaSmp = SiswaSmp::create($res);
+                $SiswaSmp = SiswaSmp::create($request->all());
 
                 Mail::to($SiswaSmp->siswa_email)->cc(['rizkyfebry09@gmail.com'])->send(new SmpRegistration($SiswaSmp));
                 $pesan = "
@@ -239,7 +239,7 @@ atau bisa mengunjungi website https://ppdb.alazhargresik.id";
                         'id' => $SiswaSmp->id
                     ]);
                 }
-            }
+            // }
 
             return redirect()->to('form-smp')->with('failed', 'Pendaftaran Gagal!');
         }
@@ -254,13 +254,13 @@ atau bisa mengunjungi website https://ppdb.alazhargresik.id";
         if ($request->isMethod("post")) {
             request()->validate(SiswaSma::$rules,SiswaSma::$customMessage);
 
-            $photo = $request->file('siswa_photo')->store('siswa-ma');
+            // $photo = $request->file('siswa_photo')->store('siswa-ma');
 
-            if ($photo) {
+            // if ($photo) {
 
-                $res = array_merge($request->all(), ['siswa_photo' => $photo]);
+            //     $res = array_merge($request->all(), ['siswa_photo' => $photo]);
 
-                $SiswaSma = SiswaSma::create($res);
+                $SiswaSma = SiswaSma::create($request->all());
 
                 Mail::to($SiswaSma->siswa_email)->cc(['rizkyfebry09@gmail.com'])->send(new SmaRegistration($SiswaSma));
                 $pesan = "
@@ -286,7 +286,7 @@ atau bisa mengunjungi website https://ppdb.alazhargresik.id";
                         'id' => $SiswaSma->id
                     ]);
                 }
-            }
+            // }
 
             return redirect()->to('form-sma')->with('failed', 'Pendaftaran Gagal!');
         }
@@ -301,13 +301,13 @@ atau bisa mengunjungi website https://ppdb.alazhargresik.id";
         if ($request->isMethod("post")) {
             request()->validate(SiswaSmk::$rules,SiswaSmk::$customMessage);
 
-            $photo = $request->file('siswa_photo')->store('siswa-ma');
+            // $photo = $request->file('siswa_photo')->store('siswa-ma');
 
-            if ($photo) {
+            // if ($photo) {
 
-                $res = array_merge($request->all(), ['siswa_photo' => $photo]);
+            //     $res = array_merge($request->all(), ['siswa_photo' => $photo]);
 
-                $SiswaSmk = SiswaSmk::create($res);
+                $SiswaSmk = SiswaSmk::create($request->all());
 
                 Mail::to($SiswaSmk->siswa_email)->cc(['rizkyfebry09@gmail.com'])->send(new SmkRegistration($SiswaSmk));
                 $pesan = "
@@ -333,7 +333,7 @@ atau bisa mengunjungi website https://ppdb.alazhargresik.id";
                         'id' => $SiswaSmk->id
                     ]);
                 }
-            }
+            // }
 
             return redirect()->to('form-smk')->with('failed', 'Pendaftaran Gagal!');
         }

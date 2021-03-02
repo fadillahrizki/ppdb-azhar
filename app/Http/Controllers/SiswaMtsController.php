@@ -93,19 +93,19 @@ Panitia PPDB LPI AL Azhar Menganti Gresik";
     {
         request()->validate(SiswaMts::$rules,SiswaMts::$customMessage);
 
-        $photo = $request->file('siswa_photo')->store('siswa-mts');
+        // $photo = $request->file('siswa_photo')->store('siswa-mts');
 
-        if ($photo) {
+        // if ($photo) {
 
-            $res = array_merge($request->all(), ['siswa_photo' => $photo]);
+            // $res = array_merge($request->all(), ['siswa_photo' => $photo]);
 
-            $siswaMts = SiswaMts::create($res);
+            $siswaMts = SiswaMts::create($request->all());
 
             if ($siswaMts) {
                 return redirect()->route('siswa-mts.index')
                     ->with('success', 'SiswaMts created successfully.');
             }
-        }
+        // }
 
         return redirect()->route('siswa-mts.index')->with('failed', 'SiswaMts created failed');
     }
@@ -147,27 +147,27 @@ Panitia PPDB LPI AL Azhar Menganti Gresik";
     {
         request()->validate(SiswaMts::$rules,SiswaMts::$customMessage);
 
-        if ($request->file('siswa_photo')) {
-            $photo = $request->file('siswa_photo')->store('siswa-mts');
+        // if ($request->file('siswa_photo')) {
+        //     $photo = $request->file('siswa_photo')->store('siswa-mts');
 
-            if ($photo) {
+        //     if ($photo) {
 
-                if (Storage::delete($siswaMt->siswa_photo)) {
+        //         if (Storage::delete($siswaMt->siswa_photo)) {
 
-                    $res = array_merge($request->all(), ['siswa_photo' => $photo]);
+        //             $res = array_merge($request->all(), ['siswa_photo' => $photo]);
 
-                    if ($siswaMt->update($res)) {
-                        return redirect()->route('siswa-mts.index')
-                            ->with('success', 'SiswaMts updated successfully');
-                    }
-                }
-            }
-        } else {
-            if ($siswaMt->update($request->except('siswa_photo'))) {
+        //             if ($siswaMt->update($res)) {
+        //                 return redirect()->route('siswa-mts.index')
+        //                     ->with('success', 'SiswaMts updated successfully');
+        //             }
+        //         }
+        //     }
+        // } else {
+            if ($siswaMt->update($request->all())) {
                 return redirect()->route('siswa-mts.index')
                     ->with('success', 'SiswaMts updated successfully');
             }
-        }
+        // }
 
         return redirect()->route('siswa-mts.index')->with('failed', 'SiswaMts updated failed');
     }

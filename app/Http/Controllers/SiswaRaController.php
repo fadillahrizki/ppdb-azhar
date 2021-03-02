@@ -92,15 +92,15 @@ Panitia PPDB LPI AL Azhar Menganti Gresik";
     {
         request()->validate(SiswaRa::$rules,SiswaRa::$customMessage);
 
-        if ($photo = $request->file('siswa_photo')->store('siswa-ra')) {
+        // if ($photo = $request->file('siswa_photo')->store('siswa-ra')) {
 
-            $res = array_merge($request->all(), ['siswa_photo' => $photo]);
+        //     $res = array_merge($request->all(), ['siswa_photo' => $photo]);
 
-            if (SiswaRa::create($res)) {
+            if (SiswaRa::create($request->all())) {
                 return redirect()->route('siswa-ra.index')
                     ->with('success', 'SiswaRa created successfully.');
             }
-        }
+        // }
 
         return redirect()->route('siswa-ra.index')->with('failed', 'SiswaRa created failed');
     }
@@ -143,25 +143,25 @@ Panitia PPDB LPI AL Azhar Menganti Gresik";
     {
         request()->validate(SiswaRa::$rules,SiswaRa::$customMessage);
 
-        if ($request->file('siswa_photo')) {
-            if ($photo = $request->file('siswa_photo')->store('siswa-ra')) {
+        // if ($request->file('siswa_photo')) {
+        //     if ($photo = $request->file('siswa_photo')->store('siswa-ra')) {
 
-                if (Storage::delete($siswaRa->siswa_photo)) {
-                    $res = array_merge($request->all(), ['siswa_photo' => $photo]);
+        //         if (Storage::delete($siswaRa->siswa_photo)) {
+        //             $res = array_merge($request->all(), ['siswa_photo' => $photo]);
 
-                    if ($siswaRa->update($res)) {
-                        return redirect()->route('siswa-ra.index')
-                            ->with('success', 'SiswaRa updated successfully');
-                    }
-                }
-            }
-        } else {
+        //             if ($siswaRa->update($res)) {
+        //                 return redirect()->route('siswa-ra.index')
+        //                     ->with('success', 'SiswaRa updated successfully');
+        //             }
+        //         }
+        //     }
+        // } else {
 
-            if ($siswaRa->update($request->except('siswa_photo'))) {
+            if ($siswaRa->update($request->all())) {
                 return redirect()->route('siswa-ra.index')
                     ->with('success', 'SiswaRa updated successfully');
             }
-        }
+        // }
 
         return redirect()->route('siswa-ra.index')->with('failed', 'SiswaRa updated failed');
     }

@@ -71,8 +71,8 @@ class SiswaSmk extends Model
 	 *
 	 * @var array
 	 */
-	protected $guarded = [];
-	// protected $fillable = ['siswa_no_hp','siswa_photo', 'siswa_status',  'siswa_nama_lengkap', 'siswa_nama_panggilan', 'siswa_NIK', 'siswa_jenis_kelamin', 'siswa_tempat', 'siswa_tanggal_lahir', 'siswa_usia', 'siswa_alamat_tempat_tinggal', 'siswa_email', 'asal_nama_sekolah', 'asal_alamat_sekolah', 'jurusan_pilihan_pertama', 'jurusan_pilihan_kedua', 'pondok_pilihan'];
+	// protected $guarded = [];
+	protected $fillable = ['siswa_no_hp','siswa_status',  'siswa_nama_lengkap', 'siswa_nama_panggilan', 'siswa_NIK', 'siswa_jenis_kelamin', 'siswa_tempat', 'siswa_tanggal_lahir', 'siswa_usia', 'siswa_alamat_tempat_tinggal', 'siswa_email', 'asal_nama_sekolah', 'asal_alamat_sekolah', 'jurusan_pilihan_pertama', 'jurusan_pilihan_kedua', 'pondok_pilihan'];
 
 	function getNomorAttribute()
 	{

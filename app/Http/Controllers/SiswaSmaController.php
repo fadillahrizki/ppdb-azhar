@@ -93,11 +93,11 @@ Panitia PPDB LPI AL Azhar Menganti Gresik";
     {
         request()->validate(SiswaSma::$rules,SiswaSma::$customMessage);
 
-        $photo = $request->file('siswa_photo')->store('siswa-sma');
+        // $photo = $request->file('siswa_photo')->store('siswa-sma');
 
-        if ($photo) {
+        // if ($photo) {
 
-            $res = array_merge($request->all(), ['siswa_photo' => $photo]);
+        //     $res = array_merge($request->all(), ['siswa_photo' => $photo]);
 
             $siswaSma = SiswaSma::create($res);
 
@@ -107,7 +107,7 @@ Panitia PPDB LPI AL Azhar Menganti Gresik";
             }
 
             return redirect()->route('siswa-sma.index')->with('failed', 'SiswaSma created failed');
-        }
+        // }
     }
 
     /**
@@ -146,27 +146,27 @@ Panitia PPDB LPI AL Azhar Menganti Gresik";
     public function update(Request $request, SiswaSma $siswaSma)
     {
         request()->validate(SiswaSma::$rules,SiswaSma::$customMessage);
-        if ($request->file('siswa_photo')) {
-            $photo = $request->file('siswa_photo')->store('siswa-sma');
+        // if ($request->file('siswa_photo')) {
+        //     $photo = $request->file('siswa_photo')->store('siswa-sma');
 
-            if ($photo) {
+        //     if ($photo) {
 
-                if (Storage::delete($siswaSma->siswa_photo)) {
+        //         if (Storage::delete($siswaSma->siswa_photo)) {
 
-                    $res = array_merge($request->all(), ['siswa_photo' => $photo]);
+        //             $res = array_merge($request->all(), ['siswa_photo' => $photo]);
 
-                    if ($siswaSma->update($res)) {
-                        return redirect()->route('siswa-sma.index')
-                            ->with('success', 'SiswaSma updated successfully.');
-                    }
-                }
-            }
-        } else {
-            if ($siswaSma->update($request->except('siswa_photo'))) {
+        //             if ($siswaSma->update($res)) {
+        //                 return redirect()->route('siswa-sma.index')
+        //                     ->with('success', 'SiswaSma updated successfully.');
+        //             }
+        //         }
+        //     }
+        // } else {
+            if ($siswaSma->update($request->all())) {
                 return redirect()->route('siswa-sma.index')
                     ->with('success', 'SiswaSma updated successfully');
             }
-        }
+        // }
 
         return redirect()->route('siswa-sma.index')->with('failed', 'SiswaSma updated failed');
     }
