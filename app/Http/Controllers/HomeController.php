@@ -31,12 +31,12 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->link_ma = "";
-        $this->link_mts = "";
-        $this->link_ra = "";
-        $this->link_sma = "";
-        $this->link_smk = "";
-        $this->link_smp = "";
+        $this->link_ma = env('WA_URL_MA','https://google.com');
+        $this->link_mts = env('WA_URL_MTS','https://google.com');
+        $this->link_ra = env('WA_URL_RA','https://google.com');
+        $this->link_sma = env('WA_URL_SMA','https://google.com');
+        $this->link_smk = env('WA_URL_SMK','https://google.com');
+        $this->link_smp = env('WA_URL_SMP','https://google.com');
     }
 
     /**
@@ -90,7 +90,7 @@ Berikut adalah informasi data anda dan akses login untuk mengikuti seleksi ujian
 *Username :* ".$siswa->nomor."
 *Password :* ".$siswa->nomor."
 Untuk informasi lebih lanjut silahkan klik link group whatsapp dibawah ini
-".$this->link_smk."
+".$this->link_ra."
 atau bisa mengunjungi website https://ppdb.alazhargresik.id";
                     (new Whatsapp)->send($request->siswa_no_hp,$pesan);
 
@@ -136,7 +136,7 @@ Berikut adalah informasi data anda dan akses login untuk mengikuti seleksi ujian
 *Username :* ".$siswaMa->nomor."
 *Password :* ".$siswaMa->nomor."
 Untuk informasi lebih lanjut silahkan klik link group whatsapp dibawah ini
-".$this->link_smk."
+".$this->link_ma."
 atau bisa mengunjungi website https://ppdb.alazhargresik.id";
                 (new Whatsapp)->send($request->siswa_no_hp,$pesan);
 
