@@ -142,7 +142,7 @@ atau bisa mengunjungi website https://ppdb.alazhargresik.id";
                     return redirect()->route('thankyou',[
                         'message'=>'Pendaftaran Calon Peserta Didik Baru Berhasil',
                         'jenjang'=>'MA',
-                        'id' => $SiswaMa->id
+                        'id' => $siswaMa->id
                     ]);
                 }
             // }
@@ -189,7 +189,7 @@ atau bisa mengunjungi website https://ppdb.alazhargresik.id";
                     return redirect()->route('thankyou',[
                         'message'=>'Pendaftaran Calon Peserta Didik Baru Berhasil',
                         'jenjang'=>'MTS',
-                        'id' => $SiswaMt->id
+                        'id' => $siswaMt->id
                     ]);
                 }
             // }
