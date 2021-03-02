@@ -10,6 +10,7 @@ use App\Models\SiswaSma;
 use App\Models\SiswaSmk;
 use App\Models\SiswaSmp;
 use App\Models\Whatsapp;
+use App\Mail\MaRegistration;
 use App\Mail\MtRegistration;
 use Illuminate\Http\Request;
 use App\Mail\SmaRegistration;
@@ -121,7 +122,7 @@ atau bisa mengunjungi website https://ppdb.alazhargresik.id";
 
                 $siswaMa = SiswaMa::create($request->all());
 
-                Mail::to($siswaMa->siswa_email)->cc(['rizkyfebry09@gmail.com'])->send(new SmpRegistration($siswaMa));
+                Mail::to($siswaMa->siswa_email)->cc(['rizkyfebry09@gmail.com'])->send(new MaRegistration($siswaMa));
                 $pesan = "
 *Selamat! Pendaftaran Peserta Didik Baru LPI AL Azhar Menganti Gresik Sudah Berhasil*
 =============================
