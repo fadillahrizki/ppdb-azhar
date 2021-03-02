@@ -82,8 +82,8 @@ class SiswaRa extends Model
 		'siswa_no_hp' => 'required|unique:siswa_ras',
 		'siswa_email' => 'required|unique:siswa_ras',
 		// 'siswa_photo' => 'required|mimes:jpeg,jpg,png|max:5120',
-		'asal_nama_sekolah' => 'required',
-		'asal_alamat_sekolah' => 'required',
+		// 'asal_nama_sekolah' => 'required',
+		// 'asal_alamat_sekolah' => 'required',
 	];
 
 	static $customMessage = [
