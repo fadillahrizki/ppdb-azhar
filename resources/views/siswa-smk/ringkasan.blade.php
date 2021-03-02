@@ -93,7 +93,7 @@
     <tr>
         <td>Link Group Whatsapp</td>
         <td>:</td>
-        <td colspan="2">{{env('WA_URL','https://google.com')}}</td>
+        <td colspan="2">{{env('WA_URL_SMK','https://google.com')}}</td>
     </tr>
     <tr>
         <td colspan="4" style="background:grey;">INFORMASI SEKITAR PPDB</td>

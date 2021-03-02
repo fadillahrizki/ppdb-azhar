@@ -11,6 +11,6 @@
 </p>
 <p>
     Untuk Informasi lebih lanjut silahkan klik link group whatsapp dibawah ini
-    <a href="https://bit.ly">bit.ly</a>
+    <a href="{{env('WA_URL_RA','https://google.com')}}">{{env('WA_URL_RA','https://google.com')}}</a>
     atau bisa mengunjungi website <a href="https://ppdb.alazhargresik.id">ppdb.alazhargresik.id</a>
 </p>
