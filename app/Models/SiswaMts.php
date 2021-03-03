@@ -83,6 +83,6 @@ class SiswaMts extends Model
 	{
 		$id = $this->id < 10 ? "0".$this->id : $this->id;
 		$tanggal = $this->created_at->format('dmy');
-		return "MTS.".$id.$tanggal;
+		return "MTS".$id.$tanggal;
 	}
 }

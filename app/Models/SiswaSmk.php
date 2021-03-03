@@ -78,6 +78,6 @@ class SiswaSmk extends Model
 	{
 		$id = $this->id < 10 ? "0".$this->id : $this->id;
 		$tanggal = $this->created_at->format('dmy');
-		return "SMK.".$id.$tanggal;
+		return "SMK".$id.$tanggal;
 	}
 }
