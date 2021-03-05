@@ -357,6 +357,56 @@ atau bisa mengunjungi website https://ppdb.alazhargresik.id";
         return view('thankyou',compact('siswa'));
     }
 
+    function check($jenjang)
+    {
+        $nomor = isset($_GET['nomor']) ? $_GET['nomor'] : '';
+        if($nomor == '')
+            return view('check',compact('jenjang'));
+
+        $jenjang = strtoupper($jenjang);
+        $view = "";
+        if($jenjang == 'MA')
+        {
+            $siswa = SiswaMa::get();
+        } 
+        
+        if($jenjang == 'MTS') 
+        {
+            $siswa = SiswaMts::get();
+        }
+
+        if($jenjang == 'RA')
+        {
+            $siswa = SiswaRa::get();
+        } 
+
+        if($jenjang == 'SMA')
+        {
+            $siswa = SiswaSma::get();
+        }
+
+        if($jenjang == 'SMK')
+        {
+            $siswa = SiswaSmk::get();
+        }
+
+        if($jenjang == 'SMP')
+        {
+            $siswa = SiswaSmp::get();
+        }
+
+        $siswa = $siswa->filter(function($m) use ($nomor){
+            return $m->nomor == $nomor;
+        });
+
+        if(empty($siswa))
+            return view('downloads.not-found');
+
+        $siswa = $siswa[0];
+
+        return view('downloads.bukti',compact('siswa','jenjang'));
+    }
+
     function download($jenjang, $id)
     {
         $jenjang = strtoupper($jenjang);
@@ -403,7 +453,7 @@ atau bisa mengunjungi website https://ppdb.alazhargresik.id";
         $data = file_get_contents($foto);
         $kop = 'data:image/' . $type . ';base64,' . base64_encode($data);
 
-        QRCode::text($siswa->nomor)->setOutfile(public_path().'/qrcode/'.$siswa->nomor.'.png')->png();
+        QRCode::text(route('check',strtolower($jenjang)).'?nomor='.$siswa->nomor)->setOutfile(public_path().'/qrcode/'.$siswa->nomor.'.png')->png();
 
         $qrcode = public_path().'/qrcode/'.$siswa->nomor.'.png';
         $type = pathinfo($qrcode, PATHINFO_EXTENSION);

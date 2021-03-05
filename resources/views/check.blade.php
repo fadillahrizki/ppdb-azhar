@@ -9,7 +9,7 @@
     <meta name="author" content="" />
     <title>PPDB Al Azhar - Cek Pendaftaran</title>
     <!--favicon-->
-    <link rel="icon" href="{{asset('assets/images/SMA.png')}}" type="image/x-icon">
+    <link rel="icon" href="{{asset('assets/images/'.$jenjang.'.png')}}" type="image/x-icon">
     <!-- Bootstrap core CSS-->
     <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" />
     <!-- animate CSS-->
@@ -24,38 +24,22 @@
 <body>
     <!-- Start wrapper-->
     <div id="wrapper">
-        <div class="card border-primary border-top-sm border-bottom-sm mx-auto my-5 animated bounceInDown" style="max-width: 500px;">
+        <div class="card border-primary border-top-sm border-bottom-sm card-authentication1 mx-auto my-5 animated bounceInDown">
             <div class="card-body">
                 <div class="card-content p-2">
                     <div class="text-center">
-                        <h2>Cek Pendaftaran</h2>
+                        <img src="{{asset('assets/images/'.$jenjang.'.png')}}" width="100px">
                     </div>
-                    <table class="table table-bordered">
-                      <tr>
-                      <td width="250px">No. Pendaftaran</td>
-                      <td><b>{{$siswa->nomor}}</b></td>
-                      </tr>
-                      <tr>
-                        <td>Nama</td>
-                        <td>{{$siswa->siswa_nama_lengkap}}</td>
-                        </tr>
-                      <tr>
-                      <td>NIK</td>
-                      <td>{{$siswa->siswa_NIK}}</td>
-                      </tr>
-                      <tr>
-                      <td>Tempat / Tanggal Lahir</td>
-                      <td>{{$siswa->siswa_tempat}}, {{\Carbon\Carbon::parse($siswa->tanggal_lahir)->format('d-m-Y')}}</td>
-                      </tr>
-                      <tr>
-                      <td>Waktu Mendaftar</td>
-                      <td>{{$siswa->created_at->format('Y-m-d H:i:s')}}</td>
-                      </tr>
-                      <tr>
-                      <td>Status</td>
-                      <td>{{$siswa->status ?: 'Belum ada Status'}}</td>
-                      </tr>
-                  </table>
+                    <div class="text-uppercase text-center py-3">
+                        <p>Form Cek Pendaftaran</p>
+                        <form action="">
+                            <div class="form-group">
+                                <label for="">Nomor Pendaftaran</label>
+                                <input type="text" name="nomor" class="form-control form-control-rounded">
+                            </div>
+                            <button class="btn btn-primary  shadow-primary btn-round btn-block waves-effect waves-light">Cek</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
