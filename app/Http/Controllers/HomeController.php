@@ -399,8 +399,8 @@ atau bisa mengunjungi website https://ppdb.alazhargresik.id";
             return $m->nomor == $nomor;
         });
 
-        if(empty($siswa))
-            return view('downloads.not-found');
+        if(empty($siswa) || count($siswa) == 0)
+            return view('downloads.not-found',compact('jenjang','nomor'));
 
         $siswa = $siswa[0];
 
