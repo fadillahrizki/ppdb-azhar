@@ -33,8 +33,8 @@
     @yield('css')
 
 </head>
-
 <body>
+    @yield('print-section')
     @php($user=auth()->user())
     <!-- Start wrapper-->
     <div id="wrapper">
@@ -260,14 +260,6 @@
     <!-- Custom scripts -->
     <script src="{{asset('assets/js/app-script.js')}}"></script>
 
-    <!-- Vector map JavaScript -->
-    <script src="{{asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
-    <!-- Chart js -->
-    <script src="{{asset('assets/plugins/Chart.js/Chart.min.js')}}"></script>
-    <!-- Index js -->
-    <script src="{{asset('assets/js/index.js')}}"></script>
-
 
     <!--Data Tables js-->
     <script src="{{asset('assets/plugins/bootstrap-datatable/js/jquery.dataTables.min.js')}}"></script>
@@ -275,12 +267,16 @@
     <script src="{{asset('assets/plugins/bootstrap-datatable/js/dataTables.buttons.min.js')}}"></script>
     <script src="{{asset('assets/plugins/bootstrap-datatable/js/buttons.bootstrap4.min.js')}}"></script>
     <script src="{{asset('assets/plugins/bootstrap-datatable/js/jszip.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/bootstrap-datatable/js/pdfmake.min.js')}}"></script>
     <script src="{{asset('assets/plugins/bootstrap-datatable/js/vfs_fonts.js')}}"></script>
     <script src="{{asset('assets/plugins/bootstrap-datatable/js/buttons.html5.min.js')}}"></script>
     <script src="{{asset('assets/plugins/bootstrap-datatable/js/buttons.print.min.js')}}"></script>
     <script src="{{asset('assets/plugins/bootstrap-datatable/js/buttons.colVis.min.js')}}"></script>
-
+    <script>
+        function doPrint()
+        {
+            document.execCommand('print');
+        }
+    </script>
 
     @yield('js')
 

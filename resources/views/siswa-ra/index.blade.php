@@ -28,6 +28,7 @@ Siswa RA
 <!-- End Breadcrumb-->
 @endsection
 
+@section('print-section')
 <div id="print" class="d-none">
     <h2 class="text-center mb-5">Laporan Seluruh Siswa RA</h2>
 
@@ -36,9 +37,8 @@ Siswa RA
             <tr>
                 <th>No</th>
 
+                <th>No. Pendaftaran</th>
                 <th>Nama Lengkap</th>
-                <th>NIK</th>
-                <th>Email</th>
                 <th>Status</th>
             </tr>
         </thead>
@@ -47,23 +47,15 @@ Siswa RA
             <tr>
                 <td>{{ ++$i }}</td>
 
+                <td>{{ $siswaRa->nomor }}</td>
                 <td>{{ $siswaRa->siswa_nama_lengkap }}</td>
-                <td>{{ $siswaRa->siswa_NIK }}</td>
-                <td>{{ $siswaRa->siswa_email }}</td>
-                <td>
-                    @if($siswaRa->siswa_status == "lulus")
-                    <span class="badge badge-success">{{$siswaRa->siswa_status}}</span>
-                    @elseif($siswaRa->siswa_status == "tidak lulus")
-                    <span class="badge badge-danger">{{$siswaRa->siswa_status}}</span>
-                    @else
-                    <span class="badge badge-secondary">belum diketahui</span>
-                    @endif
-                </td>
+                <td>{{$siswaRa->siswa_status}}</td>
             </tr>
             @endforeach
         </tbody>
     </table>
 </div>
+@endsection
 
 @section('content')
 
@@ -111,9 +103,8 @@ Siswa RA
                             <tr>
                                 <th>No</th>
 
+                                <th>No. Pendaftaran</th>
                                 <th>Nama Lengkap</th>
-                                <th>NIK</th>
-                                <th>Email</th>
                                 <th>Status</th>
 
                                 <th></th>
@@ -125,9 +116,8 @@ Siswa RA
                             <tr>
                                 <td>{{ ++$i }}</td>
 
+                                <td>{{ $siswaRa->nomor }}</td>
                                 <td>{{ $siswaRa->siswa_nama_lengkap }}</td>
-                                <td>{{ $siswaRa->siswa_NIK }}</td>
-                                <td>{{ $siswaRa->siswa_email }}</td>
                                 <td>
                                     @if($siswaRa->siswa_status == "lulus")
                                     <span class="badge badge-success">{{$siswaRa->siswa_status}}</span>
@@ -138,19 +128,35 @@ Siswa RA
                                     @endif
                                 </td>
                                 <td>
-                                    @if(auth()->user()->hasAnyPermission(['detail ra','super admin']))
-                                    <a class="btn btn-sm btn-primary " href="{{ route('siswa-ra.show',$siswaRa->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                    @endif
-                                    @if(auth()->user()->hasAnyPermission(['edit ra','super admin']))
-                                    <a class="btn btn-sm btn-success" href="{{ route('siswa-ra.edit',$siswaRa->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
-                                    @endif
-                                    @if(auth()->user()->hasAnyPermission(['hapus ra','super admin']))
-                                    <form action="{{ route('siswa-ra.destroy',$siswaRa->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
-                                    </form>
-                                    @endif
+                                    <div class="dropdown">
+                                        <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Aksi
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <li>
+                                                <a class="dropdown-item" href="{{ url()->to('download/ra/'.$siswaRa->id) }}"><i class="fa fa-fw fa-download"></i> Download PDF</a>
+                                            </li>
+                                            @if(auth()->user()->hasAnyPermission(['detail ra','super admin']))
+                                            <li>
+                                            <a class="dropdown-item" href="{{ route('siswa-ra.show',$siswaRa->id) }}"><i class="fa fa-fw fa-eye"></i> Lihat</a>
+                                            </li>
+                                            @endif
+                                            @if(auth()->user()->hasAnyPermission(['edit ra','super admin']))
+                                            <li>
+                                            <a class="dropdown-item" href="{{ route('siswa-ra.edit',$siswaRa->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                            </li>
+                                            @endif
+                                            @if(auth()->user()->hasAnyPermission(['hapus ra','super admin']))
+                                            <li>
+                                            <a href="javascript:void(0)" class="dropdown-item" onclick="delete_{{$siswaRa->id}}.submit()"><i class="fa fa-fw fa-trash"></i> Hapus</a>
+                                            <form action="{{ route('siswa-ra.destroy',$siswaRa->id) }}" name="delete_{{$siswaRa->id}}" method="POST" style="display:none;">
+                                                @csrf
+                                                @method('DELETE')
+                                            </form>
+                                            </li>
+                                            @endif
+                                        </ul>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach

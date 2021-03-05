@@ -29,8 +29,7 @@ Siswa SMP
 @endsection
 
 
-
-@section('content')
+@section('print-section')
 <div id="print" class="d-none">
     <h2 class="text-center mb-5">Laporan Seluruh Siswa Smp</h2>
 
@@ -39,11 +38,8 @@ Siswa SMP
             <tr>
                 <th>No</th>
 
+                <th>No. Pendaftaran</th>
                 <th>Nama Lengkap</th>
-                <th>NIK</th>
-                <th>NISN</th>
-                <th>Email</th>
-                <th>No Hp</th>
                 <th>Status</th>
             </tr>
         </thead>
@@ -52,25 +48,17 @@ Siswa SMP
             <tr>
                 <td>{{ ++$i }}</td>
 
+                <td>{{ $siswaSmp->nomor }}</td>
                 <td>{{ $siswaSmp->siswa_nama_lengkap }}</td>
-                <td>{{ $siswaSmp->siswa_NIK }}</td>
-                <td>{{ $siswaSmp->siswa_NISN }}</td>
-                <td>{{ $siswaSmp->siswa_email }}</td>
-                <td>{{ $siswaSmp->siswa_no_hp }}</td>
-                <td>
-                    @if($siswaSmp->siswa_status == "lulus")
-                    <span class="badge badge-success">{{$siswaSmp->siswa_status}}</span>
-                    @elseif($siswaSmp->siswa_status == "tidak lulus")
-                    <span class="badge badge-danger">{{$siswaSmp->siswa_status}}</span>
-                    @else
-                    <span class="badge badge-secondary">belum diketahui</span>
-                    @endif
-                </td>
+                <td>{{$siswaSmp->siswa_status}}</td>
             </tr>
             @endforeach
         </tbody>
     </table>
 </div>
+@endsection
+
+@section('content')
 
 @if ($message = Session::get('success'))
 <div class="row">
@@ -115,11 +103,8 @@ Siswa SMP
                             <tr>
                                 <th>No</th>
 
+                                <th>No. Pendaftaran</th>
                                 <th>Nama Lengkap</th>
-                                <th>NIK</th>
-                                <th>NISN</th>
-                                <th>Email</th>
-                                <th>No Hp</th>
                                 <th>Status</th>
 
                                 <th></th>
@@ -131,27 +116,40 @@ Siswa SMP
                             <tr>
                                 <td>{{ ++$i }}</td>
 
+                                <td>{{ $siswaSmp->nomor }}</td>
                                 <td>{{ $siswaSmp->siswa_nama_lengkap }}</td>
-                                <td>{{ $siswaSmp->siswa_NIK }}</td>
-                                <td>{{ $siswaSmp->siswa_NISN }}</td>
-                                <td>{{ $siswaSmp->siswa_email }}</td>
-                                <td>{{ $siswaSmp->siswa_no_hp }}</td>
                                 <td>{{ $siswaSmp->siswa_status ?? 'Belum Diketahui' }}</td>
 
                                 <td>
-                                    @if(auth()->user()->hasAnyPermission(['detail smp','super admin']))
-                                    <a class="btn btn-sm btn-primary " href="{{ route('siswa-smp.show',$siswaSmp->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                    @endif
-                                    @if(auth()->user()->hasAnyPermission(['edit smp','super admin']))
-                                    <a class="btn btn-sm btn-success" href="{{ route('siswa-smp.edit',$siswaSmp->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
-                                    @endif
-                                    @if(auth()->user()->hasAnyPermission(['hapus smp','super admin']))
-                                    <form action="{{ route('siswa-smp.destroy',$siswaSmp->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
-                                    </form>
-                                    @endif
+                                    <div class="dropdown">
+                                        <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Aksi
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <li>
+                                                <a class="dropdown-item" href="{{ url()->to('download/smp/'.$siswaSmp->id) }}"><i class="fa fa-fw fa-download"></i> Download PDF</a>
+                                            </li>
+                                            @if(auth()->user()->hasAnyPermission(['detail smp','super admin']))
+                                            <li>
+                                            <a class="dropdown-item" href="{{ route('siswa-smp.show',$siswaSmp->id) }}"><i class="fa fa-fw fa-eye"></i> Lihat</a>
+                                            </li>
+                                            @endif
+                                            @if(auth()->user()->hasAnyPermission(['edit smp','super admin']))
+                                            <li>
+                                            <a class="dropdown-item" href="{{ route('siswa-smp.edit',$siswaSmp->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                            </li>
+                                            @endif
+                                            @if(auth()->user()->hasAnyPermission(['hapus smp','super admin']))
+                                            <li>
+                                            <a href="javascript:void(0)" class="dropdown-item" onclick="delete_{{$siswaSmp->id}}.submit()"><i class="fa fa-fw fa-trash"></i> Hapus</a>
+                                            <form action="{{ route('siswa-smp.destroy',$siswaSmp->id) }}" name="delete_{{$siswaSmp->id}}" method="POST" style="display:none;">
+                                                @csrf
+                                                @method('DELETE')
+                                            </form>
+                                            </li>
+                                            @endif
+                                        </ul>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach
