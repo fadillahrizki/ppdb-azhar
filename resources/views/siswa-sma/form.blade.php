@@ -14,11 +14,6 @@
         {!! $errors->first('siswa_nama_panggilan', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
-        {{ Form::label('NIK') }}
-        {{ Form::text('siswa_NIK', $siswaSma->siswa_NIK, ['class' => 'form-control' . ($errors->has('siswa_NIK') ? ' is-invalid' : ''), 'placeholder' => 'NIK']) }}
-        {!! $errors->first('siswa_NIK', '<p class="invalid-feedback">:message</p>') !!}
-    </div>
-    <div class="form-group">
         {{ Form::label('jenis_kelamin') }}
         {{ Form::select('siswa_jenis_kelamin', [ 'Laki - laki'=>'Laki - laki', 'Perempuan'=>'Perempuan'] , $siswaSma->siswa_jenis_kelamin, ['class' => 'form-control' . ($errors->has('siswa_jenis_kelamin') ? ' is-invalid' : ''), 'placeholder' => '- Pilih Jenis Kelamin -']) }}
         {!! $errors->first('siswa_jenis_kelamin', '<p class="invalid-feedback">:message</p>') !!}
@@ -60,11 +55,6 @@
         {{ Form::label('nama_lengkap') }}
         {{ Form::text('ayah_nama_lengkap', $siswaSma->ayah_nama_lengkap, ['class' => 'form-control' . ($errors->has('ayah_nama_lengkap') ? ' is-invalid' : ''), 'placeholder' => 'Nama Lengkap']) }}
         {!! $errors->first('ayah_nama_lengkap', '<p class="invalid-feedback">:message</p>') !!}
-    </div>
-    <div class="form-group">
-        {{ Form::label('NIK') }}
-        {{ Form::text('ayah_NIK', $siswaSma->ayah_NIK, ['class' => 'form-control' . ($errors->has('ayah_NIK') ? ' is-invalid' : ''), 'placeholder' => 'NIK']) }}
-        {!! $errors->first('ayah_NIK', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
         {{ Form::label('tempat_lahir') }}
@@ -112,11 +102,6 @@
         {{ Form::label('nama_lengkap') }}
         {{ Form::text('ibu_nama_lengkap', $siswaSma->ibu_nama_lengkap, ['class' => 'form-control' . ($errors->has('ibu_nama_lengkap') ? ' is-invalid' : ''), 'placeholder' => 'Nama Lengkap']) }}
         {!! $errors->first('ibu_nama_lengkap', '<p class="invalid-feedback">:message</p>') !!}
-    </div>
-    <div class="form-group">
-        {{ Form::label('NIK') }}
-        {{ Form::text('ibu_NIK', $siswaSma->ibu_NIK, ['class' => 'form-control' . ($errors->has('ibu_NIK') ? ' is-invalid' : ''), 'placeholder' => 'Nik']) }}
-        {!! $errors->first('ibu_NIK', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
         {{ Form::label('tempat') }}

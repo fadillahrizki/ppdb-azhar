@@ -23,7 +23,7 @@ class CreateSiswaSmasTable extends Migration
 
             $table->string('siswa_nama_lengkap');
             $table->string('siswa_nama_panggilan');
-            $table->string('siswa_NIK');
+            // $table->string('siswa_NIK');
             $table->string('siswa_jenis_kelamin');
             $table->string('siswa_tempat');
             $table->date('siswa_tanggal_lahir');
@@ -37,7 +37,7 @@ class CreateSiswaSmasTable extends Migration
             // Ayah
 
             $table->string('ayah_nama_lengkap')->nullable();
-            $table->string('ayah_NIK')->nullable();
+            // $table->string('ayah_NIK')->nullable();
             $table->string('ayah_tempat')->nullable();
             $table->date('ayah_tanggal_lahir')->nullable();
             $table->string('ayah_agama')->nullable();
@@ -48,7 +48,7 @@ class CreateSiswaSmasTable extends Migration
             // Ibu
 
             $table->string('ibu_nama_lengkap')->nullable();
-            $table->string('ibu_NIK')->nullable();
+            // $table->string('ibu_NIK')->nullable();
             $table->string('ibu_tempat')->nullable();
             $table->date('ibu_tanggal_lahir')->nullable();
             $table->string('ibu_agama')->nullable();

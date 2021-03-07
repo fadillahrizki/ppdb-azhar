@@ -23,7 +23,7 @@ class CreateSiswaSmpsTable extends Migration
 
             $table->string('siswa_nama_lengkap');
             $table->string('siswa_nama_panggilan');
-            $table->string('siswa_NIK');
+            // $table->string('siswa_NIK');
             $table->string('siswa_NISN');
             $table->string('siswa_jenis_kelamin');
             $table->string('siswa_tempat');

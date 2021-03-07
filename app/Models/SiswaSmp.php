@@ -49,7 +49,7 @@ class SiswaSmp extends Model
 	static $rules = [
 		'siswa_nama_lengkap' => 'required',
 		'siswa_nama_panggilan' => 'required',
-		'siswa_NIK' => 'required|unique:siswa_smps',
+		// 'siswa_NIK' => 'required|unique:siswa_smps',
 		'siswa_NISN' => 'required|unique:siswa_smps',
 		'siswa_jenis_kelamin' => 'required',
 		'siswa_tempat' => 'required',
@@ -65,7 +65,7 @@ class SiswaSmp extends Model
 	];
 
 	static $customMessage = [
-		'siswa_NIK.unique' => 'NIK sudah digunakan',
+		// 'siswa_NIK.unique' => 'NIK sudah digunakan',
 		'siswa_email.unique' => 'Email sudah digunakan',
 		'siswa_NISN.unique' => 'NISN sudah digunakan',
 		'siswa_no_hp.unique' => 'No HP sudah digunakan',
@@ -79,7 +79,7 @@ class SiswaSmp extends Model
 	 * @var array
 	 */
 	// protected $guarded = [];
-	protected $fillable = ['siswa_status', 'siswa_nama_lengkap', 'siswa_nama_panggilan', 'siswa_NIK', 'siswa_NISN', 'siswa_jenis_kelamin', 'siswa_tempat', 'siswa_tanggal_lahir', 'siswa_alamat_tempat_tinggal', 'siswa_email', 'siswa_no_hp', 'ayah_nama_lengkap', 'ayah_agama', 'ayah_pendidikan_terakhir', 'ayah_pekerjaan', 'ayah_penghasilan', 'ibu_nama_lengkap', 'ibu_agama', 'ibu_pendidikan_terakhir', 'ibu_pekerjaan', 'ibu_penghasilan', 'asal_nama_sekolah', 'asal_alamat_sekolah', 'asal_no_telepon_sekolah', 'kelas_pilihan_pertama', 'kelas_pilihan_kedua'];
+	protected $fillable = ['siswa_status', 'siswa_nama_lengkap', 'siswa_nama_panggilan', 'siswa_NISN', 'siswa_jenis_kelamin', 'siswa_tempat', 'siswa_tanggal_lahir', 'siswa_alamat_tempat_tinggal', 'siswa_email', 'siswa_no_hp', 'ayah_nama_lengkap', 'ayah_agama', 'ayah_pendidikan_terakhir', 'ayah_pekerjaan', 'ayah_penghasilan', 'ibu_nama_lengkap', 'ibu_agama', 'ibu_pendidikan_terakhir', 'ibu_pekerjaan', 'ibu_penghasilan', 'asal_nama_sekolah', 'asal_alamat_sekolah', 'asal_no_telepon_sekolah', 'kelas_pilihan_pertama', 'kelas_pilihan_kedua'];
 
 	function getNomorAttribute()
 	{
