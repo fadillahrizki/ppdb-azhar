@@ -125,7 +125,7 @@
     </div>
     <div class="form-group">
         {{ Form::label('tanggal_lahir') }}
-        {{ Form::text('ibu_tanggal_lahir', $siswaMa->ibu_tanggal_lahir, ['class' => 'form-control' . ($errors->has('ibu_tanggal_lahir') ? ' is-invalid' : ''), 'placeholder' => 'Tanggal Lahir']) }}
+        {{ Form::date('ibu_tanggal_lahir', $siswaMa->ibu_tanggal_lahir, ['class' => 'form-control' . ($errors->has('ibu_tanggal_lahir') ? ' is-invalid' : ''), 'placeholder' => 'Tanggal Lahir']) }}
         {!! $errors->first('ibu_tanggal_lahir', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
