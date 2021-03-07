@@ -9,7 +9,7 @@
     <meta name="author" content="" />
     <title>PPDB Al Azhar - Cek Pendaftaran</title>
     <!--favicon-->
-    <link rel="icon" href="{{asset('assets/images/'.$jenjang.'.png')}}" type="image/x-icon">
+    <link rel="icon" href="{{asset('assets/images/'.strtoupper($jenjang).'.png')}}" type="image/x-icon">
     <!-- Bootstrap core CSS-->
     <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" />
     <!-- animate CSS-->
@@ -28,7 +28,7 @@
             <div class="card-body">
                 <div class="card-content p-2">
                     <div class="text-center">
-                        <img src="{{asset('assets/images/'.$jenjang.'.png')}}" width="100px">
+                        <img src="{{asset('assets/images/'.strtoupper($jenjang).'.png')}}" width="100px">
                     </div>
                     <div class="text-uppercase text-center py-3">
                         <p>Form Cek Pendaftaran</p>
