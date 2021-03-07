@@ -81,10 +81,6 @@
                         {{ $siswaSmk->siswa_nama_panggilan ?? '-' }}
                     </div>
                     <div class="form-group">
-                        <strong>Nik:</strong>
-                        {{ $siswaSmk->siswa_NIK ?? '-' }}
-                    </div>
-                    <div class="form-group">
                         <strong>Jenis Kelamin:</strong>
                         {{ $siswaSmk->siswa_jenis_kelamin ?? '-' }}
                     </div>

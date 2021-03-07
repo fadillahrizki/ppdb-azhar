@@ -97,10 +97,6 @@ Formulir Pendaftaran Peserta Didik Baru RA Al Azhar Menganti Gresik
             ${$("[name=siswa_nama_panggilan]").val() ? $("[name=siswa_nama_panggilan]").val() : '-'}
         </div>
         <div class="form-group">
-            <strong>NIK:</strong>
-            ${$("[name=siswa_NIK]").val() ? $("[name=siswa_NIK]").val() : '-'}
-        </div>
-        <div class="form-group">
             <strong>Jenis Kelamin:</strong>
             ${$("[name=siswa_jenis_kelamin]").val() ? $("[name=siswa_jenis_kelamin]").val() : '-'}
         </div>
@@ -169,10 +165,6 @@ Formulir Pendaftaran Peserta Didik Baru RA Al Azhar Menganti Gresik
             ${$("[name=ayah_nama_lengkap]").val() ? $("[name=ayah_nama_lengkap]").val() : '-'}
         </div>
         <div class="form-group">
-            <strong>NIK:</strong>
-            ${$("[name=ayah_NIK]").val() ? $("[name=ayah_NIK]").val() : '-'}
-        </div>
-        <div class="form-group">
             <strong>Tempat Lahir:</strong>
             ${$("[name=ayah_tempat]").val() ? $("[name=ayah_tempat]").val() : '-'}
         </div>
@@ -208,10 +200,6 @@ Formulir Pendaftaran Peserta Didik Baru RA Al Azhar Menganti Gresik
         <div class="form-group">
             <strong>Nama Lengkap:</strong>
             ${$("[name=ibu_nama_lengkap]").val() ? $("[name=ibu_nama_lengkap]").val() : '-'}
-        </div>
-        <div class="form-group">
-            <strong>NIK:</strong>
-            ${$("[name=ibu_NIK]").val() ? $("[name=ibu_NIK]").val() : '-'}
         </div>
         <div class="form-group">
             <strong>Tempat Lahir:</strong>

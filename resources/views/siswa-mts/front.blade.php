@@ -103,10 +103,6 @@ Formulir Pendaftaran Peserta Didik Baru MTS Al Azhar Menganti Gresik
             ${$("[name=siswa_nama_panggilan]").val() ? $("[name=siswa_nama_panggilan]").val() : '-'}
         </div>
         <div class="form-group">
-            <strong>NIK:</strong>
-            ${$("[name=siswa_NIK]").val() ? $("[name=siswa_NIK]").val() : '-'}
-        </div>
-        <div class="form-group">
             <strong>NISN:</strong>
             ${$("[name=siswa_NISN]").val() ? $("[name=siswa_NISN]").val() : '-'}
         </div>
