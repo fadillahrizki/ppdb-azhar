@@ -15,11 +15,6 @@
         {!! $errors->first('siswa_nama_panggilan', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
-        {{ Form::label('NIK') }}
-        {{ Form::text('siswa_NIK', $siswaSmp->siswa_NIK, ['class' => 'form-control' . ($errors->has('siswa_NIK') ? ' is-invalid' : ''), 'placeholder' => 'NIK']) }}
-        {!! $errors->first('siswa_NIK', '<p class="invalid-feedback">:message</p>') !!}
-    </div>
-    <div class="form-group">
         {{ Form::label('NISN') }}
         {{ Form::text('siswa_NISN', $siswaSmp->siswa_NISN, ['class' => 'form-control' . ($errors->has('siswa_NISN') ? ' is-invalid' : ''), 'placeholder' => 'Nisn']) }}
         {!! $errors->first('siswa_NISN', '<p class="invalid-feedback">:message</p>') !!}

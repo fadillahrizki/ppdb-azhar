@@ -38,10 +38,6 @@
                       <tr>
                         <td>Nama</td>
                         <td>{{$siswa->siswa_nama_lengkap}}</td>
-                        </tr>
-                      <tr>
-                      <td>NIK</td>
-                      <td>{{$siswa->siswa_NIK}}</td>
                       </tr>
                       <tr>
                       <td>Tempat / Tanggal Lahir</td>

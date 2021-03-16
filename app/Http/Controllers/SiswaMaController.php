@@ -93,7 +93,7 @@ Panitia PPDB LPI AL Azhar Menganti Gresik";
     {
         request()->validate(SiswaMa::$rules,SiswaMa::$customMessage);
 
-        $photo = $request->file('siswa_photo')->store('siswa-ma');
+        // $photo = $request->file('siswa_photo')->store('siswa-ma');
 
         // if ($photo) {
 

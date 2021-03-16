@@ -15,11 +15,6 @@
         {!! $errors->first('siswa_nama_panggilan', '<p class="invalid-feedback">:message</p>') !!}
     </div>
     <div class="form-group">
-        {{ Form::label('NIK*') }}
-        {{ Form::text('siswa_NIK', $siswaSmk->siswa_NIK, ['required','maxlength'=>'16', 'pattern' => '[0-9]{16}','class' => 'form-control' . ($errors->has('siswa_NIK') ? ' is-invalid' : ''), 'placeholder' => 'NIK']) }}
-        {!! $errors->first('siswa_NIK', '<p class="invalid-feedback">:message</p>') !!}
-    </div>
-    <div class="form-group">
         {{ Form::label('jenis_kelamin*') }}
         {{ Form::select('siswa_jenis_kelamin', [ 'Laki - laki'=>'Laki - laki', 'Perempuan'=>'Perempuan'] , $siswaSmk->siswa_jenis_kelamin, ['required','class' => 'form-control' . ($errors->has('siswa_jenis_kelamin') ? ' is-invalid' : ''), 'placeholder' => '- Pilih Jenis Kelamin -']) }}
         {!! $errors->first('siswa_jenis_kelamin', '<p class="invalid-feedback">:message</p>') !!}

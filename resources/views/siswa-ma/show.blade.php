@@ -77,10 +77,6 @@
                         {{ $siswaMa->siswa_nama_panggilan ?? '-' }}
                     </div>
                     <div class="form-group">
-                        <strong>Nik:</strong>
-                        {{ $siswaMa->siswa_NIK ?? '-' }}
-                    </div>
-                    <div class="form-group">
                         <strong>Jenis Kelamin:</strong>
                         {{ $siswaMa->siswa_jenis_kelamin ?? '-' }}
                     </div>
@@ -181,10 +177,6 @@
                     {{ $siswaMa->ayah_nama_lengkap ?? '-' }}
                 </div>
                 <div class="form-group">
-                    <strong>Nik:</strong>
-                    {{ $siswaMa->ayah_NIK ?? '-' }}
-                </div>
-                <div class="form-group">
                     <strong>Tempat:</strong>
                     {{ $siswaMa->ayah_tempat ?? '-' }}
                 </div>
@@ -226,10 +218,6 @@
                 <div class="form-group">
                     <strong>Nama Lengkap:</strong>
                     {{ $siswaMa->ibu_nama_lengkap ?? '-' }}
-                </div>
-                <div class="form-group">
-                    <strong>Nik:</strong>
-                    {{ $siswaMa->ibu_NIK ?? '-' }}
                 </div>
                 <div class="form-group">
                     <strong>Tempat:</strong>

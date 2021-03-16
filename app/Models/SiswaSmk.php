@@ -40,7 +40,7 @@ class SiswaSmk extends Model
 	static $rules = [
 		'siswa_nama_lengkap' => 'required',
 		'siswa_nama_panggilan' => 'required',
-		'siswa_NIK' => 'required|unique:siswa_smks',
+		// 'siswa_NIK' => 'required|unique:siswa_smks',
 		'siswa_jenis_kelamin' => 'required',
 		'siswa_tempat' => 'required',
 		'siswa_tanggal_lahir' => 'required',
@@ -59,7 +59,7 @@ class SiswaSmk extends Model
 	];
 
 	static $customMessage = [
-		'siswa_NIK.unique' => 'NIK sudah digunakan',
+		// 'siswa_NIK.unique' => 'NIK sudah digunakan',
 		'siswa_no_hp.unique' => 'No HP sudah digunakan',
 		'siswa_email.unique' => 'Email sudah digunakan',
 	];
@@ -72,7 +72,7 @@ class SiswaSmk extends Model
 	 * @var array
 	 */
 	// protected $guarded = [];
-	protected $fillable = ['siswa_no_hp','siswa_status',  'siswa_nama_lengkap', 'siswa_nama_panggilan', 'siswa_NIK', 'siswa_jenis_kelamin', 'siswa_tempat', 'siswa_tanggal_lahir', 'siswa_usia', 'siswa_alamat_tempat_tinggal', 'siswa_email', 'asal_nama_sekolah', 'asal_alamat_sekolah', 'jurusan_pilihan_pertama', 'jurusan_pilihan_kedua', 'pondok_pilihan'];
+	protected $fillable = ['siswa_no_hp','siswa_status',  'siswa_nama_lengkap', 'siswa_nama_panggilan', 'siswa_jenis_kelamin', 'siswa_tempat', 'siswa_tanggal_lahir', 'siswa_usia', 'siswa_alamat_tempat_tinggal', 'siswa_email', 'asal_nama_sekolah', 'asal_alamat_sekolah', 'jurusan_pilihan_pertama', 'jurusan_pilihan_kedua', 'pondok_pilihan'];
 
 	function getNomorAttribute()
 	{

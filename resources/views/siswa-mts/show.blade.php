@@ -77,10 +77,6 @@
                         {{ $siswaMts->siswa_nama_panggilan ?? '-' }}
                     </div>
                     <div class="form-group">
-                        <strong>Nik:</strong>
-                        {{ $siswaMts->siswa_NIK ?? '-' }}
-                    </div>
-                    <div class="form-group">
                         <strong>Nisn:</strong>
                         {{ $siswaMts->siswa_NISN ?? '-' }}
                     </div>
