@@ -481,7 +481,7 @@ atau bisa mengunjungi website https://ppdb.alazhargresik.id";
         if($jenjang == 'ma')
             $siswa = SiswaMa::get();
         if($jenjang == 'mts')
-            $siswa = SiswaMt::get();
+            $siswa = SiswaMts::get();
         if($jenjang == 'sma')
             $siswa = SiswaSma::get();
         if($jenjang == 'smk')
