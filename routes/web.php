@@ -74,6 +74,7 @@ Route::match(['get', 'post'], 'form-smk', [HomeController::class, 'siswa_smk']);
 Route::match(['get', 'post'], 'form-ma', [HomeController::class, 'siswa_ma']);
 
 Route::get('download/{jenjang}/{id}', [HomeController::class, 'download'])->name('download');
+Route::get('export/{jenjang}', [HomeController::class, 'export'])->name('export');
 Route::get('check/{jenjang}', [HomeController::class, 'check'])->name('check');
 Route::get('thankyou', [HomeController::class, 'thankyou'])->name('thankyou');
 Route::post('users/{user}/update-permission', [UserController::class, 'updatePermission'])->name('users.update-permission')->middleware(['auth','role_or_permission:super admin']);

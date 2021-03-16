@@ -470,4 +470,26 @@ atau bisa mengunjungi website https://ppdb.alazhargresik.id";
 
         $dompdf->stream('Bukti-Pendaftaran-'.$siswa->nomor.'.pdf',array("Attachment" => false));
     }
+
+    public function export($jenjang)
+    {
+
+        header("Content-type: application/vnd-ms-excel");
+        header("Content-Disposition: attachment; filename=Laporan-pendaftaran-".$jenjang."-".date('d-M-Y').".xls");
+        if($jenjang == 'ra')
+            $siswa = SiswaRa::get();
+        if($jenjang == 'ma')
+            $siswa = SiswaMa::get();
+        if($jenjang == 'mts')
+            $siswa = SiswaMt::get();
+        if($jenjang == 'sma')
+            $siswa = SiswaSma::get();
+        if($jenjang == 'smk')
+            $siswa = SiswaSmk::get();
+        if($jenjang == 'smp')
+            $siswa = SiswaSmp::get();
+
+        return view('export', compact('siswa'))
+            ->with('i', 0);
+    }
 }
