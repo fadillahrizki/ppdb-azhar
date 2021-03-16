@@ -20,6 +20,7 @@ Siswa SMA
             @if(auth()->user()->hasAnyPermission(['laporan sma','super admin']))
             <button class="btn btn-primary waves-effect waves-light" onclick="window.print()"><i class="fa fa-fw fa-print"></i> Print Laporan</button>
             @endif
+            <a href="{{route('export','sma')}}" class="btn btn-success waves-effect waves-light" ><i class="fa fa-fw fa-file"></i> Export</a>
             @if(auth()->user()->hasAnyPermission(['tambah sma','super admin']))
             <a href="{{ route('siswa-sma.create') }}" class="btn btn-outline-primary waves-effect waves-light"><i class="fa fa-plus mr-1"></i> Tambah Siswa</a>
             @endif
